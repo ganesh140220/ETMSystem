@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ETMSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f25de693c395c9acbf9a3d4816eb78a68faabc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75c11ea3a102cfbe54ac458ca10e5fdc5eed4297")]
 [assembly: System.Reflection.AssemblyProductAttribute("ETMSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ETMSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
