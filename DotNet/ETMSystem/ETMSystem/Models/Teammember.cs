@@ -3,7 +3,13 @@ using System.Collections.Generic;
 
 namespace ETMSystem.Models;
 
-public partial class Teammember
+public partial class TeamMember
 {
-    public int Tid { get; set; }
+    public int EmployeeId { get; set; }
+
+    public int ProjectId { get; set; }
+
+    public virtual Employee Employee { get; set; } = null!;
+
+    public virtual Project Project { get; set; } = null!;
 }

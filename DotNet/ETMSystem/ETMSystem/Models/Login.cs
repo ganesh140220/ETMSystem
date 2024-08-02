@@ -13,6 +13,8 @@ public partial class Login
 
     public int Roleid { get; set; }
 
+    public int Active { get; set; }
+
     public virtual Employee? Employee { get; set; }
 
     public virtual Role Role { get; set; } = null!;
