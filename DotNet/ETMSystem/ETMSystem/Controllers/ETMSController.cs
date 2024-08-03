@@ -50,66 +50,14 @@ namespace ETMS.Controllers
                 
                 Login EmpLogin=db.Logins.Include(o => o.Role).Include(o=>o.Employee).Where(o=>o.Username.Equals(obj.uid)).FirstOrDefault();
                 
-                if (EmpLogin == null) return "Enter valid username";
-               
-                if(EmpLogin!=null && EmpLogin.Password.Equals(obj.pwd)) return EmpLogin;
-                return "Enter valid Password"; ;
+                if (EmpLogin == null) return new Error("Enter valid username");
+		        if (EmpLogin.Active != 0) return new Error("This account is currently suspended");
+		        if (EmpLogin!=null && EmpLogin.Password.Equals(obj.pwd)) return EmpLogin;
+		        return new Error("Enter valid Password"); 
 
             }
 
         }
-        /*// GET Etms/getOneEmpFromLogin?id=2
-        [HttpGet("getOneEmpFromLogin")]
-        public Login getid(string id)
-        {
-           using(var db = new EtmsystemContext()) {
-
-                Login emp = db.Logins.Find(id);
-                return emp;
-            }
-
-
-            
-        }
-
-        // POST Etms/NewEmpLoginEntry //new entry done in login table 
-        [HttpPost("NewEmpLoginEntry")]
-        public string NewEmpLoginEntry([FromBody] Login obj)
-        {
-          
-            using(var db=new EtmsystemContext())
-            {
-
-                db.Add(obj);
-               
-                try
-                {
-                    db.SaveChanges();
-                    return "Data Inserted";
-                }
-                catch (Exception e) 
-                {
-                    return "Not inserted";
-                }
-               
-            }
-           
-        }
-
-        // Put Etms/UpdateLoginDetail?id=2
-        [HttpPut("UpdateLoginDetail")]
-        public Login UpdateLoginDetail(string id, [FromBody] Login obj)
-        {
-            using (var db = new EtmsystemContext())
-            {
-
-                Login emp = db.Logins.Find(id);
-                return emp;
-            }
-        }
-*/
-
-
-
+       
     }
 }

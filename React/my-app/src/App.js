@@ -1,7 +1,9 @@
 
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
 import Login from './component/Login';  
 import Admin from './component/Admin';  
 import Manager from './component/Manager';  
@@ -12,8 +14,9 @@ function App() {
     
     <Router>
       <div className="App">
-      <Login />
+      
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/manager" element={<Manager />} />

@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,useLocation } from 'react-router-dom';
 
 const Employee = () => {
+
+  const loc=useLocation()
+  const c=loc.state.loginid
+  
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,7 +14,7 @@ const Employee = () => {
 
   return (
     <div className="employee-container">
-      <h1>Employee Dashboard</h1>
+      <h1>Employee Dashboard {c}</h1>
 
       <div className="employee-logout">
         <button className="logout-button" onClick={handleLogout}>Logout</button>

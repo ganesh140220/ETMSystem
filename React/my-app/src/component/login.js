@@ -6,13 +6,14 @@ const Login = () => {
     const [uid, setUserId] = useState('');
     const [pwd, setPassword] = useState('');
     const [userType, setUserType] = useState('');
+    const [err, setErr] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         //.NET API for authentication
-        try {
+        
             const response = await fetch('https://localhost:7018/ETMS/validate', {
                 method: 'POST',
                 headers: {
@@ -22,30 +23,32 @@ const Login = () => {
             });
     
             if (response.ok) {
+                
                 const data = await response.json();
+               if(data.role==undefined)setErr(data.err)
+                else{
                 setUserType(data.role.rolename);
     
-                switch (userType) {
+                switch (data.role.rolename) {
                     case 'Admin':
-                        navigate('/admin');
+                        navigate('/admin',{state:data});
                         break;
                     case 'Manager':
-                        navigate('/manager');
+                        navigate('/manager',{state:data});
                         break;
                     case 'Associate':
-                        navigate('/employee');
+                        navigate('/employee',{state:data});
                         break;
                     default:
-                        alert(userType);
+                        alert("Invalid Role");
                 }
+            }
             } else {
                 // Handle non-OK response (e.g., server error)
-                console.error('API call failed:', response.status);
+                
+                console.log('API call failed:', response.status);
             }
-        } catch (error) {
-            // Handle fetch error (e.g., network issues)
-            console.error('Fetch error:', error);
-        }
+        
        
     };
 
@@ -70,6 +73,7 @@ const Login = () => {
                     />
                 </div>
                 <button type="submit">Login</button>
+                {err}
             </form>
         </div>
     );
