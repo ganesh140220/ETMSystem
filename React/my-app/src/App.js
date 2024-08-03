@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './component/Login';  
+import Login from './component/login';  
 import Admin from './component/Admin';  
 import Manager from './component/Manager';  
 import Employee from './component/Employee';  
