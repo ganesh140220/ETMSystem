@@ -5,7 +5,7 @@ import './Admin.css';
 const Admin = () => {
   
   const loc=useLocation()
-  const c=loc.state.loginid
+  const { loginid, username, roleid, employee } = loc.state;
 
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const Admin = () => {
   return (
     
     <div className="admin-container">
-      <h1>Admin Dashboard {c}</h1>  
+      <h1>{roleid} Welcome Admin {username}</h1>
            
 
       <div className="admin-logout">

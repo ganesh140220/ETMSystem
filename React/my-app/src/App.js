@@ -3,9 +3,8 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
-import Login from './component/Login';  
-
+import Home from './component/Home';   
+import Login from './component/login';  
 import Admin from './component/Admin';  
 import Manager from './component/Manager';  
 import Employee from './component/Employee';  
@@ -17,7 +16,7 @@ function App() {
       <div className="App">
       
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/manager" element={<Manager />} />
