@@ -44,6 +44,7 @@ namespace ETMS.Controllers
         [HttpPost("validate")]
         public object validate([FromBody]UidAndPwd obj)
         {
+           
             using (var db = new EtmsystemContext())
             {
                 

@@ -18,6 +18,7 @@ namespace ETMSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
             builder.Services.AddDbContext<EtmsystemContext>(options =>
             {
                 var con = builder.Configuration.GetConnectionString("EtmsConStr");
@@ -37,6 +38,7 @@ namespace ETMSystem
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(o=>true).AllowCredentials());
 
             app.UseAuthorization();
 

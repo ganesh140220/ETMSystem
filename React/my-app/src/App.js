@@ -2,15 +2,17 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';  
-import Admin from './components/Admin';  
-import Manager from './components/Manager';  
-import Employee from './components/Employee';  
+import Login from './component/Login';  
+import Admin from './component/Admin';  
+import Manager from './component/Manager';  
+import Employee from './component/Employee';  
 
 function App() {
   return (
+    
     <Router>
       <div className="App">
+      <Login />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
