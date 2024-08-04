@@ -60,6 +60,7 @@ CREATE TABLE `designation` (
 
 LOCK TABLES `designation` WRITE;
 /*!40000 ALTER TABLE `designation` DISABLE KEYS */;
+INSERT INTO `designation` VALUES (1,'Software Devloper');
 /*!40000 ALTER TABLE `designation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,19 +73,19 @@ DROP TABLE IF EXISTS `employee`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employee` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) NOT NULL,
-  `contact_no` int NOT NULL,
-  `desig_id` int NOT NULL,
-  `email_id` varchar(255) NOT NULL,
+  `login_id` int NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `login_id` int NOT NULL,
+  `contact_no` int NOT NULL,
+  `email_id` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `desig_id` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_id_UNIQUE` (`login_id`),
   KEY `FKmr55wiec420mxhu78p2f1eebl` (`desig_id`),
   CONSTRAINT `FK13jn542578lslhr6drjt21kps` FOREIGN KEY (`login_id`) REFERENCES `login` (`loginid`),
   CONSTRAINT `FKmr55wiec420mxhu78p2f1eebl` FOREIGN KEY (`desig_id`) REFERENCES `designation` (`desig_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +94,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (1,1,'Ganesh','Kupkar',96894455,'gk@gmail.com','pimpleGurav',1),(2,3,'Pratik','Bhagat',98506216,'pb@gmail.com','pcmc',1),(3,2,'Vivek','Patil',99236514,'vp@gmail.com','wakad',1),(4,4,'Sanket','Bhadale',72164589,'sb@gmail.com','katraj',1),(5,5,'Pratap','Bhosale',62457891,'pb5@gmail.com','satara',1);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,14 +107,14 @@ DROP TABLE IF EXISTS `login`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `login` (
   `loginid` int NOT NULL AUTO_INCREMENT,
-  `active` int NOT NULL,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `roleid` int NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `active` int NOT NULL,
   PRIMARY KEY (`loginid`),
   KEY `FK7556csmui0fcfn2ssqxmyt313` (`roleid`),
   CONSTRAINT `FK7556csmui0fcfn2ssqxmyt313` FOREIGN KEY (`roleid`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,6 +123,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES (1,'ganesh1234','Gana@123',2,1),(2,'vivek99','Viv@123',1,1),(3,'pratik44','Prat@123',3,1),(4,'sanket55','Sank@123',4,1),(5,'pratap33','Pb@123',2,0);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +204,7 @@ CREATE TABLE `role` (
   `id` int NOT NULL AUTO_INCREMENT,
   `role` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,6 +213,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'MasterAdmin'),(2,'Admin'),(3,'Manager'),(4,'Associate');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,4 +345,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-04 22:04:41
+-- Dump completed on 2024-08-04 22:46:04
