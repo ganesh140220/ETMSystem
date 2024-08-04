@@ -1,10 +1,24 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "designation")
+
 public class Designation {
 
     @Id
@@ -16,6 +30,8 @@ public class Designation {
 
     @OneToMany(mappedBy = "desig", cascade = CascadeType.ALL)
     private List<Employee> employees;
+
+   
 
     // Getters and Setters
     public int getDesigId() {
@@ -41,6 +57,7 @@ public class Designation {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
 
     // hashCode and equals methods
     @Override

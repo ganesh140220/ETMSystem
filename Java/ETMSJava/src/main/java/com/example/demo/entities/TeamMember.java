@@ -2,9 +2,20 @@ package com.example.demo.entities;
 
 
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.Objects;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "team_member")
 public class TeamMember {
 
     @Id
@@ -25,46 +36,7 @@ public class TeamMember {
     @JoinColumn(name = "projectId", insertable = false, updatable = false)
     private Project project;
 
-    // Getters and Setters
-    public int getTeamId() {
-        return teamId;
-    }
 
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
-    }
-
-    public int getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
-    }
-
-    public int getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 
     // hashCode and equals methods
     @Override

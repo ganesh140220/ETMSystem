@@ -3,10 +3,24 @@ package com.example.demo.entities;
 
 
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "role")
+
 public class Role {
 
     @Id
@@ -19,30 +33,6 @@ public class Role {
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<Login> logins;
 
-    // Getters and Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public List<Login> getLogins() {
-        return logins;
-    }
-
-    public void setLogins(List<Login> logins) {
-        this.logins = logins;
-    }
 
     // hashCode and equals methods
     @Override

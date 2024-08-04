@@ -3,10 +3,24 @@ package com.example.demo.entities;
 
 
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "query")
+
 public class Query {
 
     @Id
@@ -39,79 +53,8 @@ public class Query {
     @JoinColumn(name = "taskId", insertable = false, updatable = false)
     private Task task;
 
-    // Getters and Setters
-    public int getQid() {
-        return qid;
-    }
 
-    public void setQid(int qid) {
-        this.qid = qid;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getQueryText() {
-        return queryText;
-    }
-
-    public void setQueryText(String queryText) {
-        this.queryText = queryText;
-    }
-
-    public String getCreatedText() {
-        return createdText;
-    }
-
-    public void setCreatedText(String createdText) {
-        this.createdText = createdText;
-    }
-
-    public int getRaisedBy() {
-        return raisedBy;
-    }
-
-    public void setRaisedBy(int raisedBy) {
-        this.raisedBy = raisedBy;
-    }
-
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
-
-    public Employee getRaisedByNavigation() {
-        return raisedByNavigation;
-    }
-
-    public void setRaisedByNavigation(Employee raisedByNavigation) {
-        this.raisedByNavigation = raisedByNavigation;
-    }
-
-    public List<Solution> getSolutions() {
-        return solutions;
-    }
-
-    public void setSolutions(List<Solution> solutions) {
-        this.solutions = solutions;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
+   
     // hashCode and equals methods
     @Override
     public int hashCode() {

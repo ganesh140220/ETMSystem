@@ -1,10 +1,25 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "client")
+
 public class Client {
 
     @Id
@@ -22,6 +37,7 @@ public class Client {
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Project> projects;
+
 
     // Getters and Setters
     public int getId() {
