@@ -33,32 +33,7 @@ public class Designation {
 
    
 
-    // Getters and Setters
-    public int getDesigId() {
-        return desigId;
-    }
-
-    public void setDesigId(int desigId) {
-        this.desigId = desigId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-
+    
     // hashCode and equals methods
     @Override
     public int hashCode() {
