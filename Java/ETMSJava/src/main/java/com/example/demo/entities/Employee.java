@@ -52,7 +52,7 @@ public class Employee {
     private Designation desig;
 
     @OneToOne
-    @JoinColumn(name = "loginId", insertable = false, updatable = false)
+    @JoinColumn(name = "loginId", insertable = false, updatable = false,unique = true)
     private Login login;
 
     @OneToMany(mappedBy = "assignedToNavigation", cascade = CascadeType.ALL)

@@ -12,35 +12,7 @@ namespace ETMS.Controllers
     [ApiController]
     public class ETMSController : ControllerBase
     {
-        /*EtmsystemContext eContext;
-        
-       public ETMSController(EtmsystemContext etmsystemContext)
-        {
-            this.eContext = etmsystemContext; 
-        }
-*/
-         List<Login> list = new List<Login>() { };
-
-
-        // GET: Etms/getAllEmpFromLogin
-        [HttpGet("getAllEmp")]
-        public List<Login> getAllEmp()
-        {
-            using (var db = new EtmsystemContext())
-            {
-
-                //db.logins has Employee and Role but due to cyclic reaction of json we have excluded it
-                //for that for once we have to include them for first time to get data
-                list = db.Logins.Include(o=>o.Employee).Include(o => o.Role).ToList();
-
-                return list;
-
-            }
-           
-        }
-
-
-        
+      
         [HttpPost("validate")]
         public object validate([FromBody]UidAndPwd obj)
         {

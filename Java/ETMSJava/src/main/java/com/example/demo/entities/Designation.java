@@ -22,7 +22,6 @@ import java.util.Objects;
 public class Designation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int desigId;
 
     @Column(nullable = false)

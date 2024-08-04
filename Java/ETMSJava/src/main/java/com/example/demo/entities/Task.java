@@ -56,27 +56,32 @@ public class Task {
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Query> queries;
+    
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    private List<TaskProgress> taskProgress;
 
-
-    // hashCode and equals methods
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, status, createdDate, dueDate, description, assignedTo, projectId);
-    }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return id == task.id &&
-               assignedTo == task.assignedTo &&
-               projectId == task.projectId &&
-               Objects.equals(title, task.title) &&
-               Objects.equals(status, task.status) &&
-               Objects.equals(createdDate, task.createdDate) &&
-               Objects.equals(dueDate, task.dueDate) &&
-               Objects.equals(description, task.description);
-    }
+	public int hashCode() {
+		return Objects.hash(assignedTo, assignedToNavigation, createdDate, description, dueDate, id, project, projectId,
+				queries, status, taskProgress, title);
+	}
+
+    @Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		return assignedTo == other.assignedTo && Objects.equals(assignedToNavigation, other.assignedToNavigation)
+				&& Objects.equals(createdDate, other.createdDate) && Objects.equals(description, other.description)
+				&& Objects.equals(dueDate, other.dueDate) && id == other.id && Objects.equals(project, other.project)
+				&& projectId == other.projectId && Objects.equals(queries, other.queries)
+				&& Objects.equals(status, other.status) && Objects.equals(taskProgress, other.taskProgress)
+				&& Objects.equals(title, other.title);
+	}
 }
 
