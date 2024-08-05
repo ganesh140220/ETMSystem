@@ -30,6 +30,9 @@ const Login = () => {
                 setUserType(data.role.role1);
     
                 switch (data.role.role1) {
+                    case 'MasterAdmin':
+                        navigate('/admin',{state:data});
+                        break;
                     case 'Admin':
                         navigate('/admin',{state:data});
                         break;
