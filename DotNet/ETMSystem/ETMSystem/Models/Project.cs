@@ -7,19 +7,19 @@ public partial class Project
 {
     public int Id { get; set; }
 
-    public string ProjectTitle { get; set; } = null!;
+    public int AssignedTo { get; set; }
 
-    public string Status { get; set; } = null!;
+    public int ClientId { get; set; }
+
+    public int CreatedBy { get; set; }
 
     public string CreatedDate { get; set; } = null!;
 
     public string Description { get; set; } = null!;
 
-    public int CreatedBy { get; set; }
+    public string ProjectTitle { get; set; } = null!;
 
-    public int AssignedTo { get; set; }
-
-    public int ClientId { get; set; }
+    public string Status { get; set; } = null!;
 
     public virtual Employee AssignedToNavigation { get; set; } = null!;
 

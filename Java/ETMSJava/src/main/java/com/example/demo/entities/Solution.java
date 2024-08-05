@@ -1,9 +1,22 @@
 package com.example.demo.entities;
 
 
+import java.util.Objects;
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Objects;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "solution")
 @Entity
 public class Solution {
 
@@ -31,62 +44,6 @@ public class Solution {
     @JoinColumn(name = "solvedBy", insertable = false, updatable = false)
     private Employee solvedByNavigation;
 
-    // Getters and Setters
-    public int getSid() {
-        return sid;
-    }
-
-    public void setSid(int sid) {
-        this.sid = sid;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public int getSolvedBy() {
-        return solvedBy;
-    }
-
-    public void setSolvedBy(int solvedBy) {
-        this.solvedBy = solvedBy;
-    }
-
-    public int getQid() {
-        return qid;
-    }
-
-    public void setQid(int qid) {
-        this.qid = qid;
-    }
-
-    public Query getQuery() {
-        return query;
-    }
-
-    public void setQuery(Query query) {
-        this.query = query;
-    }
-
-    public Employee getSolvedByNavigation() {
-        return solvedByNavigation;
-    }
-
-    public void setSolvedByNavigation(Employee solvedByNavigation) {
-        this.solvedByNavigation = solvedByNavigation;
-    }
 
     // hashCode and equals methods
     @Override

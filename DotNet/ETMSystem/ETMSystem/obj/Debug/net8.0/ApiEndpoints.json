@@ -1,26 +1,6 @@
 [
   {
     "ContainingType": "ETMS.Controllers.ETMSController",
-    "Method": "getAllEmp",
-    "RelativePath": "ETMS/getAllEmp",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ETMSystem.Models.Login, ETMSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ETMS.Controllers.ETMSController",
     "Method": "validate",
     "RelativePath": "ETMS/validate",
     "HttpMethod": "POST",

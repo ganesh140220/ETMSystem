@@ -1,7 +1,20 @@
 package com.example.demo.entities;
 import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 import java.util.Objects;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "login")
 @Entity
 public class Login {
 
@@ -28,63 +41,8 @@ public class Login {
 	    @JoinColumn(name = "roleid", insertable = false, updatable = false)
 	    private Role role;
 
-	    // Getters and Setters
-	    public int getLoginid() {
-	        return loginid;
-	    }
 
-	    public void setLoginid(int loginid) {
-	        this.loginid = loginid;
-	    }
-
-	    public String getUsername() {
-	        return username;
-	    }
-
-	    public void setUsername(String username) {
-	        this.username = username;
-	    }
-
-	    public String getPassword() {
-	        return password;
-	    }
-
-	    public void setPassword(String password) {
-	        this.password = password;
-	    }
-
-	    public int getRoleid() {
-	        return roleid;
-	    }
-
-	    public void setRoleid(int roleid) {
-	        this.roleid = roleid;
-	    }
-
-	    public int getActive() {
-	        return active;
-	    }
-
-	    public void setActive(int active) {
-	        this.active = active;
-	    }
-
-	    public Employee getEmployee() {
-	        return employee;
-	    }
-
-	    public void setEmployee(Employee employee) {
-	        this.employee = employee;
-	    }
-
-	    public Role getRole() {
-	        return role;
-	    }
-
-	    public void setRole(Role role) {
-	        this.role = role;
-	    }
-
+	  
 	    // hashCode and equals methods
 	    @Override
 	    public int hashCode() {

@@ -7,19 +7,19 @@ public partial class Employee
 {
     public int Id { get; set; }
 
+    public string Address { get; set; } = null!;
+
+    public int ContactNo { get; set; }
+
+    public int DesigId { get; set; }
+
+    public string EmailId { get; set; } = null!;
+
     public string FirstName { get; set; } = null!;
 
     public string LastName { get; set; } = null!;
 
-    public string EmailId { get; set; } = null!;
-
-    public int ContactNo { get; set; }
-
-    public string Address { get; set; } = null!;
-
     public int LoginId { get; set; }
-
-    public int DesigId { get; set; }
 
     public virtual Designation Desig { get; set; } = null!;
 
@@ -35,5 +35,5 @@ public partial class Employee
 
     public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
 
-    public virtual TeamMember? TeamMember { get; set; }
+    public virtual ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
 }

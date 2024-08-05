@@ -5,21 +5,21 @@ namespace ETMSystem.Models;
 
 public partial class Task
 {
-    public int TaskId { get; set; }
-
-    public string CreatedDate { get; set; } = null!;
-
-    public string Status { get; set; } = null!;
-
-    public string Description { get; set; } = null!;
-
-    public int ProjectId { get; set; }
+    public int Id { get; set; }
 
     public int AssignedTo { get; set; }
 
-    public string StartDate { get; set; } = null!;
+    public string CreatedDate { get; set; } = null!;
 
-    public string? EndDate { get; set; }
+    public string Description { get; set; } = null!;
+
+    public string DueDate { get; set; } = null!;
+
+    public int ProjectId { get; set; }
+
+    public string Status { get; set; } = null!;
+
+    public string Title { get; set; } = null!;
 
     public virtual Employee AssignedToNavigation { get; set; } = null!;
 
