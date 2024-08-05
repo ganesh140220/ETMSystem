@@ -1,60 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom'; 
-import './Admin.css';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Admin.css'; // Ensure correct import path
 
 const Admin = () => {
-  const [bool,setBool]=useState(true)
-  const loc=useLocation()
-  const c=loc.state.loginid
-  useEffect(() => {
-    if (loc.state.role.role1 === 'MasterAdmin') {
-      setBool(false);
-    }
-  }, [loc.state.role.role1]);
-  
-  
-
+  const location = useLocation();
   const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    // Set username or other data from location state
+    if (location.state) {
+      setUserName(location.state.loginid || '');
+    }
+  }, [location.state]);
 
   const handleLogout = () => {
+    // Redirect to login page
     navigate('/login');
   };
 
   return (
     
     <div className="admin-container">
-      <h1>{loc.state.role.role1} Dashboard {c}</h1>  
-           
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/">ETMS</Navbar.Brand>
+          <Navbar.Toggle aria-controls="admin-navbar-nav" />
+          <Navbar.Collapse id="admin-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/admin">Dashboard</Nav.Link>
+              <Nav.Link as={Link} to="/create-project">Create Project</Nav.Link>
+              <Nav.Link as={Link} to="/view-entities">View All Entities</Nav.Link>
+              <Nav.Link as={Link} to="/personal-details">Personal Details</Nav.Link>
+            </Nav>
+            <Nav className="ms-auto">
+              <Nav.Item className="d-flex align-items-center">
+                <Navbar.Text className="text-white me-3">
+                  Welcome, {userName}
+                </Navbar.Text>
+                <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-      <div className="admin-logout">
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </div>
-
-      <div className="admin-actions">
-        
-        <div className="registration-buttons">
-          <button hidden={bool}><Link to="/register/admin" className="link-button"  >Register Admin</Link></button><br/>
-          <button><Link to="/register/employee" className="link-button">Register Employee</Link></button><br/>
-          <button><Link to="/register/manager" className="link-button">Register Manager</Link></button><br/>
-        </div>
-
-        
-        <div className="create-project">
-          <button><Link to="/create-project" className="link-button">Create Project</Link></button>
-        </div>
-
-      
-        <div className="view-entities">
-          <button><Link to="/view-entities" className="link-button">View All Entities</Link></button>
-        </div>
-
-     
-        <div className="personal-details">
-          <button><Link to="/personal-details" className="link-button">Personal Details</Link></button>
-        </div>
-      </div>
+      <Container fluid className="pt-5 mt-5">
+        {/* Your admin-specific content goes here */}
+      </Container>
     </div>
   );
-}
+};
 
 export default Admin;
