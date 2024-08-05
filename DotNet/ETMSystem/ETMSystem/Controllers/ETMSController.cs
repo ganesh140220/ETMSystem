@@ -23,7 +23,7 @@ namespace ETMS.Controllers
                 Login EmpLogin=db.Logins.Include(o => o.Role).Include(o=>o.Employee).Where(o=>o.Username.Equals(obj.uid)).FirstOrDefault();
                 
                 if (EmpLogin == null) return new Error("Enter valid username");
-		        if (EmpLogin.Active != 0) return new Error("This account is currently suspended");
+		        if (EmpLogin.Active != 1) return new Error("This account is currently suspended");
 		        if (EmpLogin!=null && EmpLogin.Password.Equals(obj.pwd)) return EmpLogin;
 		        return new Error("Enter valid Password"); 
 

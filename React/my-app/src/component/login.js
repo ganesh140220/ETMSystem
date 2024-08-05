@@ -27,9 +27,9 @@ const Login = () => {
                 const data = await response.json();
                if(data.role==undefined)setErr(data.err)
                 else{
-                setUserType(data.role.rolename);
+                setUserType(data.role.role1);
     
-                switch (data.role.rolename) {
+                switch (data.role.role1) {
                     case 'Admin':
                         navigate('/admin',{state:data});
                         break;
