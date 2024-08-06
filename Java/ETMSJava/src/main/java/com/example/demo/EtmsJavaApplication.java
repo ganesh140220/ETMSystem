@@ -8,6 +8,7 @@ public class EtmsJavaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EtmsJavaApplication.class, args);
+		
 	}
 
 }

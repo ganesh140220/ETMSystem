@@ -7,13 +7,13 @@ public partial class Query
 {
     public int Qid { get; set; }
 
-    public string Status { get; set; } = null!;
+    public string CreatedText { get; set; } = null!;
 
     public string QueryText { get; set; } = null!;
 
-    public string CreatedText { get; set; } = null!;
-
     public int RaisedBy { get; set; }
+
+    public string Status { get; set; } = null!;
 
     public int TaskId { get; set; }
 

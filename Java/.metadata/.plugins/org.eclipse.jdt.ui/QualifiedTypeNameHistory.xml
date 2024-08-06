@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Designation"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Project"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Query"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Solution"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Task"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.TeamMember"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Employee"/>
+    <fullyQualifiedTypeName name="com.example.demo.repository.EmployeeRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Login"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Role"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.TaskProgress"/>
+</qualifiedTypeNameHistroy>
