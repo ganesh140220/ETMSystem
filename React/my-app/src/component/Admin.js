@@ -5,7 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Admin.css'; // Ensure correct import path
 
 const Admin = () => {
+<<<<<<< HEAD
+  
+  const loc=useLocation()
+  const { loginid, username, roleid, employee } = loc.state;
+
+=======
   const location = useLocation();
+>>>>>>> 838fc7959169ca6ea378e4876b0dcd8f61b27947
   const navigate = useNavigate();
   const [userName, setUserName] = useState('');
 
@@ -24,6 +31,10 @@ const Admin = () => {
   return (
     
     <div className="admin-container">
+<<<<<<< HEAD
+      <h1>{roleid} Welcome Admin {username}</h1>
+           
+=======
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">ETMS</Navbar.Brand>
@@ -46,6 +57,7 @@ const Admin = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+>>>>>>> 838fc7959169ca6ea378e4876b0dcd8f61b27947
 
       <Container fluid className="pt-5 mt-5">
         {/* Your admin-specific content goes here */}

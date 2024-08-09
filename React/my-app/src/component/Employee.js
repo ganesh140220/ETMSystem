@@ -5,7 +5,10 @@ const Employee = () => {
 
   const loc=useLocation()
   const c=loc.state.loginid
-  
+  const { loginid, username, roleid, employee } = loc.state;
+
+
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -14,7 +17,7 @@ const Employee = () => {
 
   return (
     <div className="employee-container">
-      <h1>Employee Dashboard {c}</h1>
+      <h1>{roleid} Welcome Employee {username}</h1>
 
       <div className="employee-logout">
         <button className="logout-button" onClick={handleLogout}>Logout</button>

@@ -6,6 +6,7 @@ const Manager = () => {
 
   const loc=useLocation()
   const c=loc.state.loginid
+  const { loginid, username, roleid, employee } = loc.state;
   
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const Manager = () => {
 
   return (
     <div className="manager-container">
-      <h1>Manager Dashboard {c} </h1>
+      <h1>{roleid} Welcome Manager {username}</h1>
       
       
       <div className="manager-logout">
