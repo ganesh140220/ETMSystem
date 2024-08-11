@@ -5,11 +5,9 @@
     <fullyQualifiedTypeName name="com.example.demo.entities.Project"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Query"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Solution"/>
-    <fullyQualifiedTypeName name="com.example.demo.entities.Task"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.TeamMember"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Employee"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.EmployeeRepository"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
@@ -19,4 +17,7 @@
     <fullyQualifiedTypeName name="com.example.demo.entities.Login"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Role"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.TaskProgress"/>
+    <fullyQualifiedTypeName name="com.example.demo.repository.TaskRepository"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.example.demo.entities.Task"/>
 </qualifiedTypeNameHistroy>

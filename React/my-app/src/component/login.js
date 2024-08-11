@@ -78,13 +78,13 @@ const Login = () => {
     };
 
     return (
-        <Container fluid className="d-flex align-items-center justify-content-center min-vh-100">
+        <Container fluid className="bg-success d-flex align-items-center justify-content-center min-vh-100">
             <Row className="w-100">
                 <Col md={4} className="mx-auto">
-                    <div className="border p-4 rounded shadow-sm bg-white">
-                        <h2 className="text-center mb-4">Login</h2>
+                    <div className="border p-4 rounded shadow-sm bg-dark ">
+                        <h2 className="text-center mb-4 text-white">Login</h2>
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group controlId="formUserId" className="mb-3">
+                            <Form.Group controlId="formUserId" className="mb-3 text-white">
                                 <Form.Label>User ID</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -92,7 +92,7 @@ const Login = () => {
                                     onChange={(e) => setUserId(e.target.value)}
                                 />
                             </Form.Group>
-                            <Form.Group controlId="formPassword" className="mb-3">
+                            <Form.Group controlId="formPassword" className="mb-3 text-white">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
