@@ -1,6 +1,0 @@
-@ETMSystem_HostAddress = http://localhost:5057
-
-GET {{ETMSystem_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
