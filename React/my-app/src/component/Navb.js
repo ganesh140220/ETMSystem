@@ -147,7 +147,7 @@ export default function Navb() {
               location.pathname === "/Associate" && (
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="#"><a className="text-info">{userRole}-Dashboard</a></Nav.Link>
-                  <Nav.Link as={Link} to="#">Team Members</Nav.Link>
+                  <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                   <NavDropdown title="Profile" id="view-dropdown">
                     <NavDropdown.Item as={Link} to="#">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
