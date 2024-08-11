@@ -18,19 +18,17 @@
 --
 -- Table structure for table `client`
 --
-DROP database IF EXISTS `etmsystem`;
-create database `etmsystem`;
-use etmsystem;
+
 DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `client` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `contact_no` varchar(255) NOT NULL,
-  `email_id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `contact_no` varchar(255) DEFAULT NULL,
+  `email_id` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +37,7 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,'9860','Client@gmail.com','SuperClient');
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +50,7 @@ DROP TABLE IF EXISTS `designation`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `designation` (
   `desig_id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`desig_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -125,7 +124,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (1,'ganesh1234','Gana@123',2,1),(2,'vivek99','Viv@123',1,1),(3,'pratik44','Prat@123',3,1),(4,'sanket55','Sank@123',4,1),(5,'pratap33','Pb@123',2,0);
+INSERT INTO `login` VALUES (1,'ganesh1234','Gana@123',2,1),(2,'vivek99','Vive@123',1,1),(3,'pratik44','Prat@123',3,1),(4,'sanket55','Sank@123',4,1),(5,'pratap33','Pb12@123',2,0);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +151,7 @@ CREATE TABLE `project` (
   CONSTRAINT `FK4232xu771fp6nuh1so7e7tjok` FOREIGN KEY (`created_by`) REFERENCES `employee` (`id`),
   CONSTRAINT `FK8nw995uro0115f1go0dmrtn2d` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
   CONSTRAINT `FKf7d0rp3hf66ayydxtma968nsc` FOREIGN KEY (`assigned_to`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +160,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` VALUES (1,2,1,3,'10-08-2024','First Project','React Project','pending');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,6 +173,7 @@ DROP TABLE IF EXISTS `query`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `query` (
   `qid` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) NOT NULL,
   `created_text` varchar(255) NOT NULL,
   `query_text` varchar(255) NOT NULL,
   `raised_by` int NOT NULL,
@@ -183,7 +184,7 @@ CREATE TABLE `query` (
   KEY `FK76i946ly66s6yee6efws38fiw` (`task_id`),
   CONSTRAINT `FK4k9qk5xo277qmfj9vsvthtfqa` FOREIGN KEY (`raised_by`) REFERENCES `employee` (`id`),
   CONSTRAINT `FK76i946ly66s6yee6efws38fiw` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +193,7 @@ CREATE TABLE `query` (
 
 LOCK TABLES `query` WRITE;
 /*!40000 ALTER TABLE `query` DISABLE KEYS */;
+INSERT INTO `query` VALUES (1,'Data Type Mismatched','10/08/2024','Type mismatched for int argument please explain what to do',4,'resolved',1),(2,'Follow Up Query','10-08-2024','Please tell what is solution',4,'resolved',1);
 /*!40000 ALTER TABLE `query` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +239,7 @@ CREATE TABLE `solution` (
   KEY `FKt75vm71i2fc5gv0q2blntf8md` (`solved_by`),
   CONSTRAINT `FKdejvwyrdtre81284e40d59gbd` FOREIGN KEY (`qid`) REFERENCES `query` (`qid`),
   CONSTRAINT `FKt75vm71i2fc5gv0q2blntf8md` FOREIGN KEY (`solved_by`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,6 +248,7 @@ CREATE TABLE `solution` (
 
 LOCK TABLES `solution` WRITE;
 /*!40000 ALTER TABLE `solution` DISABLE KEYS */;
+INSERT INTO `solution` VALUES (1,'10-08-2024','convert int to Integer',1,3),(2,'10-08-2024','Already Solved By Vivek Sir',2,2);
 /*!40000 ALTER TABLE `solution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +273,7 @@ CREATE TABLE `task` (
   KEY `FKk8qrwowg31kx7hp93sru1pdqa` (`project_id`),
   CONSTRAINT `FKfs0bgcnqw1nl8wu2oe8m2hxi5` FOREIGN KEY (`assigned_to`) REFERENCES `employee` (`id`),
   CONSTRAINT `FKk8qrwowg31kx7hp93sru1pdqa` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,6 +282,7 @@ CREATE TABLE `task` (
 
 LOCK TABLES `task` WRITE;
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
+INSERT INTO `task` VALUES (1,4,'10-08-2024','create Function','11-08-2024',1,'completed','Function create'),(2,4,'10-08-2024','create Function','11-08-2024',1,'pending','Rerender func'),(3,4,'10-08-2024','create Function','11-08-2024',1,'in progress','update create'),(4,4,'10-08-2024','new task4','11-08-2024',1,'in progress','my task 4'),(5,4,'10-08-2024','new task1','11-08-2024',1,'completed','my task 1'),(6,4,'10-08-2024','create Function','11-08-2024',1,'pending',' func recreted');
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +302,7 @@ CREATE TABLE `task_progress` (
   PRIMARY KEY (`id`),
   KEY `FK2cueuy9hcfpratrhb30ia7i5a` (`task_id`),
   CONSTRAINT `FK2cueuy9hcfpratrhb30ia7i5a` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,35 +311,37 @@ CREATE TABLE `task_progress` (
 
 LOCK TABLES `task_progress` WRITE;
 /*!40000 ALTER TABLE `task_progress` DISABLE KEYS */;
+INSERT INTO `task_progress` VALUES (1,'Query Raised',1,'10-08-2024',10),(2,'Completed',1,'10-08-2024',100);
 /*!40000 ALTER TABLE `task_progress` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `team_member`
+-- Table structure for table `team_members`
 --
 
-DROP TABLE IF EXISTS `team_member`;
+DROP TABLE IF EXISTS `team_members`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `team_member` (
-  `team_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `team_members` (
+  `team_id` int NOT NULL,
   `emp_id` int NOT NULL,
   `project_id` int NOT NULL,
   PRIMARY KEY (`team_id`),
-  KEY `FKe8s3pujlrq1uj4vyunwjnfsfl` (`emp_id`),
-  KEY `FK9op27dqqmmtqqkxnwbug4tex7` (`project_id`),
-  CONSTRAINT `FK9op27dqqmmtqqkxnwbug4tex7` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
-  CONSTRAINT `FKe8s3pujlrq1uj4vyunwjnfsfl` FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`)
+  KEY `proj_idx` (`project_id`),
+  KEY `empi_idx` (`emp_id`),
+  CONSTRAINT `empi` FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`),
+  CONSTRAINT `proj` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `team_member`
+-- Dumping data for table `team_members`
 --
 
-LOCK TABLES `team_member` WRITE;
-/*!40000 ALTER TABLE `team_member` DISABLE KEYS */;
-/*!40000 ALTER TABLE `team_member` ENABLE KEYS */;
+LOCK TABLES `team_members` WRITE;
+/*!40000 ALTER TABLE `team_members` DISABLE KEYS */;
+INSERT INTO `team_members` VALUES (1,2,1),(2,4,1),(3,1,1),(4,3,1);
+/*!40000 ALTER TABLE `team_members` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -347,4 +353,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-04 22:46:04
+-- Dump completed on 2024-08-11 23:41:08
