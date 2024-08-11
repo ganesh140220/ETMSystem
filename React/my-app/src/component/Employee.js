@@ -1,63 +1,210 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+// src/components/EmployeeTasksPage.js
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Container, Row, Col, Table, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-
-const Employee = () => {
-
-  const id=useSelector((state)=>state.myobj.id) 
-  const location = useLocation();
+const EmployeeTasksPage = () => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState('');
+  const dispatch = useDispatch();
+  const obj = useSelector(state => state.myobj.obj);
+  const proj = useSelector(state => state.myobj.projobj);
+  const team = useSelector(state => state.myobj.teamobj);
+
+  const manager = team.find(r => r.emp.id === proj.assignedTo);
+
+  const [counts, setCounts] = useState({
+    pending: 0,
+    completed: 0,
+    inProgress: 0
+  });
+  const [filter, setFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
-    // Set username or other data from location state
-    if (location.state) {
-      setUserName(location.state.employee.firstName || '');
-    }
-  }, [location.state]);
-  const handleLogout = () => {
-    navigate('/login');
+    const fetchTask = async () => {
+      const newCounts = {
+        pending: 0,
+        completed: 0,
+        inProgress: 0
+      };
+
+      if (obj && obj.tasks) {
+        obj.tasks.forEach(task => {
+          if (task.status === 'pending') {
+            newCounts.pending += 1;
+          } else if (task.status === 'completed') {
+            newCounts.completed += 1;
+          } else if (task.status === 'in progress') {
+            newCounts.inProgress += 1;
+          }
+        });
+      }
+
+      setCounts(newCounts);
+    };
+
+    fetchTask();
+  }, [obj, dispatch]);
+
+  const handleFilterChange = (status) => {
+    setFilter(status);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredTasks = () => {
+    const tasks = filter === 'all' ? obj.tasks : obj.tasks.filter(task => task.status === filter);
+    return tasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
   };
 
   return (
-    
-    <Container fluid className="bg-success min-vh-100 p-0">
-    <div className="admin-container">
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-        <Container fluid className="text-dark ">
-          <Navbar.Brand>ETMS</Navbar.Brand>
-          <Navbar.Toggle aria-controls="admin-navbar-nav" />
+    <div className="bg-dark text-white min-vh-100 p-0">
+      <Container fluid>
+        <div style={{ paddingTop: '90px' }}>
+          <div>
+            {proj && proj.projectTitle && (
+              <>
+                <h5 className="mb-4" style={{ color: "wheat" }}>
+                  Project Name: {proj.projectTitle}
+                </h5>
+                {manager && (
+                  <h5 className="mb-1" style={{ color: "wheat" }}>
+                    Manager Name: {manager.emp.firstName} {manager.emp.lastName}
+                  </h5>
+                )}
+              </>
+            )}
+            <h2 className="text-center mb-3 text-warning">Task Status:</h2>
+            <Row className='mt-1'>
+              <Col md={4} className="mx-auto">
+                <div className="border p-3 rounded shadow-sm bg-danger text-black text-center" style={{ minHeight: '120px' }}>
+                  <div className='mt-4'>
+                    <Button onClick={() => handleFilterChange('pending')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3><u>Pending</u> : {counts.pending}</h3>
+                    </Button>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className="mx-auto">
+                <div className="border p-3 rounded shadow-sm bg-info text-black text-center" style={{ minHeight: '120px' }}>
+                  <div className='mt-4'>
+                    <Button onClick={() => handleFilterChange('in progress')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3><u>In Progress</u> : {counts.inProgress}</h3>
+                    </Button>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className="mx-auto">
+                <div className="border p-3 rounded shadow-sm bg-success text-black text-center" style={{ minHeight: '120px' }}>
+                  <div className='mt-4'>
+                    <Button onClick={() => handleFilterChange('completed')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3><u>Completed</u> : {counts.completed}</h3>
+                    </Button>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
 
-           {/* collapasable after screen gets reduced*/}
-          <Navbar.Collapse id="admin-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="#" ><a className="text-info">Associate-Dashboard</a></Nav.Link>
-              <Nav.Link as={Link} to="#">View Task</Nav.Link>
-              <Nav.Link as={Link} to="#">View Team Menmbers</Nav.Link>
-              <Nav.Link as={Link} to="#">Personal Details</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-
-           {/*non collapasable after screen gets reduced*/}
-          <Nav className="ms-auto">
-              <Nav.Item className="d-flex align-items-center">
-                <Navbar.Text className="text-white me-3">
-                  Welcome {userName}
-                </Navbar.Text>
-                <Button variant="outline-light" className='bg-primary' onClick={handleLogout}>Logout</Button>
-              </Nav.Item>
-            </Nav>
-        </Container>
-      </Navbar>
-
-      <Container fluid className="pt-5 mt-5">
-        {/* Your admin-specific content goes here */}
-       <h1>All Projects</h1>
+          <Row className="mt-4">
+            <Col md={8} className="mx-auto text-center">
+              <h2 className="text-center mb-4 text-warning">My Tasks</h2>
+              <Row>
+                <Col md={10}>
+                  <div className="mb-3">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search tasks..."
+                      value={searchQuery}
+                      onChange={handleSearchChange}
+                      style={{ width: "400px" }}
+                    />
+                  </div>
+                </Col>
+                <Col md={2}>
+                  <div className="mb-3" style={{ marginLeft: "60px" }}>
+                    <Button variant="secondary" onClick={() => handleFilterChange('all')}>Show All</Button>
+                  </div>
+                </Col>
+              </Row>
+              <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                <Table hover responsive variant='info' size='lg' bordered>
+                  <thead>
+                    <tr style={{ position: "sticky", top: "0", backgroundColor: "olive", height: "50px" }}>
+                      <th>Task Title</th>
+                      <th>Status</th>
+                      <th>Task Progress</th>
+                      <th>Create Query</th>
+                      <th>View Query</th>
+                      <th>Task Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {obj && filteredTasks() && filteredTasks().length > 0 ? (
+                      filteredTasks().map(task => (
+                        <tr key={task.id}>
+                          <td><h6 style={{ marginTop: "10px" }}>{task.title}</h6></td>
+                          <td style={{ color: task.status === 'pending' ? 'Red' : task.status === 'completed' ? 'green' : 'orange' }}>
+                            <h6 style={{ marginTop: "10px" }}>{task.status}</h6>
+                          </td>
+                          <td>
+                            <Button
+                              variant="link"
+                              onClick={() => navigate("/UpdateTaskProgress", { state: { id: task.id, name: task.title } })}
+                              disabled={task.status === 'completed'}
+                              style={{ color: task.status === 'completed' ? 'grey' : 'blue' }}
+                            >
+                              Update
+                            </Button>
+                          </td>
+                          <td>
+                            <Button
+                              variant="link"
+                              onClick={() => navigate("/CreateQuery", { state: { id: task.id, name: task.title } })}
+                              disabled={task.status === 'completed'}
+                              style={{ color: task.status === 'completed' ? 'grey' : 'blue' }}
+                            >
+                              Create
+                            </Button>
+                          </td>
+                          <td>
+                            <Button
+                              variant="link"
+                              onClick={() => navigate("/ViewQuery", { state: { id: task.id, name: task.title } })}
+                              style={{ color: "blue" }}
+                            >
+                              View
+                            </Button>
+                          </td>
+                          <td>
+                            <Button
+                              variant="link"
+                              onClick={() => navigate("/TaskDetails", { state: { task } })}
+                              style={{ color: 'blue' }}
+                            >
+                              Details
+                            </Button>
+                          </td>
+                          
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="6" className="text-center">No tasks available</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </Container>
     </div>
-    </Container>
   );
-}
+};
 
-export default Employee;
+export default EmployeeTasksPage;

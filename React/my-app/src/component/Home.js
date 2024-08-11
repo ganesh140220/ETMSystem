@@ -5,7 +5,8 @@ import youImage from './download (1).jpeg';
 
 function Home() {
     return (
-        <Container fluid className="bg-dark text-white min-vh-100 p-0">
+        <div className="bg-dark text-white min-vh-100 p-0">
+    <Container fluid>
             <Row className="justify-content-center align-items-center vh-100">
                 <Col md={10} className="text-center">
                     <img src={youImage} alt="Logo" className="mb-4" style={{ width: '100px', height: '50px' }} />
@@ -18,6 +19,7 @@ function Home() {
                 </Col>
             </Row>
         </Container>
+        </div>
     );
 }
 
