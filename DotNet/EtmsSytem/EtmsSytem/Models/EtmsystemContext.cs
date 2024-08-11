@@ -198,6 +198,7 @@ public partial class EtmsystemContext : DbContext
             entity.HasIndex(e => e.TaskId, "FK76i946ly66s6yee6efws38fiw");
 
             entity.Property(e => e.Qid).HasColumnName("qid");
+            entity.Property(e => e.Title).HasColumnName("title");
             entity.Property(e => e.CreatedText)
                 .HasMaxLength(255)
                 .HasColumnName("created_text");
