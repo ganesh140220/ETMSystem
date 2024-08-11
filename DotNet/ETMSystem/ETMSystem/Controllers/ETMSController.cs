@@ -19,17 +19,41 @@ namespace ETMS.Controllers
            
             using (var db = new EtmsystemContext())
             {
-                
-                Login EmpLogin=db.Logins.Include(o => o.Role).Include(o=>o.Employee).Where(o=>o.Username.Equals(obj.uid)).FirstOrDefault();
-                
+
+                Employee EmpLogin = db.Employees.Include(e => e.Login).ThenInclude(e=>e.Role).Include(e => e.Tasks).ThenInclude(e => e.Queries).ThenInclude(e => e.Solutions).Include(e => e.Tasks).ThenInclude(e => e.TaskProgresses).Include(e => e.Login).Include(e => e.Desig).FirstOrDefault(o => o.Login.Username.Equals(obj.uid));
+
                 if (EmpLogin == null) return new Error("Enter valid username");
-		        if (EmpLogin.Active != 1) return new Error("This account is currently suspended");
-		        if (EmpLogin!=null && EmpLogin.Password.Equals(obj.pwd)) return EmpLogin;
+		        if (EmpLogin.Login.Active != 1) return new Error("This account is currently suspended");
+		        if (EmpLogin!=null && EmpLogin.Login.Password.Equals(obj.pwd)) return EmpLogin;
 		        return new Error("Enter valid Password"); 
 
             }
 
         }
-       
+        [HttpGet("team")]
+        public List<TeamMember> team( int pid)
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+
+               List< TeamMember> team = db.TeamMembers.Include(e=>e.Emp).Where(e=>e.ProjectId == pid).ToList();
+                return team;
+            }
+
+        }
+        [HttpGet("project")]
+        public Project proj(int pid)
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                Console.WriteLine("proj");
+                return db.Projects.Where(e => e.Id == pid).FirstOrDefault();
+            }
+
+        }
+
+
     }
 }

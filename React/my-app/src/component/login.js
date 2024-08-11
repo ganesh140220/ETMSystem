@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
+import backgroundImage from './back.jpg';
+import myimg from "./download.jpeg"
+import { useDispatch } from 'react-redux';
+import { setobj, setprojobj, setteamobj } from './slicefile';
 
 const Login = () => {
     const [uid, setUserId] = useState('');
@@ -8,6 +12,7 @@ const Login = () => {
     const [err, setErr] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // Regular expressions for validation
     const userIdPattern = /^[a-zA-Z0-9]{4,12}$/; // Alphanumeric, 4-12 characters
@@ -44,22 +49,31 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-
-                if (data.role === undefined) {
+                 if (data.login === undefined) {
                     setErr(data.err);
                 } else {
-                    switch (data.role.role1) {
+                    console.log(data.tasks[0].projectId)
+                    dispatch(setobj(data) );
+                    await  fetch("https://localhost:7018/ETMS/team?pid="+data.tasks[0].projectId)
+                    .then(res=>res.json())
+                    .then(d=> dispatch(setteamobj(d)))
+
+                    await fetch("https://localhost:7018/ETMS/project?pid="+data.tasks[0].projectId)
+                    .then(res=>res.json())
+                    .then(d=> dispatch(setprojobj(d)))
+
+                    switch (data.login.role.role1) {
                         case 'MasterAdmin':
-                            navigate('/admin', { state: data });
+                            navigate('/Admin');
                             break;
                         case 'Admin':
-                            navigate('/admin', { state: data });
+                            navigate('/Admin');
                             break;
                         case 'Manager':
-                            navigate('/manager', { state: data });
+                            navigate('/Manager');
                             break;
                         case 'Associate':
-                            navigate('/employee', { state: data });
+                            navigate('/Associate');
                             break;
                         default:
                             setErr("Invalid Role");
@@ -77,12 +91,24 @@ const Login = () => {
         }
     };
 
+    const containerStyle = {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover', // Adjusts the image to cover the entire container
+        backgroundPosition: 'center', // Centers the image
+        height: '100vh', // Full viewport height
+        width: '100%', // Full width
+      };
+
     return (
-        <Container fluid className="bg-success d-flex align-items-center justify-content-center min-vh-100">
+        <Container style={containerStyle} fluid className="bg-white d-flex align-items-center justify-content-center min-vh-100">
             <Row className="w-100">
+            
                 <Col md={4} className="mx-auto">
-                    <div className="border p-4 rounded shadow-sm bg-dark ">
+                
+                    <div className="right-div border p-3 rounded shadow-sm bg-dark ">
+                    
                         <h2 className="text-center mb-4 text-white">Login</h2>
+                        
                         <Form onSubmit={handleSubmit}>
                             <Form.Group controlId="formUserId" className="mb-3 text-white">
                                 <Form.Label>User ID</Form.Label>
@@ -100,6 +126,7 @@ const Login = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </Form.Group>
+                            
                             <div className="d-flex justify-content-end mb-3">
                                 <a href="#" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
                             </div>
@@ -107,6 +134,7 @@ const Login = () => {
                                 {isLoading ? <Spinner animation="border" size="sm" /> : 'Login'}
                             </Button>
                         </Form>
+                       
                         {err && <Alert variant="danger" className="mt-3">{err}</Alert>}
                     </div>
                 </Col>
