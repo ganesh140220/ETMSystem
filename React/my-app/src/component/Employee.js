@@ -87,10 +87,11 @@ const EmployeeTasksPage = () => {
             <h2 className="text-center mb-3 text-warning">Task Status:</h2>
             <Row className='mt-1'>
               <Col md={4} className="mx-auto">
+              
                 <div className="border p-3 rounded shadow-sm bg-danger text-black text-center" style={{ minHeight: '120px' }}>
                   <div className='mt-2'>
-                    <Button onClick={() => handleFilterChange('pending')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3>Pending : {counts.pending}</h3>  <u>Show Info</u>
+                    <Button onClick={() => handleFilterChange('pending')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>Pending : {counts.pending}</h3>  <u className='text-black'>Show Info</u>
                     </Button>
                   </div>
                 </div>
@@ -98,8 +99,8 @@ const EmployeeTasksPage = () => {
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-info text-black text-center" style={{ minHeight: '120px' }}>
                   <div className='mt-2'>
-                    <Button onClick={() => handleFilterChange('in progress')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3>In Progress : {counts.inProgress}</h3> <u>Show Info</u>
+                    <Button onClick={() => handleFilterChange('in progress')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>In Progress : {counts.inProgress}</h3> <u className='text-black'>Show Info</u>
                     </Button>
                   </div>
                 </div>
@@ -107,8 +108,8 @@ const EmployeeTasksPage = () => {
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-success text-black text-center" style={{ minHeight: '120px' }}>
                   <div className='mt-2'>
-                    <Button onClick={() => handleFilterChange('completed')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3>Completed : {counts.completed}</h3> <u>Show Info</u>
+                    <Button onClick={() => handleFilterChange('completed')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>Completed : {counts.completed}</h3> <u className='text-black'>Show Info</u>
                      
                     </Button>
                   </div>
