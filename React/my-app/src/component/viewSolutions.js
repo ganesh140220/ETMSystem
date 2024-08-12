@@ -46,7 +46,7 @@ const ViewSolution = () => {
                   </tr>
                   <tr>
                     <td><strong>Created Date:</strong></td>
-                    <td>{new Date(query.createdText).toLocaleDateString()}</td>
+                    <td>{new Date(query.createdDate).toLocaleDateString()}</td>
                   </tr>
                   <tr>
                     <td><strong>Solution:</strong></td>
