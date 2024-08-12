@@ -200,7 +200,7 @@ const EmployeeTasksPage = () => {
                           <td>
                             <Button
                               variant="link"
-                              onClick={() => navigate("/TaskDetails", { state: { task } })}
+                              onClick={() => navigate("/TaskDetails", { state: { id:task.id } })}
                               style={{ color: 'blue' }}
                             >
                               Details
