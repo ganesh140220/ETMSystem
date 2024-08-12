@@ -88,27 +88,28 @@ const EmployeeTasksPage = () => {
             <Row className='mt-1'>
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-danger text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
+                  <div className='mt-2'>
                     <Button onClick={() => handleFilterChange('pending')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>Pending</u> : {counts.pending}</h3>
+                      <h3>Pending : {counts.pending}</h3>  <u>Show Info</u>
                     </Button>
                   </div>
                 </div>
               </Col>
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-info text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
+                  <div className='mt-2'>
                     <Button onClick={() => handleFilterChange('in progress')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>In Progress</u> : {counts.inProgress}</h3>
+                      <h3>In Progress : {counts.inProgress}</h3> <u>Show Info</u>
                     </Button>
                   </div>
                 </div>
               </Col>
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-success text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
+                  <div className='mt-2'>
                     <Button onClick={() => handleFilterChange('completed')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>Completed</u> : {counts.completed}</h3>
+                      <h3>Completed : {counts.completed}</h3> <u>Show Info</u>
+                     
                     </Button>
                   </div>
                 </div>
