@@ -161,6 +161,9 @@ public partial class EtmsystemContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasMaxLength(255)
                 .HasColumnName("created_date");
+            entity.Property(e => e.CompletedDate)
+                .HasMaxLength(255)
+                .HasColumnName("completed_date");
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("description");
@@ -199,9 +202,9 @@ public partial class EtmsystemContext : DbContext
 
             entity.Property(e => e.Qid).HasColumnName("qid");
             entity.Property(e => e.Title).HasColumnName("title");
-            entity.Property(e => e.CreatedText)
+            entity.Property(e => e.CreatedDate)
                 .HasMaxLength(255)
-                .HasColumnName("created_text");
+                .HasColumnName("created_date");
             entity.Property(e => e.QueryText)
                 .HasMaxLength(255)
                 .HasColumnName("query_text");
@@ -286,6 +289,9 @@ public partial class EtmsystemContext : DbContext
             entity.Property(e => e.DueDate)
                 .HasMaxLength(255)
                 .HasColumnName("due_date");
+            entity.Property(e => e.CompletedDate)
+                .HasMaxLength(255)
+                .HasColumnName("completed_date");
             entity.Property(e => e.ProjectId).HasColumnName("project_id");
             entity.Property(e => e.Status)
                 .HasMaxLength(255)
