@@ -30,6 +30,18 @@ export default function Navb() {
         } else {
           dispatch(setobj(data));
           console.log("data obj seted")
+
+          //onlyfor associate objects fetch hit
+          if(data.login.role.role1==="Associate"){
+          await fetch("https://localhost:7018/ETMS/team?pid=" + data.tasks[0]?.projectId||0)
+            .then(res => res.json())
+            .then(d => dispatch(setteamobj(d)))
+
+          await fetch("https://localhost:7018/ETMS/project?pid=" + data.tasks[0]?.projectId)
+            .then(res => res.json())
+            .then(d => dispatch(setprojobj(d)))
+            console.log("Associate obj seted")
+          }
         }
       }
       else {
@@ -73,16 +85,16 @@ export default function Navb() {
           <Navbar.Toggle aria-controls="Admin-navbar-nav" />
 
           <Navbar.Collapse id="Admin-navbar-nav">
-            {obj && ["/createEmp", "/", "/about", "/ViewTeamMembers", "/UpdateTaskProgress", "/ViewProject", "/CreateQuery", "/ViewQuery"].includes(location.pathname) && (
+            {obj && ![`/${userRole}`].includes(location.pathname) && (
               <Nav className="me-auto">
                 <Nav.Link as={Link} to={`/${userRole}`}><span className="text-info">{userRole}-Dashboard</span></Nav.Link>
-                
-                
+
+
               </Nav>
             )}
             {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
               <Nav className="me-auto">
-                <Nav.Link as={Link} to="/Admin"><a className="text-info">{userRole}-Dashboard</a></Nav.Link>
+                
                 <NavDropdown title="Create..." id="create-dropdown">
                   <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="#">Create Project</NavDropdown.Item>
@@ -94,7 +106,7 @@ export default function Navb() {
                   <NavDropdown.Item as={Link} to="#">View Client</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Profile" id="profile-dropdown">
-                  <NavDropdown.Item as={Link} to="#">Personal Details</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
@@ -128,7 +140,7 @@ export default function Navb() {
             {
               location.pathname === "/Manager" && (
                 <Nav className="me-auto">
-                  <Nav.Link as={Link} to="#"><a className="text-info">{userRole}-Dashboard</a></Nav.Link>
+                
                   <NavDropdown title="Create..." id="create-dropdown">
                     <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
                   </NavDropdown>
@@ -137,7 +149,7 @@ export default function Navb() {
                     <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Profile" id="view-dropdown">
-                    <NavDropdown.Item as={Link} to="#">Personal Details</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
@@ -146,10 +158,10 @@ export default function Navb() {
             {
               location.pathname === "/Associate" && (
                 <Nav className="me-auto">
-                  <Nav.Link as={Link} to="#"><a className="text-info">{userRole}-Dashboard</a></Nav.Link>
+                  
                   <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                   <NavDropdown title="Profile" id="view-dropdown">
-                    <NavDropdown.Item as={Link} to="#">Personal Details</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
@@ -160,7 +172,7 @@ export default function Navb() {
           {["Admin", "Manager", "MasterAdmin", "Associate"].includes(userRole) && (
             <Nav className="ms-auto">
               {!["/", "/about"].includes(location.pathname) && <Nav.Link as={Link} to="/">Home</Nav.Link>}
-              <Nav.Link  className="me-1" onClick={RefreshObj}><u>Refresh</u></Nav.Link>
+              <Nav.Link className="me-1" onClick={RefreshObj}><u>Refresh</u></Nav.Link>
               <Nav.Item className="d-flex align-items-center">
                 <Navbar.Text className="me-3" style={{ color: "gold" }}>
                   Welcome {Name}

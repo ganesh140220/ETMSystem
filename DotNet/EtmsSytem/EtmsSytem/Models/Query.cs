@@ -7,7 +7,8 @@ public partial class Query
 {
     public int Qid { get; set; }
 
-    public string CreatedText { get; set; } = null!;
+    public string Title { get; set; }
+    public string CreatedDate { get; set; } = null!;
 
     public string QueryText { get; set; } = null!;
 

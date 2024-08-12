@@ -18,6 +18,8 @@ import ViewProject from './component/viewProject';
 import UpdateTaskProgress from './component/updateTaskProgress';
 import ViewTeamMembers from './component/viewTeamMembers';
 import ViewSolution from './component/viewSolutions';
+import TaskDetailsPage from './component/TaskDetailsPage';
+import PersonalDetails from './component/PersonalDetails';
 
 
 const App = () => {
@@ -30,12 +32,14 @@ const App = () => {
        
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/personalDetails" element={<PersonalDetails />} />
           <Route path="/ViewQuery" element={<ViewQuery />} />
           <Route path="/CreateQuery" element={<CreateQuery />} />
           <Route path="/ViewProject" element={<ViewProject />} />
           <Route path="/UpdateTaskProgress" element={<UpdateTaskProgress />} />
           <Route path="/ViewTeamMembers" element={<ViewTeamMembers />} />
           <Route path="/viewSolution/:queryId"element={<ViewSolution />} />
+          <Route path="/TaskDetails" element={<TaskDetailsPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/viewEmp" element={<ViewEmployee />} />
           <Route path="/about" element={<About />} />

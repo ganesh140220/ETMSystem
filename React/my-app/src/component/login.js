@@ -49,18 +49,11 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                 if (data.login === undefined) {
+                if (data.login === undefined) {
                     setErr(data.err);
                 } else {
-                    console.log(data.tasks[0].projectId)
-                    dispatch(setobj(data) );
-                    await  fetch("https://localhost:7018/ETMS/team?pid="+data.tasks[0].projectId)
-                    .then(res=>res.json())
-                    .then(d=> dispatch(setteamobj(d)))
-
-                    await fetch("https://localhost:7018/ETMS/project?pid="+data.tasks[0].projectId)
-                    .then(res=>res.json())
-                    .then(d=> dispatch(setprojobj(d)))
+                    
+                    dispatch(setobj(data));
 
                     switch (data.login.role.role1) {
                         case 'MasterAdmin':
@@ -73,6 +66,13 @@ const Login = () => {
                             navigate('/Manager');
                             break;
                         case 'Associate':
+                            await fetch("https://localhost:7018/ETMS/team?pid=" + data.tasks[0].projectId)
+                                .then(res => res.json())
+                                .then(d => dispatch(setteamobj(d)))
+
+                            await fetch("https://localhost:7018/ETMS/project?pid=" + data.tasks[0].projectId)
+                                .then(res => res.json())
+                                .then(d => dispatch(setprojobj(d)))
                             navigate('/Associate');
                             break;
                         default:
@@ -97,18 +97,18 @@ const Login = () => {
         backgroundPosition: 'center', // Centers the image
         height: '100vh', // Full viewport height
         width: '100%', // Full width
-      };
+    };
 
     return (
         <Container style={containerStyle} fluid className="bg-white d-flex align-items-center justify-content-center min-vh-100">
             <Row className="w-100">
-            
+
                 <Col md={4} className="mx-auto">
-                
+
                     <div className="right-div border p-3 rounded shadow-sm bg-dark ">
-                    
+
                         <h2 className="text-center mb-4 text-white">Login</h2>
-                        
+
                         <Form onSubmit={handleSubmit}>
                             <Form.Group controlId="formUserId" className="mb-3 text-white">
                                 <Form.Label>User ID</Form.Label>
@@ -126,7 +126,7 @@ const Login = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </Form.Group>
-                            
+
                             <div className="d-flex justify-content-end mb-3">
                                 <a href="#" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
                             </div>
@@ -134,7 +134,7 @@ const Login = () => {
                                 {isLoading ? <Spinner animation="border" size="sm" /> : 'Login'}
                             </Button>
                         </Form>
-                       
+
                         {err && <Alert variant="danger" className="mt-3">{err}</Alert>}
                     </div>
                 </Col>
