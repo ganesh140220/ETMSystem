@@ -3,6 +3,15 @@ import { Table, Button } from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+// Function to format date as dd/mm/yyyy
+const formatDate = (date) => {
+  const d = new Date(date);
+  const day = d.getDate().toString().padStart(2, '0');
+  const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 const ViewQuery = () => {
   const location = useLocation();
   const taskId = location.state?.id; // Retrieve the task ID from location.state
@@ -24,7 +33,7 @@ const ViewQuery = () => {
         <Table hover responsive variant='info' size='lg' bordered>
           <thead style={{ backgroundColor: "olive" }}>
             <tr>
-              <th>Query ID</th>
+              <th>Title</th>
               <th>Description</th>
               <th>Status</th>
               <th>Created Date</th>
@@ -35,13 +44,13 @@ const ViewQuery = () => {
             {queries.length > 0 ? (
               queries.map(query => (
                 <tr key={query.qid}>
-                  <td>{query.qid}</td>
+                  <td>{query.title}</td>
                   <td>{query.queryText}</td>
                   <td>{query.status}</td>
-                  <td>{new Date(query.createdDate).toLocaleDateString()}</td>
+                  <td>{formatDate(query.createdText)}</td>
                   <td>
                     <Button
-                      variant={query.status !== 'resolved'?"secondary":"success"}
+                      variant={query.status !== 'resolved' ? "secondary" : "success"}
                       as={Link}
                       to={`/viewSolution/${query.qid}`}
                       disabled={query.status !== 'resolved'}
