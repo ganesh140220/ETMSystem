@@ -14,6 +14,6 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface SolutionRepository extends JpaRepository<Solution, Integer> {
 	
-	// Custom query method to find solutions by query ID
-    List<Solution> findByQueryId(int queryId);
+	
+
 }
