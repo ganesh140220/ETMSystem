@@ -15,6 +15,7 @@ public partial class Project
 
     public string CreatedDate { get; set; } = null!;
 
+    public string? CompletedDate { get; set; }
     public string Description { get; set; } = null!;
 
     public string ProjectTitle { get; set; } = null!;
