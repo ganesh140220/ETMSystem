@@ -17,6 +17,13 @@ import com.example.demo.repository.SolutionRepository;
 
 @Service
 public class EmployeeService {
+	
+	EmployeeRepository  employeerepo;
+	
+	
+	public List<Employee> viewEmployee(){
+		return  employeerepo.findAll();
+	}
 
 
     

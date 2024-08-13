@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EtmsSytem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1642c5eec356ab7aad3e6248e812001c9d6d659")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11912ffd7a9d46620c5b2e6252919c2844100a82")]
 [assembly: System.Reflection.AssemblyProductAttribute("EtmsSytem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EtmsSytem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
