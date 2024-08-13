@@ -57,20 +57,24 @@ const Login = () => {
 
                     switch (data.login.role.role1) {
                         case 'MasterAdmin':
-                            navigate('/Admin');
-                            break;
-                        case 'Admin':
-                            navigate('/Admin');
-                            break;
+                        case 'Admin':navigate('/Admin'); break;
+                           
                         case 'Manager':
-                            navigate('/Manager');
-                            break;
-                        case 'Associate':
-                            await fetch("https://localhost:7018/ETMS/team?pid=" + data.tasks[0].projectId)
+                            await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0].projectId)
                                 .then(res => res.json())
                                 .then(d => dispatch(setteamobj(d)))
 
-                            await fetch("https://localhost:7018/ETMS/project?pid=" + data.tasks[0].projectId)
+                            await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
+                                .then(res => res.json())
+                                .then(d => dispatch(setprojobj(d)))
+                                 navigate('/Manager');
+                            break;
+                        case 'Associate':
+                            await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0].projectId)
+                                .then(res => res.json())
+                                .then(d => dispatch(setteamobj(d)))
+
+                            await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
                                 .then(res => res.json())
                                 .then(d => dispatch(setprojobj(d)))
                             navigate('/Associate');

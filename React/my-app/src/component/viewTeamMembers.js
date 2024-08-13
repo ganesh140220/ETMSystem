@@ -9,6 +9,7 @@ const ViewTeamMembers = ({ projectId }) => {
   const team = useSelector(state => state.myobj.teamobj);
 
   // Extract and map team members with role and designation details
+  console.log('Team Data:', team);
   const filteredMembers = team.map(member => ({
     ...member.emp,
     roleName: member.emp.login.role ? member.emp.login.role.role1 : 'N/A',

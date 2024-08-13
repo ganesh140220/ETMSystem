@@ -1,6 +1,72 @@
 [
   {
     "ContainingType": "EtmsSytem.Controllers.ETMSController",
+    "Method": "Client",
+    "RelativePath": "ETMS/client",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EtmsSytem.Models.Client",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EtmsSytem.Controllers.ETMSController",
+    "Method": "Clients",
+    "RelativePath": "ETMS/clients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EtmsSytem.Models.Client, EtmsSytem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EtmsSytem.Controllers.ETMSController",
+    "Method": "Employees",
+    "RelativePath": "ETMS/employees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EtmsSytem.Models.Employee, EtmsSytem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EtmsSytem.Controllers.ETMSController",
     "Method": "proj",
     "RelativePath": "ETMS/project",
     "HttpMethod": "GET",
@@ -39,6 +105,26 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EtmsSytem.Models.TeamMember, EtmsSytem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EtmsSytem.Controllers.ETMSController",
+    "Method": "Team",
+    "RelativePath": "ETMS/teammembers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[EtmsSytem.Models.TeamMember, EtmsSytem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

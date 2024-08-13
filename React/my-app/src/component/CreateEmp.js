@@ -145,8 +145,7 @@ const CreateEmployee = () => {
                   className="form-select">
                  <option value="Select">Select</option>
                  <option value="1">Software Developer</option>
-                 <option value="2">Senior Software Devloper</option>
-                 <option value="3">Software Engineer</option>
+                
                 </Form.Control>
             
               </Form.Group>

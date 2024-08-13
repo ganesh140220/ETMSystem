@@ -15,11 +15,12 @@ namespace EtmsSytem.Controllers
         [HttpPost("validate")]
         public object validate([FromBody]UidAndPwd obj)
         {
+            
            
             using (var db = new EtmsystemContext())
             {
 
-                Employee EmpLogin = db.Employees.Include(e => e.Login).ThenInclude(e=>e.Role).Include(e => e.Tasks).ThenInclude(e => e.Queries).ThenInclude(e => e.Solutions).Include(e => e.Tasks).ThenInclude(e => e.TaskProgresses).Include(e => e.Login).Include(e => e.Desig).FirstOrDefault(o => o.Login.Username.Equals(obj.uid));
+                Employee EmpLogin = db.Employees.Include(e=>e.TeamMembers).Include(e => e.Login).ThenInclude(e=>e.Role).Include(e => e.Tasks).ThenInclude(e => e.Queries).ThenInclude(e => e.Solutions).Include(e => e.Tasks).ThenInclude(e => e.TaskProgresses).Include(e => e.Login).Include(e => e.Desig).FirstOrDefault(o => o.Login.Username.Equals(obj.uid));
 
                 if (EmpLogin == null) return new Error("Enter valid username");
 		        if (EmpLogin.Login.Active != 1) return new Error("This account is currently suspended");
@@ -48,7 +49,7 @@ namespace EtmsSytem.Controllers
             using (var db = new EtmsystemContext())
             {
                 Console.WriteLine("proj");
-                return db.Projects.Where(e => e.Id == pid).FirstOrDefault();
+                return db.Projects.Include(e => e.Tasks).ThenInclude(e=>e.AssignedToNavigation).Include(e=>e.Tasks).ThenInclude(e=>e.TaskProgresses).Where(e => e.Id == pid).FirstOrDefault();
             }
 
         }
@@ -87,6 +88,16 @@ namespace EtmsSytem.Controllers
                 }
 
             }
+        [HttpGet("teammembers")]
+        public List<TeamMember> Team()
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                return db.TeamMembers.Include(e=>e.Emp).ThenInclude(e=>e.Login).ThenInclude(e=>e.Role).ToList();
+            }
+
+        }
 
     }
 }

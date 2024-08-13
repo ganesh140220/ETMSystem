@@ -32,15 +32,16 @@ export default function Navb() {
           console.log("data obj seted")
 
           //onlyfor associate objects fetch hit
-          if(data.login.role.role1==="Associate"){
-          await fetch("https://localhost:7018/ETMS/team?pid=" + data.tasks[0]?.projectId||0)
+          if(data.login.role.role1==="Associate" || data.login.role.role1==="Manager"){
+            await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setteamobj(d)))
 
-          await fetch("https://localhost:7018/ETMS/project?pid=" + data.tasks[0]?.projectId)
+        await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setprojobj(d)))
-            console.log("Associate obj seted")
+             navigate('/Manager');
+            console.log("refreh obj seted")
           }
         }
       }
@@ -104,6 +105,7 @@ export default function Navb() {
       <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="/viewClient">View Client</NavDropdown.Item>
     </NavDropdown>
+    <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
     <NavDropdown title="Profile" id="profile-dropdown">
       <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
@@ -145,9 +147,10 @@ export default function Navb() {
                     <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="View" id="view-dropdown">
-                    <NavDropdown.Item as={Link} to="#">View Employee</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
                   </NavDropdown>
+                  <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                   <NavDropdown title="Profile" id="view-dropdown">
                     <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
