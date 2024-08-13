@@ -34,7 +34,7 @@ const CreateEmployee = () => {
       setErr('Last Name must be letters only and 2-30 characters long.');return false;
     }
     if (!loginId) {
-      setErr('Login ID is required.');return false;
+      setErr('User ID is required.');return false;
     }
     if (!emailPattern.test(email)) {
       setErr('Email address is invalid.');return false;
@@ -94,10 +94,10 @@ const CreateEmployee = () => {
               </Row>
 
               <Form.Group controlId="formLoginId" className="mb-3">
-                <Form.Label className='text-white mt-2'>Login ID</Form.Label>
+                <Form.Label className='text-white mt-2'>User ID</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter login ID"
+                  placeholder="Enter User ID"
                   value={loginId}
                   onChange={(e) => setLoginId(e.target.value)}
                  
