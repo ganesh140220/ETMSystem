@@ -6,8 +6,12 @@ import { useSelector } from 'react-redux';
 const TaskDetailsPage = () => {
   const location = useLocation();
   const proj = useSelector(state => state.myobj.projobj);
-  const { task } = location.state || {}; // Get the task from navigation state
-  
+  const obj = useSelector(state => state.myobj.obj);
+  const id = location.state?.id; // Ensure location.state is defined
+
+  // Find the task based on the id
+  const task = obj?.tasks?.find(task => task.id === id);
+
   // State to manage sorting order
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' for ascending, 'desc' for descending
 
@@ -26,13 +30,20 @@ const TaskDetailsPage = () => {
   };
 
   // Function to sort taskProgresses based on workDonePercent
-  const sortedTaskProgresses = task?.taskProgresses?.sort((a, b) => {
-    if (sortOrder === 'asc') {
-      return a.workDonePercent - b.workDonePercent;
-    } else {
-      return b.workDonePercent - a.workDonePercent;
-    }
-  }) || [];
+  const sortedTaskProgresses = () => {
+    if (!task?.taskProgresses) return [];
+
+    // Create a new array to avoid mutating the original
+    const progresses = [...task.taskProgresses];
+    
+    return progresses.sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.workDonePercent - b.workDonePercent;
+      } else {
+        return b.workDonePercent - a.workDonePercent;
+      }
+    });
+  };
 
   // Toggle sort order
   const handleSortToggle = () => {
@@ -57,8 +68,9 @@ const TaskDetailsPage = () => {
                       <ListGroup.Item><strong>Created Date:</strong> {task.createdDate}</ListGroup.Item>
                       <ListGroup.Item><strong>Description:</strong> {task.description}</ListGroup.Item>
                       <ListGroup.Item><strong>Due Date:</strong> {task.dueDate}</ListGroup.Item>
-                      <ListGroup.Item><strong>Project Name:</strong> {proj.projectTitle}</ListGroup.Item>
+                      <ListGroup.Item><strong>Project Name:</strong> {proj?.projectTitle}</ListGroup.Item>
                       <ListGroup.Item><strong>Status:</strong> {task.status}</ListGroup.Item>
+                      <ListGroup.Item><strong>Completed Date:</strong> {task.completedDate || 'N/A'}</ListGroup.Item>
                     </ListGroup>
                     {/* Render the table of taskProgresses */}
                     <div className="mt-4">
@@ -80,8 +92,8 @@ const TaskDetailsPage = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {sortedTaskProgresses.length > 0 ? (
-                              sortedTaskProgresses.map(progress => (
+                            {sortedTaskProgresses().length > 0 ? (
+                              sortedTaskProgresses().map(progress => (
                                 <tr key={progress.id}>
                                   <td>{progress.description}</td>
                                   <td>{progress.updateDate}</td>

@@ -32,16 +32,35 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create the data object with the current date, time, and form values
+  
     const data = {
-      id:0,
+      id: 0,
       taskId: id,
       description: description,
-      workDonePercent: workDonePercent,
-      updateDate: formatDate(new Date()) // Format the current date
+      workDonePercent: Number(workDonePercent), // Ensure it's a number
+      updateDate: formatDate(new Date())
     };
-
+  
+    fetch('http://localhost:8080/api/task-progress', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.text)
+    .then(result => {
+      console.log(result);
+      if (onUpdate) {
+        onUpdate(data);
+      }
+      setDescription('');
+      setWorkDonePercent('');
+      setSubmitted(true);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
     console.log(data); // You can replace this with your actual submission logic, e.g., API call
 
     // Optional: Call the onUpdate prop if provided

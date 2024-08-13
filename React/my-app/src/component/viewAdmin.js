@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, Button, NavDropdown } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Admin.css'; // Ensure correct import path
-import { useSelector } from 'react-redux';
+import React from 'react';
 
-const Admin = () => {
- 
-
+function AdminDashboard() {
   return (
-    <div className="bg-dark text-white d-flex align-items-center justify-content-center min-vh-100">
-    <Container fluid >
-      <div>
-    <h1 className="text-center mt-5">EMPLOYEE Project MANAGEMENT SYSTEM</h1>
+    <div className="dashboard-container">
+      <h1 className="text-center mt-5">EMPLOYEE Project MANAGEMENT SYSTEM</h1>
       <div className="row justify-content-center mt-4">
         {/* Card 1 */}
         <div className="col-md-3 mb-4">
@@ -91,10 +82,9 @@ const Admin = () => {
         <p>Employee Project Management System. All rights reserved.</p>
       </footer>
     </div>
-      </Container>
-      </div>
-    
   );
-};
+}
 
-export default Admin;
+export default AdminDashboard;
+
+

@@ -52,7 +52,31 @@ const CreateQueryPage = () => {
     };
 
     console.log('Query Object:', newQuery); // Log the query object to the console
-
+//giving call to spring Api to create query
+    fetch('http://localhost:8080/api/queries', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newQuery),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+        setQueryDescription('');
+        setQueryTitle('');
+        setError('');
+        setIsSubmitted(true);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setError('Failed to create query');
+      });
     // Clear the form
     setQueryDescription('');
     setQueryTitle('');

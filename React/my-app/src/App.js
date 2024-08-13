@@ -11,7 +11,7 @@ import Navb from './component/Navb';
 import { useSelector } from 'react-redux';
 import CreateEmployee from './component/CreateEmp';
 import About from './component/About';
-import ViewEmployee from './component/viewEmp';
+
 import ViewQuery from './component/viewQuery';
 import CreateQuery from './component/createQuery';
 import ViewProject from './component/viewProject';
@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/viewSolution/:queryId"element={<ViewSolution />} />
           <Route path="/TaskDetails" element={<TaskDetailsPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/viewEmp" element={<ViewEmployee />} />
+       
           <Route path="/about" element={<About />} />
           <Route path="/createEmp" element={<CreateEmployee />} />
           <Route path="/Admin" element={<Admin />} />
