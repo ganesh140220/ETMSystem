@@ -1,78 +1,14 @@
-// src/components/ManagerProjectsPage.js
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Table, Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-const ManagerProjectsPage = () => {
-  const navigate = useNavigate();
-
-  // Hardcoded data for testing
-  const obj = {
-    projects: [
-      { id: 1, name: 'Project Alpha', status: 'ongoing' },
-      { id: 2, name: 'Project Beta', status: 'completed' },
-      { id: 3, name: 'Project Gamma', status: 'not started' },
-      { id: 4, name: 'Project Delta', status: 'ongoing' },
-      { id: 5, name: 'Project Epsilon', status: 'completed' }
-    ]
-  };
-
-  const [counts, setCounts] = useState({
-    ongoing: 0,
-    completed: 0,
-    notStarted: 0
-  });
-  const [filter, setFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    const fetchProjects = () => {
-      const newCounts = {
-        ongoing: 0,
-        completed: 0,
-        notStarted: 0
-      };
-
-      if (obj && obj.projects) {
-        obj.projects.forEach(project => {
-          if (project.status === 'ongoing') {
-            newCounts.ongoing += 1;
-          } else if (project.status === 'completed') {
-            newCounts.completed += 1;
-          } else if (project.status === 'not started') {
-            newCounts.notStarted += 1;
-          }
-        });
-      }
-
-      setCounts(newCounts);
-    };
-
-    fetchProjects();
-  }, []);
-
-  const handleFilterChange = (status) => {
-    setFilter(status);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredProjects = () => {
-    const projects = filter === 'all' ? obj.projects : obj.projects.filter(project => project.status === filter);
-    return projects.filter(project => project.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  };
-
+function ManagerDashboard() {
   return (
-    <div className="bg-dark text-white min-vh-100 p-0" style={{marginTop:'50px'}}>
-      <Container fluid>
-     
-        <div>
+    <div style={{marginTop:'100px'}}>
     <div className="dashboard-content p-4">
       <header className="d-flex justify-content-between align-items-center">
         <h1>Dashboard</h1>
-       
+        <div>
+          <span className="badge bg-primary">Manager</span>
+        </div>
       </header>
       
       <div className="row mt-4">
@@ -174,10 +110,8 @@ const ManagerProjectsPage = () => {
       </div>
     </div>
     </div>
-    
-      </Container>
-    </div>
   );
-};
+}
 
-export default ManagerProjectsPage;
+export default ManagerDashboard;
+
