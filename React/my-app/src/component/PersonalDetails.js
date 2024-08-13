@@ -10,8 +10,8 @@ const PersonalDetails = () => {
   const teamMembers = useSelector(state => state.myobj.teamobj);
   const obj = useSelector(state => state.myobj.obj);
 
-  // Assuming you want to display details of the currently logged-in user
-  // You may need to adjust this based on your actual application logic
+ 
+ 
   
   const currentUser = obj;
 

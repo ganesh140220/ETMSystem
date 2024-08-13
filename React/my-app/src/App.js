@@ -20,6 +20,9 @@ import ViewTeamMembers from './component/viewTeamMembers';
 import ViewSolution from './component/viewSolutions';
 import TaskDetailsPage from './component/TaskDetailsPage';
 import PersonalDetails from './component/PersonalDetails';
+import ViewEmp from './component/functionality/viewEmp';
+import ViewClient from './component/functionality/viewClient';
+
 
 
 const App = () => {
@@ -48,7 +51,11 @@ const App = () => {
           <Route path="/MasterAdmin" element={<Admin />} />
           <Route path="/Manager" element={<Manager />} />
           <Route path="/Associate" element={<Employee />} />
-          {/* Add other routes as needed */}
+          <Route path="/viewEmp" element={<ViewEmp />} />
+          <Route path="/viewClient" element={<ViewClient />} />
+
+
+         
         </Routes>
         
      

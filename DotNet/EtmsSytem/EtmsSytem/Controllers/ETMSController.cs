@@ -53,6 +53,40 @@ namespace EtmsSytem.Controllers
 
         }
 
+        [HttpGet("client")]
+        public Client Client(int cid)
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                return db.Clients.Where(e => e.Id == cid).FirstOrDefault();
+            }
+
+        }   
+
+        //view all client 
+        [HttpGet("clients")]
+        public List<Client> Clients()
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                return db.Clients.ToList();
+            }
+
+        }
+
+        //view all employee
+            [HttpGet("employees")]
+            public List<Employee> Employees()
+            {
+
+                using (var db = new EtmsystemContext())
+                {
+                    return db.Employees.ToList();
+                }
+
+            }
 
     }
 }
