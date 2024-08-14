@@ -34,25 +34,30 @@ public class CreateService {
     
     private TaskRepository taskRepository;
 
-    @Transactional
-    public Employee saveEmployee(Employee employee) {
-        // Save the login information first
-        Login login = employee.getLogin();
+  
+	@Transactional
+	public Employee saveEmployee(Employee employee) {
+		// Check if login is null
+		Login login = employee.getLogin();
+		if (login == null) {
+			login = new Login();
+			employee.setLogin(login);
+		}
 
-        // Generate a random password if it's empty
-        if (login.getPassword().isEmpty()) {
-            login.setPassword(PasswordGenerator.generateRandomPassword(10)); // 10 is the length of the password
-        }
+		// Generate a random password if it's empty
+		login.setPassword(PasswordGenerator.generateRandomPassword(10)); // 10 is the length of the password
+		
 
-        // Save the login entity and retrieve the saved entity (with the generated loginId)
-        login = loginRepository.save(login);
+		// Save the login entity and retrieve the saved entity (with the generated
+		// loginId)
+		login = loginRepository.save(login);
 
-        // Set the loginId in the employee entity
-        employee.setLoginId(login.getLoginid());
+		// Set the loginId in the employee entity
+		employee.setLoginId(login.getLoginid());
 
-        // Save the employee entity and return the saved employee
-        return employeeRepository.save(employee);
-    }
+		// Save the employee entity and return the saved employee
+		return employeeRepository.save(employee);
+	}
     
     
     // Method to create a project
