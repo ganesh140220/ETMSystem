@@ -74,6 +74,19 @@ const CreateTask = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    fetch('http://localhost:8080/createtask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    })
+      .then(response => {response.json()})
+      .then(data => {
+        console.log('Success:' );
+      }
+    )
     console.log(task);
 
     // Simulate task creation success
