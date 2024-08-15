@@ -16,6 +16,8 @@ const CreateEmployee = () => {
 
   const namePattern = /^[a-zA-Z\s]{2,30}$/; // Name must be letters and spaces, 2-30 characters
   const emailPattern = /\S+@\S+\.\S+/; // Basic email validation
+  const userIdPattern = /^[a-zA-Z0-9]{4,12}$/; //User id pattern
+  const [newEmp,setNewEmp]=useState({})
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -33,8 +35,12 @@ const CreateEmployee = () => {
     if (!namePattern.test(lastName)) {
       setErr('Last Name must be letters only and 2-30 characters long.');return false;
     }
+    if (!userIdPattern.test(loginId)) {
+      setErr('User ID must be alphanumeric and 4-12 characters long.');
+      return false;
+  }
     if (!loginId) {
-      setErr('Login ID is required.');return false;
+      setErr('User ID is required.');return false;
     }
     if (!emailPattern.test(email)) {
       setErr('Email address is invalid.');return false;
@@ -55,10 +61,50 @@ const CreateEmployee = () => {
 
     if (!validateForm()) return;
 
-    // Add logic to handle form submission
-   
-  };
 
+    // Create new employee object
+   setNewEmp({
+    firstName: firstName,
+    lastName: lastName,
+    emailId: email,
+    address:"",
+    contactNo:0,
+    desigId: designation,
+    login: {
+      username: loginId,
+      password: "",
+      roleid: role,
+      active: 1
+    }
+  });
+
+  fetch('http://localhost:8080/createEmployee', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newEmp),
+
+  })
+  
+
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.err) {
+        setErr(data.err);
+      } else {
+        setErr('Employee created successfully');
+        console.log(err);
+      }
+    })
+    .catch((err) => {
+      setErr('An error occurred. Please try again.');
+      console.log(err);
+    });
+
+  };
+console.log(newEmp);
+ 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100">
     <Container style={containerStyle} fluid className=" d-flex align-items-center justify-content-center min-vh-100">
@@ -94,10 +140,10 @@ const CreateEmployee = () => {
               </Row>
 
               <Form.Group controlId="formLoginId" className="mb-3">
-                <Form.Label className='text-white mt-2'>Login ID</Form.Label>
+                <Form.Label className='text-white mt-2'>User ID</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter login ID"
+                  placeholder="Enter User ID"
                   value={loginId}
                   onChange={(e) => setLoginId(e.target.value)}
                  
@@ -126,9 +172,9 @@ const CreateEmployee = () => {
                   onChange={(e) => setRole(e.target.value)}>
 
                   <option value="">Select</option>
-                  {myrole=="MasterAdmin"&&(<option value="Admin">Admin</option>)}
-                  {(myrole=="Admin"||myrole=="MasterAdmin")&&(<option value="Manager">Manager</option>)}
-                  {myrole!="Associate"&&(<option value="Associate">Associate</option>)}
+                  {myrole=="MasterAdmin"&&(<option value="2">Admin</option>)}
+                  {(myrole=="Admin"||myrole=="MasterAdmin")&&(<option value="3">Manager</option>)}
+                  {myrole!="Associate"&&(<option value="4">Associate</option>)}
                 </Form.Control>
                
               </Form.Group>
@@ -145,14 +191,13 @@ const CreateEmployee = () => {
                   className="form-select">
                  <option value="Select">Select</option>
                  <option value="1">Software Developer</option>
-                 <option value="2">Senior Software Devloper</option>
-                 <option value="3">Software Engineer</option>
+                
                 </Form.Control>
             
               </Form.Group>
               </Col>
               </Row>
-              <Button className='mt-3' variant="primary" type="submit">
+              <Button className='mt-3' variant="primary" type="submit" onClick={handleSubmit}>
                 Create Employee
               </Button>
               {err && <Alert variant="danger" className="mt-3">{err}</Alert>}

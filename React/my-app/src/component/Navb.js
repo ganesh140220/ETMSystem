@@ -5,7 +5,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { decremental, incremental, setobj, setprojobj, setteamobj } from "./slicefile";
 
 export default function Navb() {
-  const obj = useSelector((state) => state.myobj.obj.login); // Assuming userRole and userName are stored in Redux
+  const obj = useSelector((state) => state.myobj.obj.login); 
   const [Name, setUserName] = useState('');
   const [err, setErr] = useState('');
   const dispatch = useDispatch();
@@ -30,14 +30,19 @@ export default function Navb() {
         } else {
           dispatch(setobj(data));
           console.log("data obj seted")
-          await fetch("https://localhost:7018/ETMS/team?pid=" + data.tasks[0].projectId)
+
+          //onlyfor associate objects fetch hit
+          if(data.login.role.role1==="Associate" || data.login.role.role1==="Manager"){
+            await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setteamobj(d)))
 
-          await fetch("https://localhost:7018/ETMS/project?pid=" + data.tasks[0].projectId)
+        await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setprojobj(d)))
-
+             navigate('/Manager');
+            console.log("refreh obj seted")
+          }
         }
       }
       else {
@@ -88,25 +93,26 @@ export default function Navb() {
 
               </Nav>
             )}
-            {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
-              <Nav className="me-auto">
-                
-                <NavDropdown title="Create..." id="create-dropdown">
-                  <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Create Project</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Create Client</NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="View..." id="view-dropdown">
-                  <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">View Client</NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="Profile" id="profile-dropdown">
-                  <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-            )}
+           {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
+  <Nav className="me-auto">
+    <NavDropdown title="Create..." id="create-dropdown">
+      <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/createProject">Create Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="#">Create Client</NavDropdown.Item>
+    </NavDropdown>
+    <NavDropdown title="View..." id="view-dropdown">
+      <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/viewProject">View Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/viewClient">View Client</NavDropdown.Item>
+    </NavDropdown>
+    <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
+    <NavDropdown title="Profile" id="profile-dropdown">
+      <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+    </NavDropdown>
+  </Nav>
+)}
+
             {
               location.pathname === "/" && (
                 <Nav className="ms-auto">
@@ -137,13 +143,14 @@ export default function Navb() {
               location.pathname === "/Manager" && (
                 <Nav className="me-auto">
                 
-                  <NavDropdown title="Create..." id="create-dropdown">
+                  <NavDropdown title="Create Employee" id="create-dropdown">
                     <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
                   </NavDropdown>
-                  <NavDropdown title="View..." id="view-dropdown">
-                    <NavDropdown.Item as={Link} to="#">View Employee</NavDropdown.Item>
+                  <NavDropdown title="View" id="view-dropdown">
+                    <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
                   </NavDropdown>
+                  <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                   <NavDropdown title="Profile" id="view-dropdown">
                     <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>

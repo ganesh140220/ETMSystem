@@ -21,6 +21,8 @@ public partial class Task
 
     public string Title { get; set; } = null!;
 
+    public string? CompletedDate { get; set; } 
+
     public virtual Employee AssignedToNavigation { get; set; } = null!;
 
     public virtual Project Project { get; set; } = null!;

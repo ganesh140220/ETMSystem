@@ -10,18 +10,22 @@ const PersonalDetails = () => {
   const teamMembers = useSelector(state => state.myobj.teamobj);
   const obj = useSelector(state => state.myobj.obj);
 
-  // Assuming you want to display details of the currently logged-in user
-  // You may need to adjust this based on your actual application logic
-  const currentUserId = obj.id; // Replace with actual user ID logic
-  const currentUser = teamMembers.find(member => member.emp.id === currentUserId);
+ 
+ 
+  
+  const currentUser = obj;
 
   
-  const { emp } = currentUser;
+  const emp  = currentUser;
 
   // State to manage edit mode and form values
   const [isEditing, setIsEditing] = useState(false);
   const [formValues, setFormValues] = useState({
-    username: obj.login.username,
+    id: obj.id,
+    loginId: obj.loginId,
+    firstName:obj.firstName,
+    lastName:obj.lastName ,
+    desigId: obj.desigId,
     email: emp.emailId,
     mobile: emp.contactNo,
     address: emp.address
@@ -55,16 +59,7 @@ const PersonalDetails = () => {
             <Col md={8}>
               {isEditing ? (
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>UserName:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="username"
-                      value={formValues.username}
-                      onChange={handleChange}
-                      readOnly
-                    />
-                  </Form.Group>
+                
                   <Form.Group className="mb-3">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control

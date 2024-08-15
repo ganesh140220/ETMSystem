@@ -47,7 +47,7 @@ const ViewQuery = () => {
                   <td>{query.title}</td>
                   <td>{query.queryText}</td>
                   <td>{query.status}</td>
-                  <td>{formatDate(query.createdText)}</td>
+                  <td>{formatDate(query.createdDate)}</td>
                   <td>
                     <Button
                       variant={query.status !== 'resolved' ? "secondary" : "success"}

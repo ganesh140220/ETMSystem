@@ -1,7 +1,7 @@
 // src/components/EmployeeTasksPage.js
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Row, Col, Table, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button, Form, ProgressBar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const EmployeeTasksPage = () => {
@@ -55,6 +55,13 @@ const EmployeeTasksPage = () => {
     setSearchQuery(e.target.value);
   };
 
+  const getHighestWorkDonePercent = (task) => {
+    if (task.taskProgresses && task.taskProgresses.length > 0) {
+      return Math.max(...task.taskProgresses.map(progress => progress.workDonePercent));
+    }
+    return 0;
+  };
+
   const filteredTasks = () => {
     const tasks = filter === 'all' ? obj.tasks : obj.tasks.filter(task => task.status === filter);
     return tasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -80,28 +87,30 @@ const EmployeeTasksPage = () => {
             <h2 className="text-center mb-3 text-warning">Task Status:</h2>
             <Row className='mt-1'>
               <Col md={4} className="mx-auto">
+              
                 <div className="border p-3 rounded shadow-sm bg-danger text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
-                    <Button onClick={() => handleFilterChange('pending')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>Pending</u> : {counts.pending}</h3>
+                  <div className='mt-2'>
+                    <Button onClick={() => handleFilterChange('pending')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>Pending : {counts.pending}</h3>  <u className='text-black'>Show Info</u>
                     </Button>
                   </div>
                 </div>
               </Col>
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-info text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
-                    <Button onClick={() => handleFilterChange('in progress')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>In Progress</u> : {counts.inProgress}</h3>
+                  <div className='mt-2'>
+                    <Button onClick={() => handleFilterChange('in progress')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>In Progress : {counts.inProgress}</h3> <u className='text-black'>Show Info</u>
                     </Button>
                   </div>
                 </div>
               </Col>
               <Col md={4} className="mx-auto">
                 <div className="border p-3 rounded shadow-sm bg-success text-black text-center" style={{ minHeight: '120px' }}>
-                  <div className='mt-4'>
-                    <Button onClick={() => handleFilterChange('completed')} className='text-black' style={{ backgroundColor: "transparent", border: "0" }}>
-                      <h3><u>Completed</u> : {counts.completed}</h3>
+                  <div className='mt-2'>
+                    <Button onClick={() => handleFilterChange('completed')} className='text-white' style={{ backgroundColor: "transparent", border: "0" }}>
+                      <h3>Completed : {counts.completed}</h3> <u className='text-black'>Show Info</u>
+                     
                     </Button>
                   </div>
                 </div>
@@ -110,7 +119,7 @@ const EmployeeTasksPage = () => {
           </div>
 
           <Row className="mt-4">
-            <Col md={8} className="mx-auto text-center">
+            <Col md={11} className="mx-auto text-center">
               <h2 className="text-center mb-4 text-warning">My Tasks</h2>
               <Row>
                 <Col md={10}>
@@ -125,21 +134,24 @@ const EmployeeTasksPage = () => {
                   </div>
                 </Col>
                 <Col md={2}>
-                  <div className="mb-3" style={{ marginLeft: "60px" }}>
+                  <div className="mb-3" style={{ marginLeft: "120px" }}>
                     <Button variant="secondary" onClick={() => handleFilterChange('all')}>Show All</Button>
                   </div>
                 </Col>
               </Row>
-              <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
+            </Col>
+            <Col md={11} className='mx-auto text-center'>
+              <div style={{ maxWidth: '1400px',maxHeight: '200px', overflowX: 'auto', margin: '0 auto' }}>
                 <Table hover responsive variant='info' size='lg' bordered>
                   <thead>
                     <tr style={{ position: "sticky", top: "0", backgroundColor: "olive", height: "50px" }}>
-                      <th>Task Title</th>
-                      <th>Status</th>
-                      <th>Task Progress</th>
-                      <th>Create Query</th>
-                      <th>View Query</th>
-                      <th>Task Details</th>
+                      <th style={{ width: '25 %' }}>Task Title</th>
+                      <th style={{ width: '14%' }}>Status</th>
+                      <th style={{ width: '16%' }}>Task Progress</th>
+                      <th style={{ width: '11%' }}>Update Task</th>
+                      <th style={{ width: '11%' }}>Create Query</th>
+                      <th style={{ width: '11%' }}>View Query</th>
+                      <th style={{ width: '11%' }}>Task Details</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -149,6 +161,14 @@ const EmployeeTasksPage = () => {
                           <td><h6 style={{ marginTop: "10px" }}>{task.title}</h6></td>
                           <td style={{ color: task.status === 'pending' ? 'Red' : task.status === 'completed' ? 'green' : 'orange' }}>
                             <h6 style={{ marginTop: "10px" }}>{task.status}</h6>
+                          </td>
+                          <td>
+                            <ProgressBar
+                              now={getHighestWorkDonePercent(task)}
+                              label={`${getHighestWorkDonePercent(task)}%`}
+                              variant="success"
+                              style={{ height: '20px' ,marginTop:"10px",marginLeft:"15px",marginRight:"15px"}}
+                            />
                           </td>
                           <td>
                             <Button
@@ -182,18 +202,17 @@ const EmployeeTasksPage = () => {
                           <td>
                             <Button
                               variant="link"
-                              onClick={() => navigate("/TaskDetails", { state: { task } })}
+                              onClick={() => navigate("/TaskDetails", { state: { id:task.id } })}
                               style={{ color: 'blue' }}
                             >
                               Details
                             </Button>
                           </td>
-                          
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="6" className="text-center">No tasks available</td>
+                        <td colSpan="7" className="text-center">No tasks available</td>
                       </tr>
                     )}
                   </tbody>

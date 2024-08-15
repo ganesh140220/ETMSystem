@@ -4,6 +4,10 @@
 -- ------------------------------------------------------
 -- Server version	8.0.37
 
+DROP database IF EXISTS `etmsystem`;
+create database etmsystem;
+use etmsystem;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -144,6 +148,7 @@ CREATE TABLE `project` (
   `description` varchar(255) NOT NULL,
   `project_title` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
+  `completed_date` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKf7d0rp3hf66ayydxtma968nsc` (`assigned_to`),
   KEY `FK8nw995uro0115f1go0dmrtn2d` (`client_id`),
@@ -160,7 +165,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,2,1,3,'10-08-2024','First Project','React Project','pending');
+INSERT INTO `project` VALUES (1,2,1,3,'10-08-2024','First Project','React Project','pending',NULL);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +179,7 @@ DROP TABLE IF EXISTS `query`;
 CREATE TABLE `query` (
   `qid` int NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
-  `created_text` varchar(255) NOT NULL,
+  `created_date` varchar(255) NOT NULL,
   `query_text` varchar(255) NOT NULL,
   `raised_by` int NOT NULL,
   `status` varchar(255) NOT NULL,
@@ -193,7 +198,7 @@ CREATE TABLE `query` (
 
 LOCK TABLES `query` WRITE;
 /*!40000 ALTER TABLE `query` DISABLE KEYS */;
-INSERT INTO `query` VALUES (1,'Data Type Mismatched','10/08/2024','Type mismatched for int argument please explain what to do',4,'resolved',1),(2,'Follow Up Query','10-08-2024','Please tell what is solution',4,'resolved',1);
+INSERT INTO `query` VALUES (1,'Data Type Mismatched','10/08/2024','Type mismatched for int argument please explain what to do',4,'resolved',1),(2,'Follow Up Query','10-08-2024','Please tell what is solution',4,'pending',1);
 /*!40000 ALTER TABLE `query` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,6 +273,7 @@ CREATE TABLE `task` (
   `project_id` int NOT NULL,
   `status` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `completed_date` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKfs0bgcnqw1nl8wu2oe8m2hxi5` (`assigned_to`),
   KEY `FKk8qrwowg31kx7hp93sru1pdqa` (`project_id`),
@@ -282,7 +288,7 @@ CREATE TABLE `task` (
 
 LOCK TABLES `task` WRITE;
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
-INSERT INTO `task` VALUES (1,4,'10-08-2024','create Function','11-08-2024',1,'completed','Function create'),(2,4,'10-08-2024','create Function','11-08-2024',1,'pending','Rerender func'),(3,4,'10-08-2024','create Function','11-08-2024',1,'in progress','update create'),(4,4,'10-08-2024','new task4','11-08-2024',1,'in progress','my task 4'),(5,4,'10-08-2024','new task1','11-08-2024',1,'completed','my task 1'),(6,4,'10-08-2024','create Function','11-08-2024',1,'pending',' func recreted');
+INSERT INTO `task` VALUES (1,4,'10-08-2024','create Function','11-08-2024',1,'completed','Function create','11-08-2024'),(2,4,'10-08-2024','create Function','11-08-2024',1,'pending','Rerender func',''),(3,4,'10-08-2024','create Function','11-08-2024',1,'in progress','update create',NULL),(4,4,'10-08-2024','new task4','11-08-2024',1,'in progress','my task 4',NULL),(5,4,'10-08-2024','new task1','11-08-2024',1,'completed','my task 1',NULL),(6,4,'10-08-2024','create Function','11-08-2024',1,'pending',' func recreted','11-08-2024');
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +308,7 @@ CREATE TABLE `task_progress` (
   PRIMARY KEY (`id`),
   KEY `FK2cueuy9hcfpratrhb30ia7i5a` (`task_id`),
   CONSTRAINT `FK2cueuy9hcfpratrhb30ia7i5a` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +317,7 @@ CREATE TABLE `task_progress` (
 
 LOCK TABLES `task_progress` WRITE;
 /*!40000 ALTER TABLE `task_progress` DISABLE KEYS */;
-INSERT INTO `task_progress` VALUES (1,'Query Raised',1,'10-08-2024',10),(2,'Completed',1,'10-08-2024',100);
+INSERT INTO `task_progress` VALUES (1,'Query Raised',1,'10-08-2024',10),(2,'Completed',1,'10-08-2024',100),(3,'started work',3,'12-08-2024',29),(4,'Ongoing Work ',4,'12-08-2024',67);
 /*!40000 ALTER TABLE `task_progress` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -353,4 +359,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-11 23:41:08
+-- Dump completed on 2024-08-12 21:47:55

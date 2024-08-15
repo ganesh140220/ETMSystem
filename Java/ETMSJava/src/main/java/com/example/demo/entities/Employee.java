@@ -38,7 +38,7 @@ public class Employee {
     @Column(nullable = false)
     private int contactNo;
 
-    @Column(nullable = false)
+    @Column
     private String address;
 
     @Column(nullable = false)
