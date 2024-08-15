@@ -23,6 +23,9 @@ import TaskList from './component/functionality/allTasksforManager';
 import TaskProgress from './component/functionality/taskprogress';
 import CreateProject from './component/CreateProject';
 import CreateClient from './component/CreateClient';
+import MyProject from './component/functionality/viewProjectManager';
+import AssociateQueries from './component/Associatequery';
+import CreateTeamMember from './component/createteammember';
 
 const App = () => {
   return (
@@ -54,6 +57,9 @@ const App = () => {
         <Route path="/createProject" element={<CreateProject />} />
         <Route path="/viewProject" element={<ViewProject />} />
         <Route path='/createClient' element={<CreateClient/>}/>
+        <Route path='/viewMyProject' element={<MyProject/>}/>
+        <Route path='/associatesQuery' element={<AssociateQueries/>}/>
+        <Route path='/createTeam' element={<CreateTeamMember/>}/>
 
       </Routes>
     </div>

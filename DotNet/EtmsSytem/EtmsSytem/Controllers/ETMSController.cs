@@ -101,5 +101,38 @@ namespace EtmsSytem.Controllers
 
         }
 
+        //view all project 
+        [HttpGet("queries")]
+        public List<Query> Query(int projid)
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                return db.Queries.Include(q=>q.Task).Where(q=>q.Task.ProjectId==projid).ToList();
+            }
+
+        }
+
+        //view all project 
+        [HttpGet("unassignedManager")]
+        public List<Employee> Manager(int roleid)
+        {
+
+
+            using (var db = new EtmsystemContext())
+            {
+                List<TeamMember> member =db.TeamMembers.ToList();
+
+
+                List<Employee>emp= db.Employees.Include(e => e.Login).ThenInclude(l=>l.Role).Where(e => e.Login.Role.Id==roleid).ToList();
+
+                List<Employee> filteredEmployees = emp.Where(e => !member.Any(m => m.EmpId == e.Id)).ToList();
+
+
+                return filteredEmployees;
+            }
+
+        }
+
     }
 }

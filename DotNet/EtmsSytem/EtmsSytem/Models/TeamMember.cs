@@ -7,7 +7,7 @@ public partial class TeamMember
 {
     public int TeamId { get; set; }
 
-    public int EmpId { get; set; }
+    public int? EmpId { get; set; }
 
     public int ProjectId { get; set; }
 

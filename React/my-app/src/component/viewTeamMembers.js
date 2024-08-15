@@ -10,11 +10,13 @@ const ViewTeamMembers = ({ projectId }) => {
 
   // Extract and map team members with role and designation details
   console.log('Team Data:', team);
-  const filteredMembers = team.map(member => ({
+  let filteredMembers;
+  
+   filteredMembers = Array.isArray(team)?team.map(member => ({
     ...member.emp,
     roleName: member.emp.login.role ? member.emp.login.role.role1 : 'N/A',
     desigName: member.emp.desig ? member.emp.desig.name : 'N/A'
-  }));
+  })):null; 
 
   // Define a sort order for roles
   const roleOrder = {
@@ -26,28 +28,28 @@ const ViewTeamMembers = ({ projectId }) => {
   };
 
   // Sort members based on the defined role order
-  const sortedMembers = filteredMembers.sort((a, b) => {
+  const sortedMembers = Array.isArray(team)?filteredMembers.sort((a, b) => {
     const roleA = roleOrder[a.roleName] || 5;
     const roleB = roleOrder[b.roleName] || 5;
 
     return roleA - roleB;
-  });
+  }):null;
 
   // Filter members based on the search query
   const searchLower = searchQuery.toLowerCase();
-  const filteredAndSearchedMembers = sortedMembers.filter(member => 
+  const filteredAndSearchedMembers = Array.isArray(team)?sortedMembers.filter(member => 
     member.firstName.toLowerCase().includes(searchLower) ||
     member.lastName.toLowerCase().includes(searchLower) ||
     member.emailId.toLowerCase().includes(searchLower) ||
     member.roleName.toLowerCase().includes(searchLower) ||
     member.desigName.toLowerCase().includes(searchLower)
-  );
+  ):null;
 
   return (
     <div className="bg-dark text-white text-center min-vh-100 p-0">
       <Container fluid>
         <div style={{ paddingTop: '90px' }}>
-          <h1>Team Members for Project ID: {projectId}</h1>
+          <h1>Team Members for Project ID: {projectId!=undefined||projectId!=null?projectId:"No Project Assigned"}</h1>
           <Row>
             <Col md={10} className="mx-auto text-center" style={{ marginTop: "20px" }}>
               <Form.Control
@@ -69,7 +71,7 @@ const ViewTeamMembers = ({ projectId }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredAndSearchedMembers.length > 0 ? (
+                    {filteredAndSearchedMembers && filteredAndSearchedMembers.length > 0 ? (
                       filteredAndSearchedMembers.map(member => (
                         <tr key={member.id}>
                           <td>{member.firstName} {member.lastName}</td>

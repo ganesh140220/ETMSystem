@@ -12,7 +12,7 @@ public partial class Query
 
     public string QueryText { get; set; } = null!;
 
-    public int RaisedBy { get; set; }
+    public int? RaisedBy { get; set; }
 
     public string Status { get; set; } = null!;
 

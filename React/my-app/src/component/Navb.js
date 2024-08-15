@@ -147,10 +147,10 @@ export default function Navb() {
                     <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="View" id="view-dropdown">
-                    <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/ViewTeamMembers">View Team Members</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/viewMyProject">View Project</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
+                 
                   <NavDropdown title="Profile" id="view-dropdown">
                     <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
