@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstr
 import backgroundImage from './back.jpg';
 import myimg from "./download.jpeg"
 import { useDispatch } from 'react-redux';
-import { setobj, setprojobj, setteamobj } from './slicefile';
+import { setclientobj, setobj, setprojobj, setteamobj } from './slicefile';
 
 const Login = () => {
     const [uid, setUserId] = useState('');
@@ -52,13 +52,23 @@ const Login = () => {
                 if (data.login === undefined) {
                     setErr(data.err);
                 } else {
-                    
+
                     dispatch(setobj(data));
 
                     switch (data.login.role.role1) {
                         case 'MasterAdmin':
-                        case 'Admin':navigate('/Admin'); break;
-                           
+                            await fetch("https://localhost:7018/ETMS/clients")
+                                .then(res => res.json())
+                                .then(d => dispatch(setclientobj(d)))
+                            navigate('/MasterAdmin');
+                            break;
+                        case 'Admin':
+                            await fetch("https://localhost:7018/ETMS/clients")
+                                .then(res => res.json())
+                                .then(d => dispatch(setclientobj(d)))
+                            navigate('/Admin');
+                            break;
+
                         case 'Manager':
                             await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0]?.projectId)
                                 .then(res => res.json())
@@ -67,7 +77,7 @@ const Login = () => {
                             await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0]?.projectId)
                                 .then(res => res.json())
                                 .then(d => dispatch(setprojobj(d)))
-                                 navigate('/Manager');
+                            navigate('/Manager');
                             break;
                         case 'Associate':
                             await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0]?.projectId)

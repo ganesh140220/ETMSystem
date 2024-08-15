@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Alert, Modal } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
 import { useSelector } from 'react-redux';
+import { useHistory, useNavigate } from 'react-router-dom';
 
 const CreateProject = () => {
   const obj = useSelector((state) => state.myobj.obj);
+  const clientobj = useSelector(state => state.myobj.clientobj);
   const myrole = obj.login.role.role1;
+  const navigate=useNavigate()
 
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -17,13 +20,30 @@ const CreateProject = () => {
 
   const [projectTitle, setProjectTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [assignedTo, setAssignedTo] = useState('');
-  const [clientId, setClientId] = useState('');
-  const [createdBy, setCreatedBy] = useState(obj.login.username); // Default to logged-in user
-  const [createdDate, setCreatedDate] = useState(new Date().toISOString().split('T')[0]); // Default to today
+  const [assignedTo, setAssignedTo] = useState(0);
+  const [clientId, setClientId] = useState(0);
+  const [createdBy, setCreatedBy] = useState(obj.id); // Default to empid
+
+  const formatDateTime = (date) => {
+    const padTo2Digits = (num) => num.toString().padStart(2, '0');
+
+    const day = padTo2Digits(date.getDate());
+    const month = padTo2Digits(date.getMonth() + 1);
+    const year = date.getFullYear();
+    const hours = padTo2Digits(date.getHours());
+    const minutes = padTo2Digits(date.getMinutes());
+    const seconds = padTo2Digits(date.getSeconds());
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  };
+
+  const [createdDate, setCreatedDate] = useState(formatDateTime(new Date())); // Default to today with formatted date
   const [status, setStatus] = useState('Pending');
   const [completedDate, setCompletedDate] = useState('');
   const [err, setErr] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+ 
 
   const validateForm = () => {
     if (!projectTitle) {
@@ -34,22 +54,11 @@ const CreateProject = () => {
       setErr('Description is required.');
       return false;
     }
-    if (!assignedTo) {
-      setErr('Assigned To is required.');
-      return false;
-    }
     if (!clientId) {
       setErr('Client ID is required.');
       return false;
     }
-    if (!createdBy) {
-      setErr('Created By is required.');
-      return false;
-    }
-    if (!status) {
-      setErr('Status is required.');
-      return false;
-    }
+
     setErr('');
     return true;
   };
@@ -60,23 +69,40 @@ const CreateProject = () => {
     if (!validateForm()) return;
 
     const newProject = {
-      projectTitle,
-      description,
-      assignedTo,
-      clientId,
-      createdBy,
-      createdDate,
-      status,
-      completedDate,
+      project: {
+        id: 0,
+        projectTitle,
+        description,
+        assignedTo,
+        clientId,
+        createdBy,
+        createdDate,
+        status,
+        completedDate,
+      },
+      teammember: {
+        teamId: 0,
+        empId: createdBy,
+        projectId: 0
+      }
     };
 
     console.log('New Project:', newProject);
     // Perform API call to create the project here
+
+    // On successful creation, show the modal
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate(`/${obj.login.role.role1}`); // Redirect to the dashboard
   };
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100">
       <Container style={containerStyle} fluid>
+        <div style={{ marginTop: "80px" }}></div>
         <Row className="w-100">
           <Col md={6} lg={4} className="mx-auto">
             <div className="right-div border p-3 rounded shadow-sm bg-dark mt-5">
@@ -103,65 +129,19 @@ const CreateProject = () => {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="formAssignedTo" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Assigned To</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter the name of the person assigned to the project"
-                    value={assignedTo}
-                    onChange={(e) => setAssignedTo(e.target.value)}
-                  />
-                </Form.Group>
-
                 <Form.Group controlId="formClientId" className="mb-3">
                   <Form.Label className='text-white mt-2'>Client ID</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter client ID"
+                  <Form.Select
                     value={clientId}
                     onChange={(e) => setClientId(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formCreatedBy" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Created By</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter the username of the creator"
-                    value={createdBy}
-                    readOnly
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formCreatedDate" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Created Date</Form.Label>
-                  <Form.Control
-                    type="date"
-                    value={createdDate}
-                    onChange={(e) => setCreatedDate(e.target.value)}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formStatus" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Status</Form.Label>
-                  <Form.Control
-                    as="select"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
                   >
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                  </Form.Control>
-                </Form.Group>
-
-                <Form.Group controlId="formCompletedDate" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Completed Date</Form.Label>
-                  <Form.Control
-                    type="date"
-                    value={completedDate}
-                    onChange={(e) => setCompletedDate(e.target.value)}
-                  />
+                    <option value="">Select a client</option>
+                    {clientobj.map((client) => (
+                      <option key={client.id} value={client.id}>
+                        {client.name}
+                      </option>
+                    ))}
+                  </Form.Select>
                 </Form.Group>
 
                 <Button className='mt-3' variant="primary" type="submit">
@@ -172,6 +152,21 @@ const CreateProject = () => {
             </div>
           </Col>
         </Row>
+
+        {/* Modal for success message */}
+        <Modal show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Project Created</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Your project has been successfully created.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCloseModal}>
+              Go to Dashboard
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );

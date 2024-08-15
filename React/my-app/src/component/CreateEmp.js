@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Alert, Modal } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
 import { useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const CreateEmployee = () => {
   const obj = useSelector((state) => state.myobj.obj);
+  const navigate=useNavigate()
   const myrole=obj.login.role.role1
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -13,7 +15,11 @@ const CreateEmployee = () => {
     height: '100vh',
     width: '100%',
   };
-
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate(`/${obj.login.role.role1}`); // Redirect to the dashboard
+  };
   const namePattern = /^[a-zA-Z\s]{2,30}$/; // Name must be letters and spaces, 2-30 characters
   const emailPattern = /\S+@\S+\.\S+/; // Basic email validation
   const userIdPattern = /^[a-zA-Z0-9]{4,12}$/; //User id pattern
@@ -93,7 +99,8 @@ const CreateEmployee = () => {
       if (data.err) {
         setErr(data.err);
       } else {
-        setErr('Employee created successfully');
+        
+        setShowModal(true);
         console.log(err);
       }
     })
@@ -206,6 +213,19 @@ console.log(newEmp);
           </div>
         </Col>
       </Row>
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Client Created</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Employee has been successfully created.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCloseModal}>
+              Go to Dashboard
+            </Button>
+          </Modal.Footer>
+        </Modal>
     </Container>
     </div>
   );

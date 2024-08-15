@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function ViewClient() {
+    const clientobj=useSelector(state=>state.myobj.clientobj)
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        fetch('https://localhost:7018/ETMS/clients')
-            .then(response => response.json())
-            .then(data => setClients(data));
-    }, []);
+        setClients(clientobj)
+    }, [clientobj]);
+    
+    
 
     return (
         <div style={{ marginTop: '100px', textAlign: 'center' }}>
