@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.dummyentitiy.EmployeeDto;
+import com.example.demo.dummyentitiy.ProjectDTO;
+import com.example.demo.dummyentitiy.TeamMemberDTO;
 import com.example.demo.entities.Client;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Project;
@@ -33,13 +35,16 @@ public class CreateController {
             // Save the employee and get the DTO of the saved employee
             EmployeeDto savedEmployeeDto = employeeService.saveEmployee(employeeDto);
 
-            // Return the saved employee DTO with a status of OK
+            // Return the saved employee DTO with a status of CREATED
             return new ResponseEntity<>(savedEmployeeDto, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Handle exceptions (e.g., logging)
+            // Log the exception for debugging
+            e.printStackTrace(); // Or use a logging framework like SLF4J
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    
     
     
 
@@ -62,5 +67,25 @@ public class CreateController {
 	}
     
   
+    
+    //controller to create project and team member
+    @PostMapping("/createProject")
+    public ResponseEntity<String> createProjectAndTeamMember(@RequestBody CreateProjectRequest request) {
+        try {
+            // Extract project and team member details from the request
+            ProjectDTO projectDTO = request.getProject();
+            TeamMemberDTO teamMemberDTO = request.getTeammember();
+
+            // Call the service method to create both the project and the team member
+            createService.createProjectAndTeamMember(projectDTO, teamMemberDTO);
+
+            return new ResponseEntity<>("Project and Team Member created successfully", HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception
+            return new ResponseEntity<>("Error creating project and team member", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    
     
 }

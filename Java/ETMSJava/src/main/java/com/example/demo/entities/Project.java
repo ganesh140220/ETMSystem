@@ -45,6 +45,9 @@ public class Project {
 
     @Column(nullable = false)
     private int clientId;
+    
+    @Column(nullable = true)
+    private String completedDate;
 
     @ManyToOne
     @JoinColumn(name = "assignedTo", insertable = false, updatable = false)
