@@ -97,12 +97,12 @@ export default function Navb() {
   <Nav className="me-auto">
     <NavDropdown title="Create..." id="create-dropdown">
       <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
-      <NavDropdown.Item as={Link} to="#">Create Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/createProject">Create Project</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="#">Create Client</NavDropdown.Item>
     </NavDropdown>
     <NavDropdown title="View..." id="view-dropdown">
       <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
-      <NavDropdown.Item as={Link} to="#">View Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/viewProject">View Project</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="/viewClient">View Client</NavDropdown.Item>
     </NavDropdown>
     <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
