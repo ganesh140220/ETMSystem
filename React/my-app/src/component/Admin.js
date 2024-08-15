@@ -5,14 +5,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Admin.css'; // Ensure correct import path
 import { useSelector } from 'react-redux';
 
+
+
 const Admin = () => {
- 
+
+  const obj = useSelector((state) => state.myobj.obj);
+  const [userRole, setUserRole] = useState(obj.login.role.role1 || '');
 
   return (
     <div className="bg-dark text-white d-flex align-items-center justify-content-center min-vh-100">
     <Container fluid >
       <div>
-    <h1 className="text-center mt-5">EMPLOYEE Project MANAGEMENT SYSTEM</h1>
+      <header className="d-flex justify-content-between align-items-center">
+          <h1 className='mt-4'>Dashboard</h1>
+          <div>
+            <span className="badge bg-primary">{userRole}</span>
+          </div>
+        </header>
+   
       <div className="row justify-content-center mt-4">
         {/* Card 1 */}
         <div className="col-md-3 mb-4">

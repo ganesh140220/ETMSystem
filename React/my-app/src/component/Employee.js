@@ -11,7 +11,7 @@ const EmployeeTasksPage = () => {
   const proj = useSelector(state => state.myobj.projobj);
   const team = useSelector(state => state.myobj.teamobj);
 
-  const manager = team.find(r => r.emp.id === proj.assignedTo);
+  const manager = Array.isArray(team) ? team.find(r => r.emp.id === proj.assignedTo) : null;
 
   const [counts, setCounts] = useState({
     pending: 0,

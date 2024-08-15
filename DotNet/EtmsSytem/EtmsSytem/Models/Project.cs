@@ -7,11 +7,11 @@ public partial class Project
 {
     public int Id { get; set; }
 
-    public int AssignedTo { get; set; }
+    public int? AssignedTo { get; set; }
 
     public int ClientId { get; set; }
 
-    public int CreatedBy { get; set; }
+    public int? CreatedBy { get; set; }
 
     public string CreatedDate { get; set; } = null!;
 
