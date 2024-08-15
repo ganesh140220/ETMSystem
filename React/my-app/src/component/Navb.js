@@ -95,17 +95,17 @@ export default function Navb() {
             )}
            {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
   <Nav className="me-auto">
-    <NavDropdown title="Create..." id="create-dropdown">
+    <NavDropdown title="Create" id="create-dropdown">
       <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="/createProject">Create Project</NavDropdown.Item>
-      <NavDropdown.Item as={Link} to="#">Create Client</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/createClient">Create Client</NavDropdown.Item>
     </NavDropdown>
-    <NavDropdown title="View..." id="view-dropdown">
+    <NavDropdown title="View" id="view-dropdown">
       <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="/viewProject">View Project</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="/viewClient">View Client</NavDropdown.Item>
     </NavDropdown>
-    <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
+   
     <NavDropdown title="Profile" id="profile-dropdown">
       <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
       <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>

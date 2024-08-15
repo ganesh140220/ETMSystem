@@ -22,6 +22,7 @@ import CreateTask from './component/createTask';
 import TaskList from './component/functionality/allTasksforManager';
 import TaskProgress from './component/functionality/taskprogress';
 import CreateProject from './component/CreateProject';
+import CreateClient from './component/CreateClient';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/tasks" element={<TaskProgress />} />
         <Route path="/createProject" element={<CreateProject />} />
         <Route path="/viewProject" element={<ViewProject />} />
+        <Route path='/createClient' element={<CreateClient/>}/>
 
       </Routes>
     </div>
