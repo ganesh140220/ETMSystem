@@ -10,7 +10,7 @@ import CreateEmployee from './component/CreateEmp';
 import About from './component/About';
 import ViewQuery from './component/viewQuery';
 import CreateQuery from './component/createQuery';
-import ViewProject from './component/viewProject';
+import ViewProject from './component/functionality/viewProject';
 import UpdateTaskProgress from './component/updateTaskProgress';
 import ViewTeamMembers from './component/viewTeamMembers';
 import ViewSolution from './component/viewSolutions';
@@ -21,10 +21,12 @@ import ViewClient from './component/functionality/viewClient';
 import CreateTask from './component/createTask';
 import TaskList from './component/functionality/allTasksforManager';
 import TaskProgress from './component/functionality/taskprogress';
+import CreateProject from './component/CreateProject';
 
 const App = () => {
   return (
     <div className="App">
+     
       <Navb />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -48,6 +50,9 @@ const App = () => {
         <Route path="/tasks/create" element={<CreateTask />} />
         <Route path='/alltasks' element={<TaskList />} />
         <Route path="/tasks" element={<TaskProgress />} />
+        <Route path="/createProject" element={<CreateProject />} />
+        <Route path="/viewProject" element={<ViewProject />} />
+
       </Routes>
     </div>
   );
