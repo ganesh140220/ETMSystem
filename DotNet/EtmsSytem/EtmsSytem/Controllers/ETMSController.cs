@@ -54,16 +54,6 @@ namespace EtmsSytem.Controllers
 
         }
 
-        [HttpGet("client")]
-        public Client Client(int cid)
-        {
-
-            using (var db = new EtmsystemContext())
-            {
-                return db.Clients.Where(e => e.Id == cid).FirstOrDefault();
-            }
-
-        }   
 
         //view all client 
         [HttpGet("clients")]
@@ -95,6 +85,18 @@ namespace EtmsSytem.Controllers
             using (var db = new EtmsystemContext())
             {
                 return db.TeamMembers.Include(e=>e.Emp).ThenInclude(e=>e.Login).ThenInclude(e=>e.Role).ToList();
+            }
+
+        }
+
+        //view all project 
+        [HttpGet("projects")]   
+        public List<Project> Projects()
+        {
+
+            using (var db = new EtmsystemContext())
+            {
+                return db.Projects.ToList();
             }
 
         }

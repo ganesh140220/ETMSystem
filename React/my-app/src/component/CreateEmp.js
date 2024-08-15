@@ -16,6 +16,7 @@ const CreateEmployee = () => {
 
   const namePattern = /^[a-zA-Z\s]{2,30}$/; // Name must be letters and spaces, 2-30 characters
   const emailPattern = /\S+@\S+\.\S+/; // Basic email validation
+  const userIdPattern = /^[a-zA-Z0-9]{4,12}$/; //User id pattern
   const [newEmp,setNewEmp]=useState({})
 
   const [firstName, setFirstName] = useState('');
@@ -34,6 +35,10 @@ const CreateEmployee = () => {
     if (!namePattern.test(lastName)) {
       setErr('Last Name must be letters only and 2-30 characters long.');return false;
     }
+    if (!userIdPattern.test(loginId)) {
+      setErr('User ID must be alphanumeric and 4-12 characters long.');
+      return false;
+  }
     if (!loginId) {
       setErr('User ID is required.');return false;
     }
@@ -57,7 +62,7 @@ const CreateEmployee = () => {
     if (!validateForm()) return;
 
 
-    // Add logic to handle form submission
+    // Create new employee object
    setNewEmp({
     firstName: firstName,
     lastName: lastName,
@@ -79,7 +84,10 @@ const CreateEmployee = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(newEmp),
+
   })
+  
+
     .then((response) => response.json())
     .then((data) => {
       if (data.err) {
@@ -91,10 +99,12 @@ const CreateEmployee = () => {
     })
     .catch((err) => {
       setErr('An error occurred. Please try again.');
+      console.log(err);
     });
 
   };
-
+console.log(newEmp);
+ 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100">
     <Container style={containerStyle} fluid className=" d-flex align-items-center justify-content-center min-vh-100">
