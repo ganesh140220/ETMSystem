@@ -1,22 +1,27 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dummyentitiy.EmployeeDto;
 import com.example.demo.dummyentitiy.LoginDTO;
-
+import com.example.demo.dummyentitiy.ProjectDTO;
+import com.example.demo.dummyentitiy.TeamMemberDTO;
 import com.example.demo.entities.Client;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Task;
+import com.example.demo.entities.TeamMember;
 import com.example.demo.repository.ClientRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.LoginRepository;
 import com.example.demo.repository.ProjectRepository;
 import com.example.demo.repository.TaskRepository;
+import com.example.demo.repository.TeamMemberRepository;
 
 @Service
 public class CreateService {
@@ -34,7 +39,14 @@ public class CreateService {
     @Autowired
     private ClientRepository clientRepository;
     
+    @Autowired
     private TaskRepository taskRepository;
+    
+    @Autowired
+    private TeamMemberRepository teamMemberRepository;
+    
+//    @Autowired
+//    JavaMailSender Sender;
 
   
 //	@Transactional
@@ -115,7 +127,16 @@ public class CreateService {
             savedEmployeeDTO.setLogin(savedLoginDTO);
         }
 
+//        SimpleMailMessage mailMsg = new SimpleMailMessage();
+//        //send mail to the employee
+//        mailMsg.setFrom("flyhigh21.2020@gmail.com");
+//        mailMsg.setTo(savedEmployee.getEmailId());
+//        mailMsg.setSubject("Welcome to the Company");
+//        mailMsg.setText("Welcome to the Company. Your login credentials are: \nUsername: " + savedEmployee.getLogin().getUsername() + "\nPassword: " + savedEmployee.getLogin().getPassword());
+//        Sender.send(mailMsg);
         return savedEmployeeDTO;
+        
+        
     }
 	
 	
@@ -141,6 +162,30 @@ public class CreateService {
 	public Task createTask(Task task) {
 		return taskRepository.save(task);
 	}
+    
+    //method to create project 
+    @Transactional
+    public void createProjectAndTeamMember(ProjectDTO projectDTO, TeamMemberDTO teamMemberDTO) {
+        // Create and save the Project
+        Project project = new Project();
+        project.setProjectTitle(projectDTO.getProjectTitle());
+        project.setStatus(projectDTO.getStatus());
+        project.setCreatedDate(projectDTO.getCreatedDate());
+        project.setDescription(projectDTO.getDescription());
+        project.setCreatedBy(projectDTO.getCreatedBy());
+        project.setAssignedTo(projectDTO.getAssignedTo());
+        project.setClientId(projectDTO.getClientId());
+        project.setCompletedDate(projectDTO.getCompletedDate()); // if applicable
+
+        Project savedProject = projectRepository.save(project);
+
+        // Create and save the TeamMember
+        TeamMember teamMember = new TeamMember();
+        teamMember.setEmpId(teamMemberDTO.getEmpId());
+        teamMember.setProjectId(savedProject.getId()); // Set the projectId to the ID of the saved project
+
+        teamMemberRepository.save(teamMember);
+    }
  
    
     

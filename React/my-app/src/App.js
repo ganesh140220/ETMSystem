@@ -21,7 +21,7 @@ import ViewClient from './component/functionality/viewClient';
 import CreateTask from './component/createTask';
 import TaskList from './component/functionality/allTasksforManager';
 import TaskProgress from './component/functionality/taskprogress';
-import CreateProject from './component/CreateProject';
+import CreateProject from './component/CreateProject.js';
 
 const App = () => {
   return (
@@ -50,8 +50,8 @@ const App = () => {
         <Route path="/tasks/create" element={<CreateTask />} />
         <Route path='/alltasks' element={<TaskList />} />
         <Route path="/tasks" element={<TaskProgress />} />
-        <Route path="/createProject" element={<CreateProject />} />
         <Route path="/viewProject" element={<ViewProject />} />
+        <Route path="/createProject" element={<CreateProject />} />
 
       </Routes>
     </div>
