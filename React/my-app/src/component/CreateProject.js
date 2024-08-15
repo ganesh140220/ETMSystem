@@ -88,9 +88,7 @@ const CreateProject = () => {
     };
 
     console.log('New Project:', newProject);
-    // Perform API call to create the project here
-
-    // On successful creation, show the modal
+   fetch('http://localhost:8080/createProject', )
     setShowModal(true);
   };
 

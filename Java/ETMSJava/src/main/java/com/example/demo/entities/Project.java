@@ -40,8 +40,8 @@ public class Project {
     @Column(nullable = false)
     private int createdBy;
 
-    @Column(nullable = false)
-    private int assignedTo;
+    @Column(nullable = true)
+    private Integer assignedTo;
 
     @Column(nullable = false)
     private int clientId;

@@ -173,7 +173,11 @@ public class CreateService {
         project.setCreatedDate(projectDTO.getCreatedDate());
         project.setDescription(projectDTO.getDescription());
         project.setCreatedBy(projectDTO.getCreatedBy());
-        project.setAssignedTo(projectDTO.getAssignedTo());
+
+        // Handle the assignedTo field: set it to null if it is not set
+        Integer assignedTo = projectDTO.getAssignedTo();
+        project.setAssignedTo((assignedTo != null && assignedTo > 0) ? assignedTo : null);
+
         project.setClientId(projectDTO.getClientId());
         project.setCompletedDate(projectDTO.getCompletedDate()); // if applicable
 
