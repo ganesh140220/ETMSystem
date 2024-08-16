@@ -1,55 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ETMSystem\\DotNet\\EtmsSytem\\",
+  "WorkspaceRootPath": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\controllers\\etmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\controllers\\etmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\controllers\\etmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\error.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-=======
       "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\models\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\models\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -91,27 +48,22 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\uidandpwd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\uidandpwd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\uidandpwd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\etmssytem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-=======
       "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\etmssytem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\etmssytem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|d:\\etmsystem\\dotnet\\etmssytem\\etmssytem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|c:\\users\\ganesh\\desktop\\final\\etmsystem\\dotnet\\etmssytem\\etmssytem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FFB52F-8CF8-47F5-883F-FB85CBDD8EEF}|EtmsSytem\\EtmsSytem.csproj|solutionrelative:etmssytem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -122,243 +74,200 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": 12,
-=======
           "SelectedChildIndex": 10,
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "Solution.cs",
-<<<<<<< HEAD
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Solution.cs",
-              "RelativeDocumentMoniker": "EtmsSytem\\Models\\Solution.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Solution.cs",
-=======
               "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Solution.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Solution.cs",
               "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Solution.cs",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "RelativeToolTip": "EtmsSytem\\Models\\Solution.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAxwAcAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T12:54:21.051Z"
+              "WhenOpened": "2024-08-16T06:54:33.552Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "Designation.cs",
-<<<<<<< HEAD
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Designation.cs",
-              "RelativeDocumentMoniker": "EtmsSytem\\Models\\Designation.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Designation.cs",
-=======
               "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Designation.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Designation.cs",
               "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Designation.cs",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "RelativeToolTip": "EtmsSytem\\Models\\Designation.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-15T12:52:50.726Z"
+              "WhenOpened": "2024-08-16T06:54:33.602Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "Client.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Client.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Client.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Client.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Client.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Client.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Client.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T03:41:53.842Z"
+              "WhenOpened": "2024-08-16T06:54:33.605Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Project.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Project.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Project.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Project.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Project.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Project.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Project.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAA1wCIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.727Z"
+              "WhenOpened": "2024-08-16T06:54:33.607Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Task.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Task.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Task.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Task.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Task.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Task.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Task.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAA3wBEAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.815Z"
+              "WhenOpened": "2024-08-16T06:54:33.61Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Query.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Query.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Query.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Query.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Query.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Query.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Query.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAYwA4AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.82Z"
+              "WhenOpened": "2024-08-16T06:54:33.612Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Login.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Login.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Login.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Login.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Login.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Login.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Login.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.826Z"
+              "WhenOpened": "2024-08-16T06:54:33.614Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Employee.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Employee.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Employee.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\Employee.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\Employee.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\Employee.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.829Z"
+              "WhenOpened": "2024-08-16T06:54:33.616Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TeamMember.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\TeamMember.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\TeamMember.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Models\\TeamMember.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\TeamMember.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Models\\TeamMember.cs",
               "RelativeToolTip": "EtmsSytem\\Models\\TeamMember.cs",
-<<<<<<< HEAD
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
-=======
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAjAAAA",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.832Z"
+              "WhenOpened": "2024-08-16T06:54:33.619Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "EtmsSytem\\Properties\\launchSettings.json",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Properties\\launchSettings.json",
               "RelativeToolTip": "EtmsSytem\\Properties\\launchSettings.json",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-12T19:52:31.836Z"
+              "WhenOpened": "2024-08-16T06:54:33.621Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ETMSController.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\ETMSController.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\ETMSController.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Controllers\\ETMSController.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\ETMSController.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\ETMSController.cs",
               "RelativeToolTip": "EtmsSytem\\Controllers\\ETMSController.cs",
-<<<<<<< HEAD
-              "ViewState": "AQIAAHMAAAAAAAAAAADwv4cAAAAAAAAA",
-=======
-              "ViewState": "AQIAAIIAAAAAAAAAAAAuwJAAAAAAAAAA",
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
+              "ViewState": "AQIAAGMAAAAAAAAAAAAqwIgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.839Z",
+              "WhenOpened": "2024-08-16T06:54:33.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "UidAndPwd.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\UidAndPwd.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\UidAndPwd.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\UidAndPwd.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\UidAndPwd.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\UidAndPwd.cs",
               "RelativeToolTip": "EtmsSytem\\UidAndPwd.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.842Z"
+              "WhenOpened": "2024-08-16T06:54:33.626Z"
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 13,
               "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Controllers\\WeatherForecastController.cs",
               "RelativeToolTip": "EtmsSytem\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.846Z"
+              "WhenOpened": "2024-08-16T06:54:33.629Z"
             },
             {
               "$type": "Document",
-=======
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "DocumentIndex": 3,
               "Title": "Error.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Error.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Error.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Error.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Error.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Error.cs",
               "RelativeToolTip": "EtmsSytem\\Error.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.851Z"
+              "WhenOpened": "2024-08-16T06:54:33.632Z"
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 15,
-=======
-              "DocumentIndex": 14,
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Program.cs",
               "RelativeDocumentMoniker": "EtmsSytem\\Program.cs",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Program.cs",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\Program.cs",
               "RelativeToolTip": "EtmsSytem\\Program.cs",
               "ViewState": "AQIAACIAAAAAAAAAAAAQwC8AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T19:52:31.854Z"
+              "WhenOpened": "2024-08-16T06:54:33.634Z"
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 14,
-=======
-              "DocumentIndex": 13,
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               "Title": "EtmsSytem.csproj",
-              "DocumentMoniker": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\EtmsSytem.csproj",
+              "DocumentMoniker": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\EtmsSytem.csproj",
               "RelativeDocumentMoniker": "EtmsSytem\\EtmsSytem.csproj",
-              "ToolTip": "D:\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\EtmsSytem.csproj",
+              "ToolTip": "C:\\Users\\Ganesh\\Desktop\\Final\\ETMSystem\\DotNet\\EtmsSytem\\EtmsSytem\\EtmsSytem.csproj",
               "RelativeToolTip": "EtmsSytem\\EtmsSytem.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-12T19:52:31.861Z"
+              "WhenOpened": "2024-08-16T06:54:33.639Z"
             }
           ]
         }
