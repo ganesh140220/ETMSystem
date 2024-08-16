@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { refreshObj } from './Refreshobj';
 
 const CreateTask = () => {
   const [team, setEmployees] = useState([]);
   const [taskCreated, setTaskCreated] = useState(false);
+  const obj = useSelector(state => state.myobj.obj);
+  const userRole = obj?.login?.role?.role1;
 
   useEffect(() => {
     fetch('https://localhost:7018/ETMS/teammembers')
       .then(response => response.json())
       .then(data => setEmployees(data))
       .catch(error => console.error('Error fetching team members:', error));
-  }, []);
+  }, [obj]);
 
   const associates = team.filter(t => t.emp.login.role.role1 === "Associate");
 
-  const obj = useSelector(state => state.myobj.obj);
-  const userRole = obj?.login?.role?.role1;
+
 
   const formatDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
@@ -86,7 +88,7 @@ const CreateTask = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Success:', data);
-
+        refreshObj(dispatch,obj)
         setTaskCreated(true);
         // navigate('/dashboard');
       } else {

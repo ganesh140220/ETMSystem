@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col, Table, Button, Form, ProgressBar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { refreshObj } from './Refreshobj';
 
 const EmployeeTasksPage = () => {
   const navigate = useNavigate();
@@ -193,7 +194,7 @@ const EmployeeTasksPage = () => {
                           <td>
                             <Button
                               variant="link"
-                              onClick={() => navigate("/ViewQuery", { state: { id: task.id, name: task.title } })}
+                              onClick={() => {refreshObj(dispatch,obj); navigate("/ViewQuery", { state: { id: task.id, name: task.title } })}}
                               style={{ color: "blue" }}
                             >
                               View

@@ -22,16 +22,17 @@ export default function ViewProject() {
       .then(data => setProjects(data))
       .catch(error => console.error('Error fetching projects:', error));
 
-    // Fetch employees
-    fetch("https://localhost:7018/ETMS/unassignedManager?roleid=3")
-      .then(response => response.json())
-      .then(data => {
-        setEmployees(data);
-      })
-      .catch(error => console.error('Error fetching employees:', error));
+   
   }, [obj]);
 
   const handleAssignProject = (project) => {
+     // Fetch employees
+     fetch("https://localhost:7018/ETMS/unassignedManager?roleid=3")
+     .then(response => response.json())
+     .then(data => {
+       setEmployees(data);
+     })
+     .catch(error => console.error('Error fetching employees:', error));
     setSelectedProject(project);
     setShowModal(true);
   };
@@ -66,6 +67,7 @@ export default function ViewProject() {
     
     setShowModal(false);
     refreshObj(dispatch,obj);
+    
   };
 
   const handleViewTeam = (projectId) => {

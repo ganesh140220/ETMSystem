@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Form, Container, Modal, Row, Col } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshObj } from "./Refreshobj";
 const CreateTeamMember = () => {
   const [emp, setEmp] = useState([]);
   const [selectedMembers, setSelectedMembers] = useState(new Set());
@@ -9,6 +9,8 @@ const CreateTeamMember = () => {
 
   // Retrieve projectId from Redux store
   const projobj = useSelector((state) => state.myobj.projobj);
+  const obj = useSelector((state) => state.myobj.obj);
+  const dispatch=useDispatch()
   const projectId = projobj?.id;
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const CreateTeamMember = () => {
       .then(response => response.json())
       .then(data => setEmp(data))
       .catch(error => console.error('Error fetching employees:', error));
-  }, []);
+  }, [obj]);
 
   const handleSelectMember = (id) => {
     setSelectedMembers(prevSelected => {
@@ -57,6 +59,7 @@ const CreateTeamMember = () => {
     })
     .then(response => {
       if (!response.ok) {
+        
         return response.text().then(text => {
           throw new Error(text);
         });
@@ -66,6 +69,7 @@ const CreateTeamMember = () => {
     .then(data => {
       setShowConfirmation(false);
       setSelectedMembers(new Set());
+      refreshObj(dispatch,obj)
       alert('Team members assigned successfully!');
     })
     .catch(error => {
