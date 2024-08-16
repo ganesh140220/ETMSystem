@@ -31,42 +31,6 @@ export default function ViewProject() {
 
   const handleAssign = () => {
     const assignObj = {
-<<<<<<< HEAD
-        teamId: 0,  // Ensure this value is set correctly if needed
-        empId: selectedEmployee,
-        projectId: selectedProject.id
-    };
-    console.log(assignObj);
-
-    fetch('http://localhost:8080/assignProjectToManager', {
-      method: 'PUT',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          teamId: 0,
-          empId: selectedEmployee,
-          projectId: selectedProject.id
-      })
-  })
-  .then(response => {
-      if (response.ok) {
-          return response.text();
-      }
-      throw new Error('Failed to assign project');
-  })
-  .then(message => {
-      console.log('Success:', message);
-      setShowModal(false);
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
-  
-};
-
-
-=======
       teamId: 0,
       empId: selectedEmployee,
       projectId: selectedProject.id
@@ -83,7 +47,6 @@ export default function ViewProject() {
     fetch()
     console.log('View team for project ID:', projectId);
   };
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
 
   return (
     <div style={{ marginTop: '100px', textAlign: 'center' }}>
@@ -102,10 +65,7 @@ export default function ViewProject() {
             <th>Status</th>
             <th>Completed Date</th>
             <th>Assign Project</th> {/* New column for assigning the project */}
-<<<<<<< HEAD
-=======
             <th>View Team</th> {/* New column for viewing the team */}
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           </tr>
         </thead>
         <tbody>
@@ -130,8 +90,6 @@ export default function ViewProject() {
                     Assign Project
                   </button>
                 </td>
-<<<<<<< HEAD
-=======
                 <td>
                   <button
                     className="btn btn-secondary"
@@ -140,16 +98,11 @@ export default function ViewProject() {
                     View Team
                   </button>
                 </td>
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               </tr>
             ))
           ) : (
             <tr>
-<<<<<<< HEAD
-              <td colSpan="10" className="text-center">No projects available</td>
-=======
               <td colSpan="11" className="text-center">No projects available</td>
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
             </tr>
           )}
         </tbody>
@@ -173,11 +126,7 @@ export default function ViewProject() {
                 value={selectedEmployee}
                 onChange={(e) => setSelectedEmployee(e.target.value)}
               >
-<<<<<<< HEAD
-                <option value="">Select Manager</option>
-=======
                 <option value="">Select Employee</option>
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
                 {employees.map(emp => (
                   <option key={emp.id} value={emp.id}>
                     {emp.firstName} {emp.lastName}

@@ -134,26 +134,6 @@ namespace EtmsSytem.Controllers
 
         }
 
-<<<<<<< HEAD
-=======
-        [HttpGet("teamByProjectId")]
-        public List<Employee> projectTeam(int roleid)
-        {
 
-
-            using (var db = new EtmsystemContext())
-            {
-                
-
-
-                
-
-
-                return null;
-            }
-
-        }
-
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
     }
 }

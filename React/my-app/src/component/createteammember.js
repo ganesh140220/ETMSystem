@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Form, Container, Modal, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
@@ -15,10 +11,6 @@ const CreateTeamMember = () => {
   const projobj = useSelector((state) => state.myobj.projobj);
   const projectId = projobj?.id;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
   useEffect(() => {
     // Fetch employees
     fetch("https://localhost:7018/ETMS/unassignedManager?roleid=4")
@@ -163,7 +155,3 @@ const CreateTeamMember = () => {
 };
 
 export default CreateTeamMember;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f

@@ -36,18 +36,10 @@ export default function Navb() {
               .then(res => res.json())
               .then(d => dispatch(setteamobj(d)));
 
-<<<<<<< HEAD
-            await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
-              .then(res => res.json())
-              .then(d => dispatch(setprojobj(d)));
-            navigate('/Manager');
-            console.log("refreshed obj set");
-=======
         await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setprojobj(d)))
             console.log("refreh obj seted")
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           }
         }
       } else {
@@ -154,8 +146,6 @@ export default function Navb() {
                 </NavDropdown>
               </Nav>
             )}
-<<<<<<< HEAD
-=======
            {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
   <Nav className="me-auto">
     <NavDropdown title="Create" id="create-dropdown">
@@ -233,7 +223,6 @@ export default function Navb() {
                 </Nav>
               )
             }
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           </Navbar.Collapse>
           {["Admin", "Manager", "MasterAdmin", "Associate"].includes(userRole) && (
             <Nav className="ms-auto">

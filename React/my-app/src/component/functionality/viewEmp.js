@@ -10,31 +10,9 @@ export default function ViewEmp() {
   }, []);
 
   const handleDelete = (id) => {
-<<<<<<< HEAD
-    const confirmed = window.confirm("Are you sure you want to delete this employee?");
-    if (confirmed) {
-      fetch(`http://localhost:8080/removeEmployee/${id}`, {
-        method: 'DELETE',
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to delete employee');
-        }
-        setEmployees(employees.filter(emp => emp.id !== id)); // Remove employee from state
-        alert('Employee deleted successfully!');
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Error deleting employee. Please try again.');
-      });
-    }
-  };
-  
-=======
     // Perform delete operation here
     console.log(`Deleting employee with id: ${id}`);
   };
->>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
 
   const handleDisableToggle = (id) => {
     setEmployees((prevEmployees) =>
