@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshObj } from '../Refreshobj';
 
 export default function ViewProject() {
   const [projects, setProjects] = useState([]);
@@ -8,6 +10,11 @@ export default function ViewProject() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState('');
   const [err, setErr] = useState('');
+  const obj = useSelector((state) => state.myobj.obj);
+  const dispatch = useDispatch();
+  
+
+  
   useEffect(() => {
     // Fetch projects
     fetch('https://localhost:7018/ETMS/projects')
@@ -22,7 +29,7 @@ export default function ViewProject() {
         setEmployees(data);
       })
       .catch(error => console.error('Error fetching employees:', error));
-  }, []);
+  }, [obj]);
 
   const handleAssignProject = (project) => {
     setSelectedProject(project);
@@ -58,6 +65,7 @@ export default function ViewProject() {
     // Perform the assignment logic here, e.g., send the data to the server
     
     setShowModal(false);
+    refreshObj(dispatch,obj);
   };
 
   const handleViewTeam = (projectId) => {
