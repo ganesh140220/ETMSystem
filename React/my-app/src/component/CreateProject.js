@@ -38,7 +38,7 @@ const CreateProject = () => {
   };
 
   const [createdDate, setCreatedDate] = useState(formatDateTime(new Date())); // Default to today with formatted date
-  const [status, setStatus] = useState('Pending');
+  const [status, setStatus] = useState('unassigned');
   const [completedDate, setCompletedDate] = useState('');
   const [err, setErr] = useState('');
   const [showModal, setShowModal] = useState(false);

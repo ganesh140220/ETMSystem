@@ -40,7 +40,6 @@ export default function Navb() {
         await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
             .then(res => res.json())
             .then(d => dispatch(setprojobj(d)))
-             navigate('/Manager');
             console.log("refreh obj seted")
           }
         }

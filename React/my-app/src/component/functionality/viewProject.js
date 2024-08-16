@@ -42,6 +42,12 @@ export default function ViewProject() {
     setShowModal(false);
   };
 
+  const handleViewTeam = (projectId) => {
+
+    fetch()
+    console.log('View team for project ID:', projectId);
+  };
+
   return (
     <div style={{ marginTop: '100px', textAlign: 'center' }}>
       <h2>Project List</h2>
@@ -59,6 +65,7 @@ export default function ViewProject() {
             <th>Status</th>
             <th>Completed Date</th>
             <th>Assign Project</th> {/* New column for assigning the project */}
+            <th>View Team</th> {/* New column for viewing the team */}
           </tr>
         </thead>
         <tbody>
@@ -83,11 +90,19 @@ export default function ViewProject() {
                     Assign Project
                   </button>
                 </td>
+                <td>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleViewTeam(project.id)}
+                  >
+                    View Team
+                  </button>
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="10" className="text-center">No projects available</td>
+              <td colSpan="11" className="text-center">No projects available</td>
             </tr>
           )}
         </tbody>

@@ -134,5 +134,23 @@ namespace EtmsSytem.Controllers
 
         }
 
+        [HttpGet("teamByProjectId")]
+        public List<Employee> projectTeam(int roleid)
+        {
+
+
+            using (var db = new EtmsystemContext())
+            {
+                
+
+
+                
+
+
+                return null;
+            }
+
+        }
+
     }
 }

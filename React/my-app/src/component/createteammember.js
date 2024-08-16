@@ -1,20 +1,22 @@
+
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Form, Container, Modal, Row, Col } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const CreateTeamMember = () => {
-  // Example emp object array
   const [emp, setEmp] = useState([]);
-
   const [selectedMembers, setSelectedMembers] = useState(new Set());
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  useEffect(() => { 
+  // Retrieve projectId from Redux store
+  const projobj = useSelector((state) => state.myobj.projobj);
+  const projectId = projobj?.id;
+
+  useEffect(() => {
     // Fetch employees
     fetch("https://localhost:7018/ETMS/unassignedManager?roleid=4")
       .then(response => response.json())
-      .then(data => {
-        setEmp(data);
-      })
+      .then(data => setEmp(data))
       .catch(error => console.error('Error fetching employees:', error));
   }, []);
 
@@ -31,16 +33,46 @@ const CreateTeamMember = () => {
   };
 
   const handleCreateTeam = () => {
-    const selectedMemberIds = Array.from(selectedMembers);
-    console.log('Selected members:', selectedMemberIds);
+    if (selectedMembers.size === 0) {
+      alert('Please select at least one member to create a team.');
+      return;
+    }
     setShowConfirmation(true);
   };
 
   const handleConfirmCreate = () => {
-    // Confirm creation logic
-    setShowConfirmation(false);
-    setSelectedMembers(new Set());
-    alert('Team created successfully!');
+    const selectedMemberIds = Array.from(selectedMembers);
+
+    // Prepare the request body
+    const requestBody = selectedMemberIds.map(empId => ({
+      teamId: 0,
+      empId: empId,
+      projectId: projectId, // Retrieved from Redux store
+    }));
+
+    console.log('Request Body:', requestBody);
+    fetch('http://localhost:8080/createTeam', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => {
+          throw new Error(text);
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      setShowConfirmation(false);
+      setSelectedMembers(new Set());
+      alert('Team members assigned successfully!');
+    })
+    .catch(error => {
+      console.error('Error assigning team members:', error);
+      alert('Error assigning team members. Please try again.');
+    });
   };
 
   const handleCloseConfirmation = () => {
@@ -53,12 +85,12 @@ const CreateTeamMember = () => {
         <h2 className="mb-4">Team Members</h2>
 
         {/* Table for team members */}
-        {emp && emp.length > 0 ? (
+        {emp.length > 0 ? (
           <Table striped bordered hover responsive>
             <thead>
               <tr>
                 <th>#</th>
-                <th>Select</th> {/* Checkbox column */}
+                <th>Select</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
@@ -85,7 +117,7 @@ const CreateTeamMember = () => {
             </tbody>
           </Table>
         ) : (
-          <div className="text-center mt-4">No record found</div>
+          <div className="text-center mt-4">No records found</div>
         )}
 
         {/* Button Row */}
@@ -124,3 +156,4 @@ const CreateTeamMember = () => {
 };
 
 export default CreateTeamMember;
+

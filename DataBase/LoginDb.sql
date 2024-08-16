@@ -3,7 +3,9 @@
 -- Host: localhost    Database: etmsystem
 -- ------------------------------------------------------
 -- Server version	8.0.37
-
+DROP database IF EXISTS `etmsystem`;
+create database etmsystem;
+use etmsystem;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
