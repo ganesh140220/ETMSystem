@@ -13,4 +13,6 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface TeamMemberRepository extends JpaRepository<TeamMember, Integer> {
 
+	 void deleteByEmpId(int empId);
+	    void deleteByProjectId(int projectId);
 }
