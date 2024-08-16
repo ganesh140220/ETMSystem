@@ -8,7 +8,6 @@ const AssociateQueries = () => {
   const tasks = proj.tasks || [];
 
   const [queries, setQueries] = useState([]);
-  
   const [employees, setEmployees] = useState([]);
   const [showSolutionForm, setShowSolutionForm] = useState(false);
   const [selectedQuery, setSelectedQuery] = useState(null);
@@ -16,17 +15,18 @@ const AssociateQueries = () => {
 
   useEffect(() => {
     // Fetch queries from API
-    fetch('https://localhost:7018/ETMS/queries?projid='+proj.id)
+    fetch('https://localhost:7018/ETMS/queries?projid=' + proj.id)
       .then(response => response.json())
       .then(data => setQueries(data))
       .catch(error => console.error('Error fetching queries:', error));
-
-  }, []);
+  }, [proj.id]);
 
   useEffect(() => {
+    // Fetch employees from API
     fetch('https://localhost:7018/ETMS/employees')
       .then(response => response.json())
-      .then(data => setEmployees(data));
+      .then(data => setEmployees(data))
+      .catch(error => console.error('Error fetching employees:', error));
   }, []);
 
   const handleShowSolutionForm = (query) => {
@@ -61,18 +61,27 @@ const AssociateQueries = () => {
       };
 
       // Send the solution to the API
-        
-
-
-      console.log(solvobj);
-
-      // Hide the solution form
-      setShowSolutionForm(false);
-
-      // Optionally, you can clear the solution or update the query status here
-      setSolution('');
+      fetch('http://localhost:8080/solutions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(solvobj),
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Update the query in the local state to reflect the new status
+        setQueries(queries.map(query => 
+          query.qid === selectedQuery.qid ? { ...query, status: 'resolved' } : query
+        ));
+        // Hide the solution form
+        setShowSolutionForm(false);
+        setSolution('');
+      })
+      .catch(error => console.error('Error submitting solution:', error));
     }
   };
+
 
   return (
     <div style={{ marginTop: '100px' }}>
@@ -109,11 +118,9 @@ const AssociateQueries = () => {
                     <td>{emp ? emp.firstName + " " + emp.lastName : 'Emp not found'}</td>
                     <td>{query.status}</td>
                     <td>
-                     
-                        <Button variant="primary" onClick={() => handleShowSolutionForm(query)} disabled={query.status=="resolved"}>
-                          Resolve Query
-                        </Button>
-                      
+                      <Button variant="primary" onClick={() => handleShowSolutionForm(query)} disabled={query.status === "resolved"}>
+                        Resolve Query
+                      </Button>
                     </td>
                   </tr>
                 );
@@ -129,7 +136,7 @@ const AssociateQueries = () => {
         {/* Solution Modal */}
         <Modal show={showSolutionForm} onHide={() => setShowSolutionForm(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Solution for Query {selectedQuery?.id}</Modal.Title>
+            <Modal.Title>Solution for Query {selectedQuery?.qid}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
