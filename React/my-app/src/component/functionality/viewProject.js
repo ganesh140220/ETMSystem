@@ -31,6 +31,7 @@ export default function ViewProject() {
 
   const handleAssign = () => {
     const assignObj = {
+<<<<<<< HEAD
         teamId: 0,  // Ensure this value is set correctly if needed
         empId: selectedEmployee,
         projectId: selectedProject.id
@@ -65,6 +66,24 @@ export default function ViewProject() {
 };
 
 
+=======
+      teamId: 0,
+      empId: selectedEmployee,
+      projectId: selectedProject.id
+    };
+    console.log(assignObj);
+
+    // Perform the assignment logic here, e.g., send the data to the server
+    
+    setShowModal(false);
+  };
+
+  const handleViewTeam = (projectId) => {
+
+    fetch()
+    console.log('View team for project ID:', projectId);
+  };
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
 
   return (
     <div style={{ marginTop: '100px', textAlign: 'center' }}>
@@ -83,6 +102,10 @@ export default function ViewProject() {
             <th>Status</th>
             <th>Completed Date</th>
             <th>Assign Project</th> {/* New column for assigning the project */}
+<<<<<<< HEAD
+=======
+            <th>View Team</th> {/* New column for viewing the team */}
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           </tr>
         </thead>
         <tbody>
@@ -107,11 +130,26 @@ export default function ViewProject() {
                     Assign Project
                   </button>
                 </td>
+<<<<<<< HEAD
+=======
+                <td>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleViewTeam(project.id)}
+                  >
+                    View Team
+                  </button>
+                </td>
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
               </tr>
             ))
           ) : (
             <tr>
+<<<<<<< HEAD
               <td colSpan="10" className="text-center">No projects available</td>
+=======
+              <td colSpan="11" className="text-center">No projects available</td>
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
             </tr>
           )}
         </tbody>
@@ -135,7 +173,11 @@ export default function ViewProject() {
                 value={selectedEmployee}
                 onChange={(e) => setSelectedEmployee(e.target.value)}
               >
+<<<<<<< HEAD
                 <option value="">Select Manager</option>
+=======
+                <option value="">Select Employee</option>
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
                 {employees.map(emp => (
                   <option key={emp.id} value={emp.id}>
                     {emp.firstName} {emp.lastName}
