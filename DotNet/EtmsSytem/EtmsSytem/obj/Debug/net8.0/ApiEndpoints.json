@@ -139,6 +139,32 @@
   },
   {
     "ContainingType": "EtmsSytem.Controllers.ETMSController",
+    "Method": "projectTeam",
+    "RelativePath": "ETMS/teamByProjectId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EtmsSytem.Models.Employee, EtmsSytem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EtmsSytem.Controllers.ETMSController",
     "Method": "Team",
     "RelativePath": "ETMS/teammembers",
     "HttpMethod": "GET",

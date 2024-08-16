@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Ganesh\Desktop\Final\ETMSystem\Java\ETMSJava"/>
 			<item value="D:\ETMSystem\Java\ETMSJava"/>
 		</list>
 		<list key="projectNameTemplate">

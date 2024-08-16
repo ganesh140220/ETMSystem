@@ -36,11 +36,18 @@ export default function Navb() {
               .then(res => res.json())
               .then(d => dispatch(setteamobj(d)));
 
+<<<<<<< HEAD
             await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
               .then(res => res.json())
               .then(d => dispatch(setprojobj(d)));
             navigate('/Manager');
             console.log("refreshed obj set");
+=======
+        await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
+            .then(res => res.json())
+            .then(d => dispatch(setprojobj(d)))
+            console.log("refreh obj seted")
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           }
         }
       } else {
@@ -147,6 +154,86 @@ export default function Navb() {
                 </NavDropdown>
               </Nav>
             )}
+<<<<<<< HEAD
+=======
+           {(location.pathname === "/Admin" || location.pathname === "/MasterAdmin") && (
+  <Nav className="me-auto">
+    <NavDropdown title="Create" id="create-dropdown">
+      <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/createProject">Create Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/createClient">Create Client</NavDropdown.Item>
+    </NavDropdown>
+    <NavDropdown title="View" id="view-dropdown">
+      <NavDropdown.Item as={Link} to="/viewEmp">View Employee</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/viewProject">View Project</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="/viewClient">View Client</NavDropdown.Item>
+    </NavDropdown>
+   
+    <NavDropdown title="Profile" id="profile-dropdown">
+      <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
+      <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+    </NavDropdown>
+  </Nav>
+)}
+
+            {
+              location.pathname === "/" && (
+                <Nav className="ms-auto">
+
+                  <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+                  {!obj && (<Nav.Link as={Link} to="/login">Login</Nav.Link>)}
+
+                </Nav>
+              )
+            }
+            {
+              location.pathname === "/login" && (
+                <Nav className="ms-auto">
+                  <Nav.Link as={Link} to="/">Home</Nav.Link>
+                  <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+
+                </Nav>
+              )
+            }
+            {
+              location.pathname === "/about" && (
+                <Nav className="ms-auto">
+                  <Nav.Link as={Link} to="/">Home</Nav.Link>
+                </Nav>
+              )
+            }
+            {
+              location.pathname === "/Manager" && (
+                <Nav className="me-auto">
+                
+                  <NavDropdown title="Create Employee" id="create-dropdown">
+                    <NavDropdown.Item as={Link} to="/createEmp">Create Employee</NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="View" id="view-dropdown">
+                  <NavDropdown.Item as={Link} to="/ViewTeamMembers">View Team Members</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/viewMyProject">View Project</NavDropdown.Item>
+                  </NavDropdown>
+                 
+                  <NavDropdown title="Profile" id="view-dropdown">
+                    <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+              )
+            }
+            {
+              location.pathname === "/Associate" && (
+                <Nav className="me-auto">
+                  
+                  <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
+                  <NavDropdown title="Profile" id="view-dropdown">
+                    <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+              )
+            }
+>>>>>>> 6868dda68e11d949583f95043ea2014905c4546f
           </Navbar.Collapse>
           {["Admin", "Manager", "MasterAdmin", "Associate"].includes(userRole) && (
             <Nav className="ms-auto">
