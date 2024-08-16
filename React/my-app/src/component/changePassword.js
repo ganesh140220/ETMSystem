@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export default function ChangePassword() {
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [oldPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [variant, setVariant] = useState("success"); // 'success' or 'danger'
+  const [isLoading, setIsLoading] = useState(false);
 
   // Retrieve loginId from Redux store
   const loginId = useSelector((state) => state.myobj.obj.login.loginid);
@@ -34,12 +35,12 @@ export default function ChangePassword() {
 
     const requestBody = {
       loginId, // Send loginId along with the request
-      currentPassword,
+      oldPassword,
       newPassword,
     };
 
-    // Log the JSON object to be sent in the request
-    console.log("Sending JSON object:", JSON.stringify(requestBody));
+    // Set loading state
+    setIsLoading(true);
 
     fetch("http://localhost:8080/changePassword", { // Ensure the endpoint matches your backend
       method: "POST",
@@ -52,6 +53,10 @@ export default function ChangePassword() {
         if (response.ok) {
           setMessage("Password changed successfully");
           setVariant("success");
+          // Optionally clear the form fields
+          setCurrentPassword("");
+          setNewPassword("");
+          setConfirmPassword("");
         } else if (response.status === 400) {
           setMessage("Current password is incorrect");
           setVariant("danger");
@@ -64,6 +69,10 @@ export default function ChangePassword() {
         console.error("Error during password change:", error);
         setMessage("An error occurred. Please try again later.");
         setVariant("danger");
+      })
+      .finally(() => {
+        // Remove loading state
+        setIsLoading(false);
       });
   };
 
@@ -79,7 +88,7 @@ export default function ChangePassword() {
           <Form.Control
             type="password"
             id="currentPassword"
-            value={currentPassword}
+            value={oldPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             required
           />
@@ -104,8 +113,8 @@ export default function ChangePassword() {
             required
           />
         </Form.Group>
-        <Button type="submit" variant="primary" className="w-100">
-          Change Password
+        <Button type="submit" variant="primary" className="w-100" disabled={isLoading}>
+          {isLoading ? <Spinner animation="border" size="sm" /> : "Change Password"}
         </Button>
       </Form>
     </Container>

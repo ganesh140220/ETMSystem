@@ -38,7 +38,9 @@ namespace EtmsSytem.Controllers
 
             using (var db = new EtmsystemContext())
             {
-                Console.WriteLine("team");
+                Encodeer e = new Encodeer();
+                string pwd = e.Encode("Vive@123");
+                Console.WriteLine(pwd);
                 List< TeamMember> team = db.TeamMembers.Include(e=>e.Emp).ThenInclude(e=>e.Login).ThenInclude(e=>e.Role).Include(e => e.Emp).ThenInclude(e => e.Desig).Where(e=>e.ProjectId == pid).ToList();
                 return team;
             }
