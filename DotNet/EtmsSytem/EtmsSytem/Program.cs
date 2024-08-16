@@ -46,6 +46,7 @@ namespace EtmsSytem
             app.MapControllers();
 
             app.Run();
+           
         }
     }
 }

@@ -3,7 +3,7 @@ import { Container, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Admin.css';
 import { useSelector } from 'react-redux';
-import backgroundImage from './functionality/desktop-wallpaper-administrative-assistant-top-needed-skills-office-administration.jpg';
+import backgroundImage from './desktop-wallpaper-administrative-assistant-top-needed-skills-office-administration.jpg';
 
 const Admin = () => {
   const obj = useSelector((state) => state.myobj.obj);
@@ -18,15 +18,13 @@ const Admin = () => {
 
   return (
     <div className="bg-dark text-white d-flex align-items-center justify-content-center min-vh-100">
-      
       <Container style={containerStyle} fluid className="bg-white d-flex align-items-center min-vh-100">
-      
-      <header className="dashboard-header">
+        <header className="dashboard-header">
           <h1>Dashboard Admin</h1>
         </header>
 
-        <Col md={9} className="d-flex justify-content-end">
-          <Card className="bg-white bg-opacity-75" style={{height:"400px", width:"400px"}}>
+        <Col md={6} className="d-flex justify-content-end">
+          <Card className="transparent-card">
             <Card.Body>
               <Card.Title className="transparent-card-title">Admin Overview</Card.Title>
               <Card.Text className="transparent-card-text">

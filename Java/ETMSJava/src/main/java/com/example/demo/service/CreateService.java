@@ -27,6 +27,9 @@ import com.example.demo.repository.TeamMemberRepository;
 
 @Service
 public class CreateService {
+	
+	@Autowired
+	public CustomStringEncoder cse;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -47,8 +50,8 @@ public class CreateService {
     @Autowired
     private TeamMemberRepository teamMemberRepository;
     
-//    @Autowired
-//    JavaMailSender Sender;
+    @Autowired
+    JavaMailSender Sender;
 
   
 //	@Transactional
@@ -77,6 +80,7 @@ public class CreateService {
     
 	@Transactional
     public EmployeeDto saveEmployee(EmployeeDto employeeDTO) {
+		
         // Create an Employee entity from the DTO
         Employee employee = new Employee();
         employee.setFirstName(employeeDTO.getFirstName());
@@ -89,6 +93,9 @@ public class CreateService {
         // Handle Login information
         LoginDTO loginDTO = employeeDTO.getLogin();
         Login login = new Login();
+        Login dblogin = new Login();
+        String username ="", password="";
+        
         if (loginDTO != null) {
             login.setUsername(loginDTO.getUsername());
             // Generate a random password if it's empty
@@ -99,9 +106,13 @@ public class CreateService {
             }
             login.setRoleid(loginDTO.getRoleid());
             login.setActive(loginDTO.getActive());
-
+             username=login.getUsername();
+             password=login.getPassword();
             // Save the login entity
-            login = loginRepository.save(login);
+            dblogin=login;
+            dblogin.setPassword(cse.encode(login.getPassword()));
+            
+            login = loginRepository.save(dblogin);
             employee.setLoginId(login.getLoginid());
             employee.setLogin(login);
         }
@@ -129,13 +140,13 @@ public class CreateService {
             savedEmployeeDTO.setLogin(savedLoginDTO);
         }
 
-//        SimpleMailMessage mailMsg = new SimpleMailMessage();
-//        //send mail to the employee
-//        mailMsg.setFrom("flyhigh21.2020@gmail.com");
-//        mailMsg.setTo(savedEmployee.getEmailId());
-//        mailMsg.setSubject("Welcome to the Company");
-//        mailMsg.setText("Welcome to the Company. Your login credentials are: \nUsername: " + savedEmployee.getLogin().getUsername() + "\nPassword: " + savedEmployee.getLogin().getPassword());
-//        Sender.send(mailMsg);
+        SimpleMailMessage mailMsg = new SimpleMailMessage();
+        //send mail to the employee
+        mailMsg.setFrom("flyhigh21.2020@gmail.com");
+        mailMsg.setTo(savedEmployee.getEmailId());
+        mailMsg.setSubject("Welcome to the Company");
+        mailMsg.setText("Welcome to the Company. Your login credentials are: \nUsername: " + username + "\nPassword: " + password);
+        Sender.send(mailMsg);
         return savedEmployeeDTO;
         
         
@@ -175,12 +186,12 @@ public class CreateService {
 
         Project savedProject = projectRepository.save(project);
 
-        // Create and save the TeamMember
-        TeamMember teamMember = new TeamMember();
-        teamMember.setEmpId(teamMemberDTO.getEmpId());
-        teamMember.setProjectId(savedProject.getId()); // Set the projectId to the ID of the saved project
-
-        teamMemberRepository.save(teamMember);
+//        // Create and save the TeamMember
+//        TeamMember teamMember = new TeamMember();
+//        teamMember.setEmpId(teamMemberDTO.getEmpId());
+//        teamMember.setProjectId(savedProject.getId()); // Set the projectId to the ID of the saved project
+//
+//        teamMemberRepository.save(teamMember);
     }
  
     

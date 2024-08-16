@@ -78,6 +78,7 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
 
     // Set submission status to true
     setSubmitted(true);
+  
   };
 
   // Handle work done percentage input change
@@ -94,7 +95,7 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
 
   // Handle navigation to dashboard
   const handleNavigateToDashboard = () => {
-    refreshObj(dispatch,obj)
+    refreshObj(dispatch,empobj)
     navigate(`/${userRole}`); // Navigate to the dashboard based on user role
   };
 

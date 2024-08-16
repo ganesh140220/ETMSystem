@@ -11,7 +11,7 @@ const Manager = () => {
   const team = useSelector(state => state.myobj.teamobj);
   
   const isProjectAvailable = proj.id !== undefined && proj.id !== null;
-  const isTeamAvailable = team[0]?.teamId !== undefined && team[0]?.teamId !== null && team.length>2;
+  const isTeamAvailable = team[0]?.teamId !== undefined && team[0]?.teamId !== null && team.length>1;
   const client = clientobj.find(client => client.id === proj.clientId);
 
   return (

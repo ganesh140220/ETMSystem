@@ -66,7 +66,7 @@ export default function Navb() {
                 </NavDropdown>
                 <NavDropdown title="Profile" id="profile-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}
@@ -98,7 +98,7 @@ export default function Navb() {
                 </NavDropdown>
                 <NavDropdown title="Profile" id="view-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}
@@ -107,7 +107,7 @@ export default function Navb() {
                 <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                 <NavDropdown title="Profile" id="view-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}

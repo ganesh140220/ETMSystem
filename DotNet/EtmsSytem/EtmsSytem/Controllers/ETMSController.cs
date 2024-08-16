@@ -19,12 +19,14 @@ namespace EtmsSytem.Controllers
            
             using (var db = new EtmsystemContext())
             {
+                Encodeer e = new Encodeer();
+                string pwd=e.Encode(obj.pwd);
 
                 Employee EmpLogin = db.Employees.Include(e=>e.TeamMembers).Include(e => e.Login).ThenInclude(e=>e.Role).Include(e => e.Tasks).ThenInclude(e => e.Queries).ThenInclude(e => e.Solutions).Include(e => e.Tasks).ThenInclude(e => e.TaskProgresses).Include(e => e.Login).Include(e => e.Desig).FirstOrDefault(o => o.Login.Username.Equals(obj.uid));
 
                 if (EmpLogin == null) return new Error("Enter valid username");
 		        if (EmpLogin.Login.Active != 1) return new Error("This account is currently suspended");
-		        if (EmpLogin!=null && EmpLogin.Login.Password.Equals(obj.pwd)) return EmpLogin;
+		        if (EmpLogin!=null && EmpLogin.Login.Password.Equals(pwd)) return EmpLogin;
 		        return new Error("Enter valid Password"); 
 
             }
@@ -36,8 +38,8 @@ namespace EtmsSytem.Controllers
 
             using (var db = new EtmsystemContext())
             {
-
-               List< TeamMember> team = db.TeamMembers.Include(e=>e.Emp).ThenInclude(e=>e.Login).ThenInclude(e=>e.Role).Include(e => e.Emp).ThenInclude(e => e.Desig).Where(e=>e.ProjectId == pid).ToList();
+                Console.WriteLine("team");
+                List< TeamMember> team = db.TeamMembers.Include(e=>e.Emp).ThenInclude(e=>e.Login).ThenInclude(e=>e.Role).Include(e => e.Emp).ThenInclude(e => e.Desig).Where(e=>e.ProjectId == pid).ToList();
                 return team;
             }
 
@@ -48,6 +50,9 @@ namespace EtmsSytem.Controllers
 
             using (var db = new EtmsystemContext())
             {
+               
+
+               
                 Console.WriteLine("proj");
                 return db.Projects.Include(e => e.Tasks).ThenInclude(e=>e.AssignedToNavigation).Include(e=>e.Tasks).ThenInclude(e=>e.TaskProgresses).Where(e => e.Id == pid).FirstOrDefault();
             }

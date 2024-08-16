@@ -84,7 +84,7 @@ const AssociateQueries = () => {
 
 
   return (
-    <div style={{ marginTop: '100px' }}>
+    <div style={{ marginTop: '50px' }}  className="bg-dark text-white text-center min-vh-100 p-0">
       <div className="container mt-4">
         <h2 className="mb-4">Queries of Associates</h2>
 
