@@ -193,6 +193,7 @@ const CreateEmployee = () => {
                       >
                         <option value="Select">Select</option>
                         <option value="1">Software Developer</option>
+                        <option value="2">Tester</option>
                       </Form.Control>
                     </Form.Group>
                   </Col>

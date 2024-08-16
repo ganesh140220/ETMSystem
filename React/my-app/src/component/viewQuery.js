@@ -3,14 +3,6 @@ import { Table, Button } from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-// Function to format date as dd/mm/yyyy
-const formatDate = (date) => {
-  const d = new Date(date);
-  const day = d.getDate().toString().padStart(2, '0');
-  const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
-  const year = d.getFullYear();
-  return `${day}/${month}/${year}`;
-};
 
 const ViewQuery = () => {
   const location = useLocation();
@@ -47,7 +39,7 @@ const ViewQuery = () => {
                   <td>{query.title}</td>
                   <td>{query.queryText}</td>
                   <td>{query.status}</td>
-                  <td>{formatDate(query.createdDate)}</td>
+                  <td>{query.createdDate}</td>
                   <td>
                     <Button
                       variant={query.status !== 'resolved' ? "secondary" : "success"}
