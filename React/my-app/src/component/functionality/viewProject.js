@@ -7,7 +7,7 @@ export default function ViewProject() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState('');
-
+  const [err, setErr] = useState('');
   useEffect(() => {
     // Fetch projects
     fetch('https://localhost:7018/ETMS/projects')
@@ -35,7 +35,25 @@ export default function ViewProject() {
       empId: selectedEmployee,
       projectId: selectedProject.id
     };
+
+    
+    fetch('http://localhost:8080/assignProjectToManager', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(assignObj),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+      setErr("Assigned")
+      })
+      .catch((err) => {
+        setErr('An error occurred. Please try again.');
+        console.log(err);
+      });
     console.log(assignObj);
+
 
     // Perform the assignment logic here, e.g., send the data to the server
     

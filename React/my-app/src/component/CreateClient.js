@@ -57,6 +57,22 @@ const CreateClient = () => {
     console.log('New Client:', newClient);
     // Perform API call to create the client here
 
+    fetch('http://localhost:8080/createclient', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newClient),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+      setErr("Client has been Created")
+      })
+      .catch((err) => {
+        setErr('An error occurred. Please try again.');
+        console.log(err);
+      });
+
     // On successful creation, show the modal
     setShowModal(true);
   };
@@ -75,17 +91,17 @@ const CreateClient = () => {
             <div className="right-div border p-3 rounded shadow-sm bg-dark mt-5">
               <h2 className="text-center mb-4 text-white">Create Client</h2>
               <Form onSubmit={handleSubmit}>
-                
-
-                <Form.Group controlId="formContactNo" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Contact Number</Form.Label>
+              <Form.Group controlId="formName" className="mb-3">
+                  <Form.Label className='text-white mt-2'>Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter contact number"
-                    value={contactNo}
-                    onChange={(e) => setContactNo(e.target.value)}
+                    placeholder="Enter name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </Form.Group>
+
+             
 
                 <Form.Group controlId="formEmailId" className="mb-3">
                   <Form.Label className='text-white mt-2'>Email ID</Form.Label>
@@ -96,16 +112,16 @@ const CreateClient = () => {
                     onChange={(e) => setEmailId(e.target.value)}
                   />
                 </Form.Group>
-
-                <Form.Group controlId="formName" className="mb-3">
-                  <Form.Label className='text-white mt-2'>Name</Form.Label>
+                <Form.Group controlId="formContactNo" className="mb-3">
+                  <Form.Label className='text-white mt-2'>Contact Number</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter contact number"
+                    value={contactNo}
+                    onChange={(e) => setContactNo(e.target.value)}
                   />
                 </Form.Group>
+                
 
                 <Button className='mt-3' variant="primary" type="submit">
                   Create Client
@@ -122,7 +138,7 @@ const CreateClient = () => {
             <Modal.Title>Client Created</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Client has been successfully created.</p>
+            <p>{err}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleCloseModal}>
