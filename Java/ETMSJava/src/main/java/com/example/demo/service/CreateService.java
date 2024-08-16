@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -139,17 +141,6 @@ public class CreateService {
         
     }
 	
-	
-    // Method to create a project
-    @Transactional
-    public Project createProject(Project project) {
-        if (project.getAssignedTo() == 0) {
-            project.setStatus("Unassigned");
-        } else {
-            project.setStatus("Pending");
-        }
-        return projectRepository.save(project);
-    }
     
     // Method to create a client
     @Transactional 
@@ -162,6 +153,7 @@ public class CreateService {
 	public Task createTask(Task task) {
 		return taskRepository.save(task);
 	}
+    
     
     //method to create project 
     @Transactional
@@ -191,6 +183,23 @@ public class CreateService {
         teamMemberRepository.save(teamMember);
     }
  
+    
+    //method team member
+    
+
+    @Transactional
+    public void createTeamMembers(List<TeamMemberDTO> teamMembersDTO) {
+        for (TeamMemberDTO teamMemberDTO : teamMembersDTO) {
+            TeamMember teamMember = new TeamMember();
+            teamMember.setEmpId(teamMemberDTO.getEmpId());
+            teamMember.setProjectId(teamMemberDTO.getProjectId());
+            teamMemberRepository.save(teamMember);
+
+            // Log or debug to verify the correct values are being set
+            System.out.println("Saving TeamMember with Project ID: " + teamMember.getProjectId());
+        }
+    }
+
    
     
    

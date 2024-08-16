@@ -7,7 +7,7 @@ public partial class Task
 {
     public int Id { get; set; }
 
-    public int AssignedTo { get; set; }
+    public int? AssignedTo { get; set; }
 
     public string CreatedDate { get; set; } = null!;
 

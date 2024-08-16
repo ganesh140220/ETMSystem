@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateTask = () => {
   const [team, setEmployees] = useState([]);
-  const [taskCreated, setTaskCreated] = useState(false); // New state for task creation success
+  const [taskCreated, setTaskCreated] = useState(false);
 
   useEffect(() => {
     fetch('https://localhost:7018/ETMS/teammembers')
@@ -13,15 +13,14 @@ const CreateTask = () => {
       .catch(error => console.error('Error fetching team members:', error));
   }, []);
 
-  // Filter associates from the team
   const associates = team.filter(t => t.emp.login.role.role1 === "Associate");
 
   const obj = useSelector(state => state.myobj.obj);
-  const userRole = obj?.login?.role?.role1
+  const userRole = obj?.login?.role?.role1;
 
   const formatDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -52,7 +51,7 @@ const CreateTask = () => {
       }));
     }, 1000);
 
-    return () => clearInterval(intervalId); // Cleanup on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleChange = (e) => {
@@ -65,7 +64,7 @@ const CreateTask = () => {
 
   const handleDateChange = (e) => {
     const selectedDate = new Date(e.target.value);
-    selectedDate.setHours(0, 0, 0, 0); // Set time to 00:00:00
+    selectedDate.setHours(0, 0, 0, 0);
     setTask((prevTask) => ({
       ...prevTask,
       dueDate: formatDate(selectedDate),
@@ -75,28 +74,27 @@ const CreateTask = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:8080/createtask', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(task),
-    })
-      .then(response => {response.json()})
-      .then(data => {
-        console.log('Success:' );
+    try {
+      const response = await fetch('http://localhost:8080/createtask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Success:', data);
+
+        setTaskCreated(true);
+        // navigate('/dashboard');
+      } else {
+        console.error('Error creating task:', response.statusText);
       }
-    )
-    console.log(task);
-
-    // Simulate task creation success
-    setTaskCreated(true);
-
-    // Uncomment and add actual task creation logic here
-    // await dispatch(createTaskAction(task));
-
-    // Navigate to Dashboard after task creation (if needed)
-    // navigate('/dashboard');
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
   };
 
   return (

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import com.example.demo.entities.Client;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.Project;
 import com.example.demo.entities.Task;
+import com.example.demo.entities.TeamMember;
 import com.example.demo.service.CreateService;
 
 
@@ -44,15 +47,23 @@ public class CreateController {
         }
     }
 
-    
-    
-    
-
-    // controller to create project
-    @PostMapping("/createproject")
-    public Project createProject(@RequestBody Project project) {
-        return createService.createProject(project);
+    // controller to create team Member
+    @PostMapping("/createTeam")
+    public ResponseEntity<String> createTeamMembers(@RequestBody List<TeamMemberDTO> teamMembers) {
+        try {
+            createService.createTeamMembers(teamMembers);
+            // Return a valid JSON response
+            return ResponseEntity.ok("{\"message\":\"Team Members created successfully\"}");
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception
+            // Return an error message as JSON
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("{\"message\":\"Error creating team members\"}");
+        }
     }
+
+    
+   
 
     // Controller to create a client
     @PostMapping("/createclient")
@@ -76,6 +87,10 @@ public class CreateController {
             ProjectDTO projectDTO = request.getProject();
             TeamMemberDTO teamMemberDTO = request.getTeammember();
 
+            // Log projectId and other details for debugging
+            System.out.println("Project ID: " + projectDTO.getId());
+            System.out.println("Team Member Project ID: " + teamMemberDTO.getProjectId());
+
             // Call the service method to create both the project and the team member
             createService.createProjectAndTeamMember(projectDTO, teamMemberDTO);
 
@@ -85,6 +100,7 @@ public class CreateController {
             return new ResponseEntity<>("Error creating project and team member", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     
     

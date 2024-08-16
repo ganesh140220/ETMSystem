@@ -38,7 +38,7 @@ const CreateProject = () => {
   };
 
   const [createdDate, setCreatedDate] = useState(formatDateTime(new Date())); // Default to today with formatted date
-  const [status, setStatus] = useState('Pending');
+  const [status, setStatus] = useState('unassigned');
   const [completedDate, setCompletedDate] = useState('');
   const [err, setErr] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -88,7 +88,16 @@ const CreateProject = () => {
     };
 
     console.log('New Project:', newProject);
-   fetch('http://localhost:8080/createProject', )
+
+    fetch('http://localhost:8080/createProject', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newProject)
+  })
+
+    // Perform API call to create the project here
+
+    // On successful creation, show the modal
     setShowModal(true);
   };
 

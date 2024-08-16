@@ -60,6 +60,7 @@ const Login = () => {
                             await fetch("https://localhost:7018/ETMS/clients")
                                 .then(res => res.json())
                                 .then(d => dispatch(setclientobj(d)))
+
                             navigate('/MasterAdmin');
                             break;
                         case 'Admin':
@@ -72,11 +73,15 @@ const Login = () => {
                         case 'Manager':
                             await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0]?.projectId)
                                 .then(res => res.json())
-                                .then(d => dispatch(setteamobj(d)))
-
+                                .then(d =>{console.log(data);dispatch(setteamobj(d))} )
+                                
                             await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0]?.projectId)
                                 .then(res => res.json())
                                 .then(d => dispatch(setprojobj(d)))
+                                
+                            await fetch("https://localhost:7018/ETMS/clients")
+                                .then(res => res.json())
+                                .then(d => dispatch(setclientobj(d)))
                             navigate('/Manager');
                             break;
                         case 'Associate':

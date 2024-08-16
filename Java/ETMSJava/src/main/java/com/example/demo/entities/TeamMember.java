@@ -1,13 +1,11 @@
 package com.example.demo.entities;
 
-
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Objects;
+
 import java.util.Objects;
 
 @Entity
@@ -35,8 +33,6 @@ public class TeamMember {
     @ManyToOne
     @JoinColumn(name = "projectId", insertable = false, updatable = false)
     private Project project;
-
-
 
     // hashCode and equals methods
     @Override

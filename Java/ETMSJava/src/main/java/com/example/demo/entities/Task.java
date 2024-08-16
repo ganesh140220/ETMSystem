@@ -82,13 +82,14 @@ public class Task {
                 && Objects.equals(title, other.title) && Objects.equals(completedDate, other.completedDate);
     }
     
+    
     public void updateStatusBasedOnProgress(float workDonePercent) {
         if (workDonePercent == 0) {
-            this.status = "Pending";
+            this.status = "pending";
         } else if (workDonePercent > 0 && workDonePercent < 100) {
-            this.status = "In Progress";
+            this.status = "in progress";
         } else if (workDonePercent == 100) {
-            this.status = "Completed";
+            this.status = "completed";
         }
     }
 }

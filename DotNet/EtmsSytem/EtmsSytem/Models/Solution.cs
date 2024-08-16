@@ -13,7 +13,7 @@ public partial class Solution
 
     public int Qid { get; set; }
 
-    public int SolvedBy { get; set; }
+    public int? SolvedBy { get; set; }
 
     public virtual Query QidNavigation { get; set; } = null!;
 
