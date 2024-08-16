@@ -165,6 +165,31 @@ public class CreateService {
 		return taskRepository.save(task);
 	}
     
+    @Transactional
+	public String forget(String uname) {
+		String pwd="";
+    	Login l=loginRepository.findByUsername(uname);
+
+    	if(l!=null) {
+    		pwd=PasswordGenerator.generateRandomPassword(10);
+    		l.setPassword(cse.encode(pwd));
+    		loginRepository.save(l);
+    		
+    	}
+    	Employee e= employeeRepository.findByLoginId(l.getLoginid());
+    	
+    	SimpleMailMessage mailMsg = new SimpleMailMessage();
+        //send mail to the employee
+        mailMsg.setFrom("flyhigh21.2020@gmail.com");
+        mailMsg.setTo(e.getEmailId());
+        mailMsg.setSubject("Reset Password");
+        mailMsg.setText("Your Password Has been Rested to: \nUsername: " + l.getUsername() + "\nPassword: " +pwd);
+        Sender.send(mailMsg);
+        return pwd;
+        
+    	
+	}
+    
     
     //method to create project 
     @Transactional

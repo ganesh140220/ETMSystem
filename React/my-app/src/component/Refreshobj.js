@@ -19,6 +19,7 @@ export const refreshObj = async (dispatch, empobj) => {
       if (data.login === undefined) {
         console.error(data.err);
       } else {
+        data.login.password=pwd;
         dispatch(setobj(data));
         console.log("data obj set");
 

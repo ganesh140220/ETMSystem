@@ -27,6 +27,8 @@ import MyProject from './component/functionality/viewProjectManager';
 import AssociateQueries from './component/Associatequery';
 import CreateTeamMember from './component/createteammember';
 import ChangePassword from './component/changePassword';
+import ForgetPassword from './component/forgetpassword';
+
 
 
 const App = () => {
@@ -63,6 +65,7 @@ const App = () => {
         <Route path='/associatesQuery' element={<AssociateQueries/>}/>
         <Route path='/createTeam' element={<CreateTeamMember/>}/>
         <Route path='/changePassword' element={<ChangePassword/>}/>
+        <Route path='/forgetpassword' element={<ForgetPassword/>}/>
 
       </Routes>
     </div>

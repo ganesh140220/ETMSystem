@@ -101,6 +101,16 @@ public class CreateController {
         }
     }
     
+    @GetMapping("/forgetpassword")
+    public String forget(@RequestParam(name="username") String username) {
+    	try {
+    return createService.forget(username);
+    	}
+    	catch(Exception e) {
+    		return "Enter valid username";
+    	}
+    }
+    
     
     
 }

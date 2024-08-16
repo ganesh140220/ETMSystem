@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
 import { useDispatch } from 'react-redux';
-import { setclientobj, setobj, setprojobj, setteamobj } from './slicefile';
+import { setclientobj, setobj, setprojobj, setpwd, setteamobj, setusername } from './slicefile';
 
 const Login = () => {
     const location = useLocation();
@@ -64,10 +64,13 @@ const Login = () => {
             });
 
             if (response.ok) {
+                dispatch(setpwd(pwd))
+                dispatch(setusername(uid))
                 const data = await response.json();
                 if (data.login === undefined) {
                     setErr(data.err);
                 } else {
+                    data.login.password=pwd;
                     dispatch(setobj(data));
 
                     switch (data.login.role.role1) {
@@ -152,7 +155,7 @@ const Login = () => {
                                 />
                             </Form.Group>
                             <div className="d-flex justify-content-end mb-3">
-                                <a href="#" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
+                               <Link to={"/forgetpassword"}>Forgot Password?</Link>
                             </div>
                             <Button variant="primary" type="submit" disabled={isLoading} className="w-100">
                                 {isLoading ? <Spinner animation="border" size="sm" /> : 'Login'}

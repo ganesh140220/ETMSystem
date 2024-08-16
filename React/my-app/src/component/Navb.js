@@ -76,6 +76,12 @@ export default function Navb() {
                 {!obj && (<Nav.Link as={Link} to="/login">Login</Nav.Link>)}
               </Nav>
             )}
+            {location.pathname === "/forgetpassword" && (
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              </Nav>
+            )}
             {location.pathname === "/login" && (
               <Nav className="ms-auto">
                 <Nav.Link as={Link} to="/">Home</Nav.Link>

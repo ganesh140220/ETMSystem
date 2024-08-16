@@ -81,7 +81,7 @@ namespace EtmsSytem.Controllers
 
                 using (var db = new EtmsystemContext())
                 {
-                    return db.Employees.ToList();
+                    return db.Employees.Include(e=>e.Login).ToList();
                 }
 
             }
