@@ -36,7 +36,7 @@ public class Employee {
     private String emailId;
 
     @Column(nullable = false)
-    private int contactNo;
+    private long contactNo;
 
     @Column
     private String address;

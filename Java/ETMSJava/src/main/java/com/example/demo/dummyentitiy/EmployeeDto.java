@@ -14,7 +14,7 @@ public class EmployeeDto {
 	    private String firstName;
 	    private String lastName;
 	    private String emailId;
-	    private int contactNo;
+	    private long contactNo;
 	    private String address;
 	    private int loginId;
 	    private int desigId;

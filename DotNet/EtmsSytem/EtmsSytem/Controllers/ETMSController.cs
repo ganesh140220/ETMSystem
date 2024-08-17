@@ -103,7 +103,7 @@ namespace EtmsSytem.Controllers
 
             using (var db = new EtmsystemContext())
             {
-                return db.Projects.ToList();
+                return db.Projects.Include(p => p.AssignedToNavigation).Include(p => p.CreatedByNavigation).Include(p=>p.Client).ToList();
             }
 
         }

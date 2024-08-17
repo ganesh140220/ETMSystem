@@ -140,16 +140,17 @@ const CreateTask = () => {
                 />
               </div>
               <div className="mb-2">
-                <label htmlFor="dueDate" className="form-label">Due Date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="dueDate"
-                  name="dueDate"
-                  onChange={handleDateChange}
-                  required
-                />
-              </div>
+  <label htmlFor="dueDate" className="form-label">Due Date</label>
+  <input
+    type="date"
+    className="form-control"
+    id="dueDate"
+    name="dueDate"
+    min={new Date().toISOString().split("T")[0]}  // Set the min attribute to today's date
+    onChange={handleDateChange}
+    required
+  />
+</div>
               <div className="mb-2">
                 <label htmlFor="assignedTo" className="form-label">Assign To</label>
                 <select

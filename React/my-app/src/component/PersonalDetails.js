@@ -26,8 +26,8 @@ const PersonalDetails = () => {
     firstName:obj.firstName,
     lastName:obj.lastName ,
     desigId: obj.desigId,
-    email: emp.emailId,
-    mobile: emp.contactNo,
+    emailId: emp.emailId,
+    contactNo: emp.contactNo,
     address: emp.address
   });
 
@@ -46,6 +46,18 @@ const PersonalDetails = () => {
     // Dispatch an action or make an API call to update the user details
     // For example:
     // dispatch(updateUserDetails(formValues));
+    fetch("http://localhost:8080/updateEmployee",{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formValues)
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data)
+    });
+    
     console.log(formValues)
     setIsEditing(false); // Exit edit mode after submission
   };
@@ -64,17 +76,17 @@ const PersonalDetails = () => {
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
                       type="email"
-                      name="email"
-                      value={formValues.email}
+                      name="emailId"
+                      value={formValues.emailId}
                       onChange={handleChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Mobile Number:</Form.Label>
                     <Form.Control
-                      type="text"
-                      name="mobile"
-                      value={formValues.mobile}
+                      type="Number"
+                      name="contactNo"
+                      value={formValues.contactNo}
                       onChange={handleChange}
                     />
                   </Form.Group>

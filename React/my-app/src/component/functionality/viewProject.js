@@ -14,7 +14,7 @@ export default function ViewProject() {
   const [viewMode, setViewMode] = useState('list'); // New state for controlling the view
   const obj = useSelector((state) => state.myobj.obj);
   const dispatch = useDispatch();
-  
+  let count=1;
   useEffect(() => {
     // Fetch projects
     fetch('https://localhost:7018/ETMS/projects')
@@ -84,11 +84,11 @@ export default function ViewProject() {
           <table className="table table-striped text-white">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>Sr No</th>
                 <th>Project Title</th>
                 <th>Description</th>
-                <th>Assigned To</th>
-                <th>Client ID</th>
+                <th>Assigned Manager</th>
+                <th>Client Name</th>
                 <th>Created By</th>
                 <th>Created Date</th>
                 <th>Status</th>
@@ -101,12 +101,12 @@ export default function ViewProject() {
               {projects.length > 0 ? (
                 projects.map(project => (
                   <tr key={project.id}>
-                    <td>{project.id}</td>
+                    <td>{count++}</td>
                     <td>{project.projectTitle}</td>
                     <td>{project.description}</td>
-                    <td>{project.assignedTo}</td>
-                    <td>{project.clientId}</td>
-                    <td>{project.createdBy}</td>
+                    <td>{project.assignedToNavigation.firstName} {project.assignedToNavigation.lastName}</td>
+                    <td>{project.client.name}</td>
+                    <td>{project.createdByNavigation.firstName} {project.createdByNavigation.lastName}</td>
                     <td>{project.createdDate}</td>
                     <td>{project.status}</td>
                     <td>{project.completedDate || 'N/A'}</td>
