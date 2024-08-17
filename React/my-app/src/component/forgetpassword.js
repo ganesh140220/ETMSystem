@@ -17,11 +17,11 @@ const ForgetPassword = () => {
         // Handle form submission logic
         fetch("http://localhost:8080/forgetpassword?username="+username)
         .then(res=>res.text())
-        .then(state=>console.log(state))
-        .catch(err=>console.log(err))
+        .then(state=>{setErr(state);setIsLoading(false);})
+        .catch(err=>{console.log(err);setIsLoading(false);})
 
-        setErr("Password has been sent to your register Email")
-        setIsLoading(false);
+        
+        
     };
 
     const containerStyle = {

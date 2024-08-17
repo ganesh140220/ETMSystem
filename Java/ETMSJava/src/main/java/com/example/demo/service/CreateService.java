@@ -79,7 +79,7 @@ public class CreateService {
 //	}
     
 	@Transactional
-    public EmployeeDto saveEmployee(EmployeeDto employeeDTO) {
+    public String saveEmployee(EmployeeDto employeeDTO) {
 		
         // Create an Employee entity from the DTO
         Employee employee = new Employee();
@@ -95,6 +95,9 @@ public class CreateService {
         Login login = new Login();
         Login dblogin = new Login();
         String username ="", password="";
+        Login cheklogin= loginRepository.findByUsername( loginDTO.getUsername());
+        System.out.println(cheklogin);
+        if(cheklogin!=null)return "UserName Allready in used";
         
         if (loginDTO != null) {
             login.setUsername(loginDTO.getUsername());
@@ -145,9 +148,10 @@ public class CreateService {
         mailMsg.setFrom("flyhigh21.2020@gmail.com");
         mailMsg.setTo(savedEmployee.getEmailId());
         mailMsg.setSubject("Welcome to the Company");
-        mailMsg.setText("Welcome to the Company. Your login credentials are: \nUsername: " + username + "\nPassword: " + password);
+        mailMsg.setText("Welcome to the Company. Your login credentials are below and Please Update your profile from PROFILE tab after login: \nUsername: " + username + "\nPassword: " + password);
+     
         Sender.send(mailMsg);
-        return savedEmployeeDTO;
+        return "Employee Has been Created Successfully";
         
         
     }
@@ -169,7 +173,7 @@ public class CreateService {
 	public String forget(String uname) {
 		String pwd="";
     	Login l=loginRepository.findByUsername(uname);
-
+    	if(l==null)return "Enter Valid UserName";
     	if(l!=null) {
     		pwd=PasswordGenerator.generateRandomPassword(10);
     		l.setPassword(cse.encode(pwd));
@@ -185,7 +189,7 @@ public class CreateService {
         mailMsg.setSubject("Reset Password");
         mailMsg.setText("Your Password Has been Rested to: \nUsername: " + l.getUsername() + "\nPassword: " +pwd);
         Sender.send(mailMsg);
-        return pwd;
+        return "Password has been sent to your register Email";
         
     	
 	}

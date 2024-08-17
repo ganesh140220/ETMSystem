@@ -22,7 +22,7 @@ const Admin = () => {
       <Container style={containerStyle} fluid className="bg-white d-flex align-items-center min-vh-100">
       
       <header className="dashboard-header">
-          <h1>Dashboard Admin</h1>
+          <h1>Dashboard {userRole}</h1>
         </header>
 
         <Col md={9} className="d-flex justify-content-end">

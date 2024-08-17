@@ -94,12 +94,13 @@ const CreateEmployee = () => {
       },
       body: JSON.stringify(newEmp),
     })
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((data) => {
-        setLoading(false); // Stop loading
-        if (data.err) {
-          setErr(data.err);
-        } else {
+        setLoading(false); 
+        if(data!="Employee Has been Created Successfully"){
+          setErr(data);
+        }
+         else {
           setShowModal(true);
           setFirstName('');
           setLastName('');
@@ -107,13 +108,10 @@ const CreateEmployee = () => {
           setEmail('');
           setRole('');
           setDesignation('');
+          setErr(data)
         }
       })
-      .catch((err) => {
-        setLoading(false); // Stop loading
-        setErr('An error occurred. Please try again.');
-        console.log(err);
-      });
+      ;
   };
 
   return (
@@ -217,7 +215,7 @@ const CreateEmployee = () => {
             <Modal.Title>Employee Created</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Employee has been successfully created.</p>
+            <p>{err}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleCloseModal}>
