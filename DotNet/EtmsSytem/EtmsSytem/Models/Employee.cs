@@ -13,7 +13,8 @@ public partial class Employee
 
     public string LastName { get; set; } = null!;
 
-    public int ContactNo { get; set; }
+    public long ContactNo { get; set; }
+
 
     public string EmailId { get; set; } = null!;
 

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dummyentitiy.EmployeeDto;
+import com.example.demo.entities.Employee;
 import com.example.demo.entities.TeamMember;
 import com.example.demo.service.UpdateService;
 
@@ -32,5 +34,17 @@ public class UpdateController {
         }
     }
 
-
+    
+    @PutMapping("/updateEmployee")
+    public ResponseEntity<String> updateEmployee(@RequestBody Employee employee){
+    
+    	try {
+            updateService.updateEmployee(employee);
+            return ResponseEntity.ok("Employee updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    }
+    	
+}
+    
 }
