@@ -166,7 +166,12 @@ public class CreateService {
     //method to create task 
     @Transactional
 	public Task createTask(Task task) {
-		return taskRepository.save(task);
+     Project p=	projectRepository.findByid(task.getProjectId());
+     p.setStatus("in progress");
+     p.setCompletedDate("");
+     projectRepository.save(p);
+    	
+	return taskRepository.save(task);
 	}
     
     @Transactional

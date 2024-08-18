@@ -20,5 +20,5 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	@Query("UPDATE Project p SET p.assignedTo = :empId, p.status = 'Pending' WHERE p.id = :projectId")
 	int updateAssignedTo(@Param("empId") int empId, @Param("projectId") int projectId);
 	
-
+	Project findByid(int projectId);
 }

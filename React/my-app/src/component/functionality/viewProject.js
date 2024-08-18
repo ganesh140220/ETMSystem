@@ -104,7 +104,7 @@ export default function ViewProject() {
                     <td>{count++}</td>
                     <td>{project.projectTitle}</td>
                     <td>{project.description}</td>
-                    <td>{project.assignedToNavigation.firstName} {project.assignedToNavigation.lastName}</td>
+                    <td>{project.assignedToNavigation?project.assignedToNavigation.firstName:"Not Assigned"} {project.assignedToNavigation?.lastName}</td>
                     <td>{project.client.name}</td>
                     <td>{project.createdByNavigation.firstName} {project.createdByNavigation.lastName}</td>
                     <td>{project.createdDate}</td>
@@ -114,7 +114,7 @@ export default function ViewProject() {
                       <button
                         className="btn btn-primary"
                         onClick={() => handleAssignProject(project)}
-                        disabled={project.status.toLowerCase() !== 'unassigned'}
+                        disabled={project.assignedToNavigation }
                       >
                         Assign Project
                       </button>
@@ -123,7 +123,7 @@ export default function ViewProject() {
                       <button
                         className="btn btn-secondary"
                         onClick={() => handleViewTeam(project.id)}
-                        disabled={project.status.toLowerCase() === 'unassigned'}
+                        disabled={!project.assignedToNavigation}
                       >
                         View Team
                       </button>
