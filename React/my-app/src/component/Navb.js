@@ -2,55 +2,18 @@ import { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { setobj, setprojobj, setteamobj } from "./slicefile";
+import { setallprojobj, setclientobj, setobj, setprojobj, setteamobj } from "./slicefile";
+import { refreshObj } from "./Refreshobj";
 
 export default function Navb() {
   const obj = useSelector((state) => state.myobj.obj.login);
   const [Name, setUserName] = useState('');
   const [err, setErr] = useState('');
   const dispatch = useDispatch();
-  const [userRole, setUserRole] = useState('');
+  
   const empobj = useSelector((state) => state.myobj.obj);
-
-  const RefreshObj = async () => {
-    try {
-      const uid = empobj.login.username;
-      const pwd = empobj.login.password;
-      const response = await fetch('https://localhost:7018/ETMS/validate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ uid, pwd }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.login === undefined) {
-          setErr(data.err);
-        } else {
-          dispatch(setobj(data));
-          console.log("data obj set");
-
-          if (data.login.role.role1 === "Associate" || data.login.role.role1 === "Manager") {
-            await fetch("https://localhost:7018/ETMS/team?pid=" + data.teamMembers[0].projectId)
-              .then(res => res.json())
-              .then(d => dispatch(setteamobj(d)));
-
-        await fetch("https://localhost:7018/ETMS/project?pid=" + data.teamMembers[0].projectId)
-            .then(res => res.json())
-            .then(d => dispatch(setprojobj(d)))
-            console.log("refreh obj seted")
-          }
-        }
-      } else {
-        setErr('Login failed. Please try again.');
-        console.log('API call failed:', response.status);
-      }
-    } catch (error) {
-      setErr('An error occurred. Please try again later.');
-      console.error('Error:', error);
-    }
-  }
+  const [userRole, setUserRole] = useState('');
+  
 
   useEffect(() => {
     if (empobj) {
@@ -68,6 +31,8 @@ export default function Navb() {
     dispatch(setobj({}));
     dispatch(setteamobj({}));
     dispatch(setprojobj({}));
+    dispatch(setclientobj({}));
+    dispatch(setallprojobj({}));
     setUserName('');
     setUserRole('');
     navigate('/login');
@@ -101,7 +66,7 @@ export default function Navb() {
                 </NavDropdown>
                 <NavDropdown title="Profile" id="profile-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}
@@ -109,6 +74,12 @@ export default function Navb() {
               <Nav className="ms-auto">
                 <Nav.Link as={Link} to="/about">About Us</Nav.Link>
                 {!obj && (<Nav.Link as={Link} to="/login">Login</Nav.Link>)}
+              </Nav>
+            )}
+            {location.pathname === "/forgetpassword" && (
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/login">Login</Nav.Link>
               </Nav>
             )}
             {location.pathname === "/login" && (
@@ -133,7 +104,7 @@ export default function Navb() {
                 </NavDropdown>
                 <NavDropdown title="Profile" id="view-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}
@@ -142,7 +113,7 @@ export default function Navb() {
                 <Nav.Link as={Link} to="/ViewTeamMembers">Team Members</Nav.Link>
                 <NavDropdown title="Profile" id="view-dropdown">
                   <NavDropdown.Item as={Link} to="/personalDetails">Personal Details</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#">Change Password</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/changePassword">Change Password</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             )}
@@ -151,7 +122,8 @@ export default function Navb() {
           {["Admin", "Manager", "MasterAdmin", "Associate"].includes(userRole) && (
             <Nav className="ms-auto">
               {!["/", "/about"].includes(location.pathname) && <Nav.Link as={Link} to="/">Home</Nav.Link>}
-              <Nav.Link className="me-1" onClick={RefreshObj}><u>Refresh</u></Nav.Link>
+              <Nav.Link className="me-1" onClick={() => refreshObj(dispatch, empobj)}><u>Refresh</u></Nav.Link>
+
               <Nav.Item className="d-flex align-items-center">
                 <Navbar.Text className="me-3" style={{ color: "gold" }}>
                   Welcome {Name}

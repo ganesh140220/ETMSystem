@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshObj } from './Refreshobj';
 
 
 const ViewQuery = () => {
+  const obj = useSelector(state => state.myobj.obj); // Adjust according to your state structure
+  const dispatch=useDispatch()
+ 
+ 
   const location = useLocation();
   const taskId = location.state?.id; // Retrieve the task ID from location.state
 
-  // Access the Redux store to get the task object
-  const obj = useSelector(state => state.myobj.obj);
+
   
   // Find the specific task using the ID
   const task = obj?.tasks.find(task => task.id === taskId);

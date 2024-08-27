@@ -1,109 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, Button, NavDropdown } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Admin.css'; // Ensure correct import path
+import './Admin.css';
 import { useSelector } from 'react-redux';
-
-
+import backgroundImage from './functionality/desktop-wallpaper-administrative-assistant-top-needed-skills-office-administration.jpg';
 
 const Admin = () => {
-
   const obj = useSelector((state) => state.myobj.obj);
   const [userRole, setUserRole] = useState(obj.login.role.role1 || '');
 
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    width: '100%',
+  };
+
   return (
     <div className="bg-dark text-white d-flex align-items-center justify-content-center min-vh-100">
-    <Container fluid >
-      <div>
-      <header className="d-flex justify-content-between align-items-center">
-          <h1 className='mt-4'>Dashboard</h1>
-          <div>
-            <span className="badge bg-primary">{userRole}</span>
-          </div>
+      
+      <Container style={containerStyle} fluid className="bg-white d-flex align-items-center min-vh-100">
+      
+      <header className="dashboard-header">
+          <h1>Dashboard {userRole}</h1>
         </header>
-   
-      <div className="row justify-content-center mt-4">
-        {/* Card 1 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-warning text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">6</h2>
-              <p>UnAssigned Project</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 2 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-info text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">4</h2>
-              <p>Total Employees</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 3 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-danger text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">1</h2>
-              <p>In-progress Project</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 4 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-success text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">3</h2>
-              <p>Completed Project</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 5 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-primary text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">4</h2>
-              <p>All Projects</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 6 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-secondary text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">2</h2>
-              <p>New Employees</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 7 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-dark text-white text-center">
-            <div className="card-body">
-              <h2 className="card-title">5</h2>
-              <p>Pending Approvals</p>
-            </div>
-          </div>
-        </div>
-        {/* Card 8 */}
-        <div className="col-md-3 mb-4">
-          <div className="card bg-light text-dark text-center">
-            <div className="card-body">
-              <h2 className="card-title">7</h2>
-              <p>Overdue Tasks</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer className="text-center mt-4">
-        <p>Employee Project Management System. All rights reserved.</p>
-      </footer>
-    </div>
+
+        <Col md={9} className="d-flex justify-content-end">
+          <Card className="bg-white bg-opacity-75" style={{height:"400px", width:"400px"}}>
+            <Card.Body>
+              <Card.Title className="transparent-card-title">Admin Overview</Card.Title>
+              <Card.Text className="transparent-card-text">
+                As an admin, you have access to a range of powerful tools to manage the system. Below are some of the key functionalities:
+                <ul>
+                  <li><strong>User Management:</strong> Add, edit, and remove users. Manage roles and permissions.</li>
+                  <li><strong>Project Management:</strong> Oversee project progress, assign tasks, and track performance.</li>
+                  <li><strong>Reports:</strong> Generate and view detailed reports on system usage, user activity, and more.</li>
+                  <li><strong>Settings:</strong> Customize system settings, configure integrations, and manage notifications.</li>
+                </ul>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <footer>
+          {/* <p>Employee Project Management System. All rights reserved.</p> */}
+        </footer>
       </Container>
-      </div>
-    
+    </div>
   );
 };
 

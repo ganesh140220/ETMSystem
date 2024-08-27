@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col, Alert, Modal } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Alert, Modal, Spinner } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +18,7 @@ const CreateEmployee = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
   const handleCloseModal = () => {
     setShowModal(false);
     navigate(`/${myrole}`); // Redirect to the dashboard
@@ -68,6 +69,8 @@ const CreateEmployee = () => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    setLoading(true); // Start loading
+
     // Create new employee object
     const newEmp = {
       firstName: firstName,
@@ -91,11 +94,13 @@ const CreateEmployee = () => {
       },
       body: JSON.stringify(newEmp),
     })
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((data) => {
-        if (data.err) {
-          setErr(data.err);
-        } else {
+        setLoading(false); 
+        if(data!="Employee Has been Created Successfully"){
+          setErr(data);
+        }
+         else {
           setShowModal(true);
           setFirstName('');
           setLastName('');
@@ -103,12 +108,10 @@ const CreateEmployee = () => {
           setEmail('');
           setRole('');
           setDesignation('');
+          setErr(data)
         }
       })
-      .catch((err) => {
-        setErr('An error occurred. Please try again.');
-        console.log(err);
-      });
+      ;
   };
 
   return (
@@ -199,8 +202,8 @@ const CreateEmployee = () => {
                   </Col>
                 </Row>
 
-                <Button className='mt-3' variant="primary" type="submit">
-                  Create Employee
+                <Button className='mt-3' variant="primary" type="submit" disabled={loading}>
+                  {loading ? <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /> : 'Create Employee'}
                 </Button>
                 {err && <Alert variant="danger" className="mt-3">{err}</Alert>}
               </Form>
@@ -212,7 +215,7 @@ const CreateEmployee = () => {
             <Modal.Title>Employee Created</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Employee has been successfully created.</p>
+            <p>{err}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleCloseModal}>

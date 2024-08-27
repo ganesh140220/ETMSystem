@@ -33,17 +33,13 @@ public class CreateController {
 //    }
     
     @PostMapping("/createEmployee")
-    public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employeeDto) {
+    public String addEmployee(@RequestBody EmployeeDto employeeDto) {
         try {
-            // Save the employee and get the DTO of the saved employee
-            EmployeeDto savedEmployeeDto = employeeService.saveEmployee(employeeDto);
-
-            // Return the saved employee DTO with a status of CREATED
-            return new ResponseEntity<>(savedEmployeeDto, HttpStatus.CREATED);
+           
+            return employeeService.saveEmployee(employeeDto);
         } catch (Exception e) {
-            // Log the exception for debugging
-            e.printStackTrace(); // Or use a logging framework like SLF4J
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            
+            return "Check your internet Connection";
         }
     }
 
@@ -100,8 +96,17 @@ public class CreateController {
             return new ResponseEntity<>("Error creating project and team member", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
+    
+    @GetMapping("/forgetpassword")
+    public String forget(@RequestParam(name="username") String username) {
+    	try {
+    return createService.forget(username);
+    	}
+    	catch(Exception e) {
+    		return "Enter valid username";
+    	}
+    }
+    
     
     
 }

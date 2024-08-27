@@ -31,7 +31,8 @@ public class QueryService {
         return queryRepository.findById(id);
     }
 
-    
+    //method to give solution to a query
+
    
     // Add other necessary methods here if needed
 }

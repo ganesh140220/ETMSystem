@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshObj } from './Refreshobj';
 
 const CreateQueryPage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const CreateQueryPage = () => {
   
   // Retrieve the necessary data from the Redux store
   const obj = useSelector(state => state.myobj.obj); // Adjust according to your state structure
+  
   const empId = obj?.id || 0;
   const userRole = obj?.login?.role?.role1 || 'User'; // Default to 'User' if role is not found
 

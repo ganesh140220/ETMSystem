@@ -3,11 +3,12 @@ import { useSelector } from 'react-redux';
 
 export default function ViewClient() {
     const clientobj=useSelector(state=>state.myobj.clientobj)
+    const obj = useSelector((state) => state.myobj.obj);
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
         setClients(clientobj)
-    }, [clientobj]);
+    }, [clientobj,obj]);
     
     
 

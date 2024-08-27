@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshObj } from './Refreshobj';
 
 const UpdateTaskProgress = ({ taskId, onUpdate }) => {
   const location = useLocation();
@@ -10,6 +11,9 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
   const name = location.state.name;
 
   // Get user role from the global state or props (assuming useSelector for Redux)
+  const empobj = useSelector(state => state.myobj.obj); // Adjust according to your state structure
+  const dispatch=useDispatch()
+  
   const obj = useSelector((state) => state.myobj.obj.login); // Adjust the path according to your state structure
   const userRole = obj.role.role1;
 
@@ -74,6 +78,7 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
 
     // Set submission status to true
     setSubmitted(true);
+  
   };
 
   // Handle work done percentage input change
@@ -90,6 +95,7 @@ const UpdateTaskProgress = ({ taskId, onUpdate }) => {
 
   // Handle navigation to dashboard
   const handleNavigateToDashboard = () => {
+    refreshObj(dispatch,empobj)
     navigate(`/${userRole}`); // Navigate to the dashboard based on user role
   };
 
